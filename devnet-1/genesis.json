@@ -79,6 +79,13 @@
             "pub_key": null,
             "account_number": "0",
             "sequence": "0"
+          },
+          {
+            "@type": "/cosmos.auth.v1beta1.BaseAccount",
+            "address": "celes1pr70cfwuj262dyh394nww8qsk2l0crc6jwgaec",
+            "pub_key": null,
+            "account_number": "0",
+            "sequence": "0"
           }
         ]
       },
@@ -144,6 +151,15 @@
           },
           {
             "address": "celes1uyw5luc6h8a3nwtqudqkt54ue8jruukdnvpekg",
+            "coins": [
+              {
+                "denom": "celes",
+                "amount": "800000000000"
+              }
+            ]
+          },
+          {
+            "address": "celes1pr70cfwuj262dyh394nww8qsk2l0crc6jwgaec",
             "coins": [
               {
                 "denom": "celes",
