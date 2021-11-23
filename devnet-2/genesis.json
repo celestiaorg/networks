@@ -37,6 +37,62 @@
           "pub_key": null,
           "account_number": "0",
           "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "celes1ach46zq8zh59vvej2qxftveq288a7na23duqag",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "celes1l886qtfmdmvjv0l5kq6r0xgk5l2qt4sh5w203m",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "celes1wc3f0k28drqm72lw6k5g4lwp9nlfev6vsnng77",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "celes1wh9fwwd0s4xnfsj2pxxe40v8zryxaqn2ml9xyh",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "celes1sahhx2lhnkcempfchxxd30hd639t7swp8557kg",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "celes19cpsqwerc2ygem77wv83ssn2t9lm7tux4rg2l2",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "celes1s4vfe5fw6sdxj0wlv850aphavd8hca9s2jxxxq",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "celes1w3jqjukslcvzxvjgfg4q5tuhv7dr7wulg3r3hf",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
         }
       ]
     },
@@ -46,6 +102,78 @@
         "default_send_enabled": true
       },
       "balances": [
+        {
+          "address": "celes19cpsqwerc2ygem77wv83ssn2t9lm7tux4rg2l2",
+          "coins": [
+            {
+              "denom": "celes",
+              "amount": "800000000000"
+            }
+          ]
+        },
+        {
+          "address": "celes1w3jqjukslcvzxvjgfg4q5tuhv7dr7wulg3r3hf",
+          "coins": [
+            {
+              "denom": "celes",
+              "amount": "800000000000"
+            }
+          ]
+        },
+        {
+          "address": "celes1wh9fwwd0s4xnfsj2pxxe40v8zryxaqn2ml9xyh",
+          "coins": [
+            {
+              "denom": "celes",
+              "amount": "800000000000"
+            }
+          ]
+        },
+        {
+          "address": "celes1wc3f0k28drqm72lw6k5g4lwp9nlfev6vsnng77",
+          "coins": [
+            {
+              "denom": "celes",
+              "amount": "800000000000"
+            }
+          ]
+        },
+        {
+          "address": "celes1s4vfe5fw6sdxj0wlv850aphavd8hca9s2jxxxq",
+          "coins": [
+            {
+              "denom": "celes",
+              "amount": "800000000000"
+            }
+          ]
+        },
+        {
+          "address": "celes1sahhx2lhnkcempfchxxd30hd639t7swp8557kg",
+          "coins": [
+            {
+              "denom": "celes",
+              "amount": "800000000000"
+            }
+          ]
+        },
+        {
+          "address": "celes1ach46zq8zh59vvej2qxftveq288a7na23duqag",
+          "coins": [
+            {
+              "denom": "celes",
+              "amount": "800000000000"
+            }
+          ]
+        },
+        {
+          "address": "celes1l886qtfmdmvjv0l5kq6r0xgk5l2qt4sh5w203m",
+          "coins": [
+            {
+              "denom": "celes",
+              "amount": "800000000000"
+            }
+          ]
+        },
         {
           "address": "celes1lfg4vnf2t2qhws6dgrmgkxsw86nrn7u0l8k3xx",
           "coins": [
@@ -65,7 +193,7 @@
     },
     "crisis": {
       "constant_fee": {
-        "denom": "stake",
+        "denom": "celes",
         "amount": "1000"
       }
     },
@@ -136,7 +264,7 @@
         "annual_provisions": "0.000000000000000000"
       },
       "params": {
-        "mint_denom": "stake",
+        "mint_denom": "celes",
         "inflation_rate_change": "0.130000000000000000",
         "inflation_max": "0.200000000000000000",
         "inflation_min": "0.070000000000000000",
@@ -163,7 +291,7 @@
         "max_validators": 100,
         "max_entries": 7,
         "historical_entries": 10000,
-        "bond_denom": "stake"
+        "bond_denom": "celes"
       },
       "last_total_power": "0",
       "last_validator_powers": [],
