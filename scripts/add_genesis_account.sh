@@ -6,7 +6,7 @@ dest_dir=$3
 dest_node_name=$4
 chain_id=devnet
 moniker_name=james-bond
-COIN="1000000000000stake,10000000000000celes"
+COIN="10000000000000celes"
 
 # If the directory isn't here then create it
 if [ ! -d "$new_dir" ]; then
