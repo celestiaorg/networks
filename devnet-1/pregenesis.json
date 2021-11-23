@@ -1,5 +1,5 @@
 {
-  "genesis_time": "2021-11-22T14:53:39.956721428Z",
+  "genesis_time": "2021-11-22T16:30:03.323863238Z",
   "chain_id": "devnet-1",
   "initial_height": "1",
   "consensus_params": {
@@ -33,7 +33,7 @@
       "accounts": [
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "celes1m4cyujmu5kpesn3x0fjkwevgem22c8sgep3jrr",
+          "address": "celes152mvdzwkrrdtsknmt4srz7mpl5xg2954vq95h3",
           "pub_key": null,
           "account_number": "0",
           "sequence": "0"
@@ -47,10 +47,10 @@
       },
       "balances": [
         {
-          "address": "celes1m4cyujmu5kpesn3x0fjkwevgem22c8sgep3jrr",
+          "address": "celes152mvdzwkrrdtsknmt4srz7mpl5xg2954vq95h3",
           "coins": [
             {
-              "denom": "samoleans",
+              "denom": "celes",
               "amount": "800000000000"
             },
             {
