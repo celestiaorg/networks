@@ -14,9 +14,7 @@ chmod +x /usr/local/bin/celestia-appd
 git clone https://github.com/celestiaorg/networks.git
 networks/scripts/firewall_ubuntu.sh
 node_name="MightyValidator-${node_num}"
-networks/scripts/1_create_key.sh $node_name
-# Copy Account Address to file
-acc_addr=...
+acc_addr=$(networks/scripts/1_create_key.sh $node_name | tail -n 1)
 echo $acc_addr > ~/account-address-$node_num.txt
 ```
 
