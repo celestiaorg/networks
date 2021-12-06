@@ -1,13 +1,22 @@
-# Attempt to create network on 3 DO Droplets
+# Create celestia-app network on 3 Digital Ocean Droplets
 
 Inspired from instructions [here](https://github.com/celestiaorg/networks/blob/a378c7cddb91a71db533631d7bbc2b67cb956d5c/README.md)
 
+## Initial Setup
+
+The initial setup assumes you create 3 Digital Ocean Droplets, other cloud provider VMs sharing a VPC likely work but haven't been tested. It is assumed that you have a terminal with an ssh key that has permissions for all 3 VM nodes. 
+
+A walkthrough video is available [here](https://www.loom.com/share/e8dd61974ede492db51f3bf7331970da)
+
 ## Run on all Nodes
 ```
-apt install make -y
 apt install moreutils -y
 apt install jq -y
+# node_num should be 0, 1, or 2 depending on the node
 node_num={0, 1, 2}
+# This is a `celestia-appd` binary compiled for amd64 linux
+# You could also retrieve the celestia-app source code from https://github.com/celestiaorg/celestia-app
+# Install with `make install`, move the resulting `celestia-appd` to `/usr/local/bin` and add execution permissions (chmod +x)
 wget https://fra1.digitaloceanspaces.com/celestia-node-binaries/celestia-appd
 mv celestia-appd /usr/local/bin/celestia-appd
 chmod +x /usr/local/bin/celestia-appd
@@ -21,9 +30,10 @@ echo $acc_addr > ~/account-address-$node_num.txt
 ## Run on a terminal not ssh'd to a node
 ```
 mkdir /tmp/orchestrate && cd /tmp/orchestrate
-node0_ip=188.166.21.209
-node1_ip=188.166.91.191
-node2_ip=174.138.11.26
+# Retrieve the correct IPv4 Addresses of your nodes
+node0_ip=<node-0-ip>
+node1_ip=<node-1-ip>
+node2_ip=<node-2-ip>
 scp root@$node1_ip:/root/account-address-1.txt ./account-address-1.txt
 scp root@$node2_ip:/root/account-address-2.txt ./account-address-2.txt
 scp ./account-address-1.txt root@$node0_ip:/root/account-address-1.txt
@@ -72,7 +82,6 @@ celestia-appd collect-gentxs
 
 ## Run on a terminal not ssh'd to a node
 ```
-rm genesis.json
 # Copy final genesis.json from node0
 scp root@$node0_ip:/root/.celestia-app/config/genesis.json ./golden-genesis.json
 scp ./golden-genesis.json root@$node1_ip:/root/.celestia-app/config/genesis.json
