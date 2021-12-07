@@ -1,40 +1,57 @@
-Run celestia-app chain
+Run Celestia Devnet
 ---
-
+- [Run Celestia Devnet](#run-celestia-devnet)
+- [Pre-Requisites](#pre-requisites)
+  - [Installed Celestia App and Celestia Node](#installed-celestia-app-and-celestia-node)
+  - [Fork/Clone networks repo](#forkclone-networks-repo)
+- [Running a Celestia App](#running-a-celestia-app)
+  - [Legend:](#legend)
+    - [- Facilitator (F) - orchestrates genesis setup](#--facilitator-f---orchestrates-genesis-setup)
+    - [- Others (O) - other participants](#--others-o---other-participants)
+  - [Phase 0: Environment ideas/hints](#phase-0-environment-ideashints)
+  - [Phase 1: Creating accounts and initializing celestia app chain](#phase-1-creating-accounts-and-initializing-celestia-app-chain)
+    - [(O) steps:](#o-steps)
+    - [(F) Steps:](#f-steps)
+  - [Phase 2: GenTx](#phase-2-gentx)
+    - [(O) steps:](#o-steps-1)
+    - [(F) Steps:](#f-steps-1)
+  - [Phase 3: Launch](#phase-3-launch)
+    - [(O) steps:](#o-steps-2)
+    - [Everybody:](#everybody)
+  - [Verifying Celestia App Network](#verifying-celestia-app-network)
+  - [Phase X: Be a Validator in the running `devnet-2` network:](#phase-x-be-a-validator-in-the-running-devnet-2-network)
+- [Running a Celestia Node](#running-a-celestia-node)
+  - [Pre-Requisites](#pre-requisites-1)
+  - [Full Node Configuration](#full-node-configuration)
+  - [Light Client Configuration](#light-client-configuration)
 ## Pre-Requisites 
-### Clone celestia-app repo and install
-```sh
-git clone https://github.com/celestiaorg/celestia-app.git
+### Installed Celestia App and Celestia Node
+If you haven't installed either of app/node, please navigate to each of them
+- [celestia-app repo](https://github.com/celestiaorg/celestia-app)
+- [celestia-node repo](https://github.com/celestiaorg/celestia-node)
 
-cd celestia-app 
-
-make install
-
-# check that celestia-appd --help is working properly
-celestia-appd --help
-```
 ### Fork/Clone networks repo
 ```sh
 git clone https://github.com/<your_github>/networks.git
 ```
 
-## Legend: 
-### - Facilitator (F) - orchestrates genesis setup
-### - Others (O) - other participants
+## Running a Celestia App
+### Legend: 
+#### - Facilitator (F) - orchestrates genesis setup
+#### - Others (O) - other participants
 
-## Phase 0: Environment ideas/hints
-If you want to run celestia app chain, please consider using such setups: 
-
+### Phase 0: Environment ideas/hints
+The following instructions assume that you are using Digital Ocean as a cloud provider. Though it should be straightforward to use another provider or even deploy on a local bare-metal server instead. 
+Tested setups:
 1. One Digital Ocean Droplet on Ubuntu(1 CPU and 1Gb should be enough) and your local Linux-based(Ubuntu prefferably) OS
 2. Two Digital Ocean Droplets on Ubuntu(1 CPU and 1 Gb should be enough)
-3. Docker Ubuntu based images
-4. Remember to update your firewall settings. You can check and execute `.networks/scripts/firewall_ubuntu.sh` script
+3. Remember to update your firewall settings. You can check and execute `.networks/scripts/firewall_ubuntu.sh` script
 
 <u>Please don't try to build `celestia app` on macOS Big Sur and higher due to this issue [#134](https://github.com/celestiaorg/celestia-app/issues/134)</u>
 
 
-## Phase 1: Creating accounts and initializing celestia app chain
-### (O) steps: 
+### Phase 1: Creating accounts and initializing celestia app chain
+#### (O) steps: 
 1. Creates an account using a script in networks repository
 ```sh
 cd networks/scripts
@@ -43,7 +60,7 @@ node_name="MightyValidator"
 ```
 2. After execution of the script, (O) passes account's address to (F)
 
-### (F) Steps:
+#### (F) Steps:
 1. Initializes the celestia app chain using a script in networks repository
 ```sh
 cd networks/scripts
@@ -67,8 +84,8 @@ cd networks/scripts
 cd ~/.celestia-app/config/genesis.json
 ```
 
-## Phase 2: GenTx
-### (O) steps: 
+### Phase 2: GenTx
+#### (O) steps: 
 1. Copies `genesis.json` from (F) to local `.celestia-app/config/` directory:
 ```sh
 cp <path_to_downloaded_genesis.json>/genesis.json  ~/.celestia-app/config/
@@ -81,7 +98,7 @@ celestia-appd gentx $node_name 5000000000celes --keyring-backend=test --chain-id
 ```sh
 cd .celestia-app/config/gentx/ && ls
 ```
-### (F) Steps:
+#### (F) Steps:
 1. Copies `gentx-<hash>.json` from (O) to local `.celestia-app/config/gentx` directory
 2. Executes command in CLI:
 ```sh
@@ -89,19 +106,116 @@ celestia-appd collect-gentxs
 ```
 3. Send the updated version of `genesis.json` to (O)
 
-## Phase 3: Launch
-### (O) steps:
+### Phase 3: Launch
+#### (O) steps:
 1. Copies <b><i>updated</i></b> `genesis.json` from (F) to local `.celestia-app/config/` directory:
 ```sh
 cp <path_to_downloaded_genesis.json>/genesis.json  ~/.celestia-app/config/
 ```
-### Everybody:  
+#### Everybody:  
 ```sh
 celestia-appd start
 ```
 
-## Verifying Celestia App Network
+### Verifying Celestia App Network
 
 To check that all validators are communicating with each other correctly, please look for a same block height for each of a running validator (let’s say block height = 100) 
 
 To confirm that everything is ok, you have to check that commit hashes for same block height are the same for all validators.
+
+### Phase X: Be a Validator in the running `devnet-2` network:
+1. Creates an account using a script in networks repository
+```sh
+cd networks/scripts
+node_name="chani"
+./1_create_key.sh $node_name
+```
+2. Asks any running validator to add funds to the account's address (ideally this should be changed with the upcoming faucet) in [Discord Developer Channel](https://discord.com/invite/YsnTPcSfWQ)
+3. Executes command in CLI:
+
+```sh
+celestia-appd init <moniker_name> --chain-id devnet-2
+```
+Example: 
+```sh 
+celestia-appd init fremen --chain-id devnet-2
+```
+4. Copies `genesis.json` from `networks/devnet-2` repo to local `.celestia-app/config/` directory:
+```sh
+cp networks/devnet-2/genesis.json  ~/.celestia-app/config/
+```
+5. Starts syncing the chain using command in CLI:
+```sh 
+celestia-appd start --p2p.seeds 2fd76fae32f587eceb266dce19053b20fce4e846@207.154.220.138:26656
+```
+Syncing finishes around 1-2 hours
+
+6. Executes command in CLI:
+```sh
+celestia-appd tx staking create-validator \
+ --amount=1000000000celes \
+ --pubkey=$(celestia-appd tendermint show-validator) \
+ --moniker=space \
+ --chain-id=devnet-2 \
+ --commission-rate=0.1 \
+ --commission-max-rate=0.2 \
+ --commission-max-change-rate=0.01 \
+ --min-self-delegation=1000000000 \
+ --from=$node_name \
+ --keyring-backend=test
+```
+
+## Running a Celestia Node
+### Pre-Requisites
+You need to have the trusted hash in order to initialize the full celestia node
+In order to know the hash, you need to query the celestia-app:
+```sh
+curl -s http://localhost:26657/block?height=1 | grep -A1 block_id | grep hash
+```
+
+### Full Node Configuration
+1. Initialize the full node
+```sh
+celestia full init --core.remote <ip:port of celestia-app> --headers.trusted-hash <hash_from_celestia_app>
+```
+
+Example:
+```sh 
+celestia full init --core.remote tcp://127.0.0.1:26657 --headers.trusted-hash 3BDFBD7E2D97215CFA600DD8B39AAEECC015E43FEE7B8A4D8A8B630E8B4D4006
+```
+
+2. Start the full node
+```sh
+celestia full start
+```
+Now, the celestia full node will start syncing headers and storing blocks from celestia app. 
+
+<u>Note: At startup, we can see the `multiaddress` from celestia full node. This is <b>needed for future light client</b> connections</u>
+
+Example:
+```sh
+/ip4/46.101.245.50/tcp/2122/p2p/12D3KooWKNBZvF93L92aTYs6jRyozicGmuu3cF9gotMtUCeHAPYN
+```
+
+### Light Client Configuration
+To start the light client, we need to know 2 variables:
+- Trusted peer’s multi address to connect to (a celestia full node is the case here)
+- Trusted block hash from celestia-app
+
+1. Initialize the light client
+
+```sh
+celestia full init --headers.trusted-peer <full_node_multiaddress> --headers.trusted-hash <hash_from_celestia_app>
+```
+
+Example: 
+
+```sh 
+celestia light init --headers.trusted-peer /ip4/46.101.245.50/tcp/2122/p2p12D3KooWKNBZvF93L92aTYs6jRyozicGmuu3cF9gotMtUCeHAPYN --headers.genesis-hash F10679041E3D55363405C1D3080B91004BCAE471F35F1FBABC345B8237AEFDA2 
+```
+
+2. Start the light client
+```sh
+celestia light start
+```
+Now, the celestia light client will start syncing headers and do data availability sampling(DAS) from the full node.
