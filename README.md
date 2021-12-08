@@ -184,13 +184,29 @@ Example:
 celestia full init --core.remote tcp://127.0.0.1:26657 --headers.trusted-hash 3BDFBD7E2D97215CFA600DD8B39AAEECC015E43FEE7B8A4D8A8B630E8B4D4006
 ```
 
-2. Start the full node
+2. Edit configurations
+
+If you have multiple celestia full nodes, then you need to add them as mutual peers in the `config.toml` file and allow the peer exchange. This is needed in order for celestia full nodes communication between each other.
+```sh
+nano ~/.celestia-full/config.toml
+```
+```sh
+...
+[P2P]
+  ...
+  MutualPeers = ["/ip4/<ip>/tcp/2121/p2p/<pubKey>"] #add multiaddresses of other celestia full nodes
+  PeerExchange = true #change this line to true. Be default it's false
+  ...
+...
+```
+
+3. Start the full node
 ```sh
 celestia full start
 ```
 Now, the celestia full node will start syncing headers and storing blocks from celestia app. 
 
-<u>Note: At startup, we can see the `multiaddress` from celestia full node. This is <b>needed for future light client</b> connections</u>
+<u>Note: At startup, we can see the `multiaddress` from celestia full node. This is <b>needed for future light client</b> connections and communication between celestia full nodes</u>
 
 Example:
 ```sh
