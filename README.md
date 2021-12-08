@@ -24,6 +24,12 @@ Run Celestia Devnet
   - [Pre-Requisites](#pre-requisites-1)
   - [Full Node Configuration](#full-node-configuration)
   - [Light Client Configuration](#light-client-configuration)
+- [Data Availability Sampling(DAS)](#data-availability-samplingdas)
+  - [Pre-Requisites:](#pre-requisites-2)
+  - [Legend:](#legend-1)
+    - [- First terminal(FT) run light client with logs info](#--first-terminalft-run-light-client-with-logs-info)
+    - [- Second terminal(ST) submit payForMessage tx](#--second-terminalst-submit-payformessage-tx)
+  - [Steps:](#steps)
 ## Pre-Requisites 
 ### Installed Celestia App and Celestia Node
 If you haven't installed either of app/node, please navigate to each of them
@@ -235,3 +241,32 @@ celestia light init --headers.trusted-peer /ip4/46.101.245.50/tcp/2122/p2p12D3Ko
 celestia light start
 ```
 Now, the celestia light client will start syncing headers and do data availability sampling(DAS) from the full node.
+
+## Data Availability Sampling(DAS)
+
+### Pre-Requisites:
+This is a list of runnining components you need in order to successfully continue this chapter:
+- celestia app validator
+- celestia full node
+- celestia light client
+
+### Legend:
+You will need 2 terminals in order to see how DASing works:
+#### - First terminal(FT) run light client with logs info
+#### - Second terminal(ST) submit payForMessage tx
+
+### Steps:
+1. In (ST) Submit a `payForMessage` transaction with `celestia-appd`
+```sh
+celestia-appd tx payment payForMessage <hex_namespace> <hex_message> --from <node_name> --keyring-backend <keyring-name> --chain-id <chain_name> -y
+```
+Example:
+```sh 
+celestia-appd tx payment payForMessage 0102030405060708 68656c6c6f43656c6573746961444153 --from eva00 --keyring-backend test --chain-id devnet-2 -y
+```
+2. In (FT) you should see in logs how DAS is working
+
+Example:
+```sh
+INFO	das	das/daser.go:96	sampling successful	{"height": 81547, "hash": "DE0B0EB63193FC34225BD55CCD3841C701BE841F29523C428CE3685F72246D94", "square width": 2, "finished (s)": 0.000117466}
+```
