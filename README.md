@@ -258,7 +258,7 @@ You will need 2 terminals in order to see how DASing works:
 ### Steps:
 1. In (ST) Submit a `payForMessage` transaction with `celestia-appd`
 ```sh
-celestia-appd tx payment payForMessage <hex_namespace> <hex_message> --from <node_name> --keyring-backend test --chain-id <chain_name> -y
+celestia-appd tx payment payForMessage <hex_namespace> <hex_message> --from <node_name> --keyring-backend <keyring-name> --chain-id <chain_name> -y
 ```
 Example:
 ```sh 
