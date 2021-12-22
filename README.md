@@ -20,6 +20,7 @@ Run Celestia Devnet
     - [Everybody:](#everybody)
   - [Verifying Celestia App Network](#verifying-celestia-app-network)
   - [Phase X: Be a Validator in the running `devnet-2` network:](#phase-x-be-a-validator-in-the-running-devnet-2-network)
+    - [Troubleshooting Validator Node setup](#troubleshooting-validator-node-setup)
 - [Running a Celestia Node](#running-a-celestia-node)
   - [Pre-Requisites](#pre-requisites-1)
   - [Full Node Configuration](#full-node-configuration)
@@ -156,7 +157,7 @@ celestia-appd start --p2p.seeds 2fd76fae32f587eceb266dce19053b20fce4e846@207.154
 ```
 Syncing finishes around 1-2 hours
 
-6. Executes command in CLI:
+6. Execute command:
 ```sh
 celestia-appd tx staking create-validator \
  --amount=1000000000celes \
@@ -170,6 +171,52 @@ celestia-appd tx staking create-validator \
  --from=$node_name \
  --keyring-backend=test
 ```
+
+which should prompt for:
+
+```sh
+confirm transaction before signing and broadcasting [y/N]:
+```
+
+Inputting `y` should provide an output similar to:
+
+```sh
+code: 0
+codespace: ""
+data: ""
+gas_used: "0"
+gas_wanted: "0"
+height: "0"
+info: ""
+logs: []
+raw_log: '[]'
+timestamp: ""
+tx: null
+txhash: <tx-hash>
+```
+
+You should now be able to see your validator from a block explorer such as http://celestia.observer:3080/validators.
+
+### Troubleshooting Validator Node setup
+
+If you get an error such as 
+
+```Error: <keyname>: key not found```,
+
+this means your key, the field referenced by the `--from` option, does not exist.
+
+You can fix this by adding your key manually to the keyring via:
+
+```
+celestia-appd keys add --recover <keyname>
+```
+
+followed by a prompt to enter a bip39 mnemonic, which is the mnemonic that was created as part of `1_create_key.sh` script in the first step.
+
+You'll also be asked for a passphrase which is an input you have to define.
+
+After this fix repeat step 6.
+
 
 ## Running a Celestia Node
 ### Pre-Requisites
