@@ -20,7 +20,7 @@ Run Celestia Devnet
     - [Everybody:](#everybody)
   - [Verifying Celestia App Network](#verifying-celestia-app-network)
   - [Phase X: Be a Validator in the running `devnet-2` network:](#phase-x-be-a-validator-in-the-running-devnet-2-network)
-    - [Troubleshooting Validator Node setup](#troubleshooting-validator-node-setup)
+  - [Troubleshooting Validator Node setup](#troubleshooting-validator-node-setup)
 - [Running a Celestia Node](#running-a-celestia-node)
   - [Pre-Requisites](#pre-requisites-1)
   - [Full Node Configuration](#full-node-configuration)
@@ -82,7 +82,7 @@ celestia-appd add-genesis-account $O_acc_addr 800000000000celes
 ```sh
 sudo apt-get install moreutils #contains sponge that we need
 cd networks/scripts
-./fix_genesis.json
+./fix_genesis.sh ~/.celestia-app/config/genesis.json
 ```
 
 
