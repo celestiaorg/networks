@@ -137,7 +137,7 @@ cd networks/scripts
 node_name="chani"
 ./1_create_key.sh $node_name
 ```
-2. Asks any running validator to add funds to the account's address (ideally this should be changed with the upcoming faucet) in [Discord Developer Channel](https://discord.com/invite/YsnTPcSfWQ)
+2. Request some testnet tokens in [Discord Faucet Channel](https://discord.gg/NEfhSscRSx)
 3. Executes command in CLI:
 
 ```sh
