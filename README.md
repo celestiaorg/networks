@@ -153,7 +153,7 @@ cp networks/devnet-2/genesis.json  ~/.celestia-app/config/
 ```
 5. Starts syncing the chain using command in CLI:
 ```sh 
-celestia-appd start --p2p.seeds 2fd76fae32f587eceb266dce19053b20fce4e846@207.154.220.138:26656
+celestia-appd start --p2p.seeds 74c0c793db07edd9b9ec17b076cea1a02dca511f@46.101.28.34:26656
 ```
 Syncing finishes around 1-2 hours
 
