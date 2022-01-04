@@ -123,6 +123,7 @@ cp <path_to_downloaded_genesis.json>/genesis.json  ~/.celestia-app/config/
 ```sh
 celestia-appd start
 ```
+> :grey_exclamation:	 If your node is having trouble finding peers to connect with, please update your [seeds](devnet-2/seeds.txt) and [peers](devnet-2/peers.txt) in your config.toml
 
 ### Verifying Celestia App Network
 
