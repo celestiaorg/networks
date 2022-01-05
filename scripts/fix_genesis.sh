@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-if ([ "$1" == "--help" ] || [ -z "$2" ]); then
+if [ "$1" == "--help" ] || [ -z "$2" ]; then
     echo "Usage: ./fix_genesis.sh path/to/genesis.json new_token_name"
     exit 0
 fi
