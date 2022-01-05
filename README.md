@@ -80,7 +80,7 @@ celestia-appd add-genesis-account $O_acc_addr 800000000000celes
 <b><u>Note: Currently, we've found an issue that `genesis.json` is using `stake` instead of `celes` token [#158](https://github.com/celestiaorg/celestia-app/issues/158)</u></b>
 <b>Please, either manually change `stake` to `celes` in `genesis.json` or execute this script:</b>
 ```sh
-sudo apt-get install moreutils jq #contains sponge that we need
+sudo apt install moreutils jq #contains sponge that we need
 cd networks/scripts
 ./fix_genesis.sh ~/.celestia-app/config/genesis.json
 ```
