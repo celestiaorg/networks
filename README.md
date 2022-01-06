@@ -281,7 +281,7 @@ celestia full init --headers.trusted-peer <full_node_multiaddress> --headers.tru
 Example: 
 
 ```sh 
-celestia light init --headers.trusted-peer /ip4/46.101.245.50/tcp/2122/p2p12D3KooWKNBZvF93L92aTYs6jRyozicGmuu3cF9gotMtUCeHAPYN --headers.genesis-hash F10679041E3D55363405C1D3080B91004BCAE471F35F1FBABC345B8237AEFDA2 
+celestia light init --headers.trusted-peer /ip4/46.101.245.50/tcp/2122/p2p12D3KooWKNBZvF93L92aTYs6jRyozicGmuu3cF9gotMtUCeHAPYN --headers.trusted-hash F10679041E3D55363405C1D3080B91004BCAE471F35F1FBABC345B8237AEFDA2 
 ```
 
 2. Start the light client
