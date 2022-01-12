@@ -36,8 +36,8 @@ Celestia Full Node(CFN) takes care of these points:
 - Serve headers/shares to Celestia Light Clients
 - Communication between Celestia Full Nodes and Celestia Light Clients
 
-Communication of CA and CFN processes happens over the RPC. This diagram can help with wrapping the information. 
-![Full Node Diagram](./img/full_node.svg)
+Communication of CA and CFN processes happens over the RPC.
+
 
 
 
