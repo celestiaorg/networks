@@ -5,6 +5,8 @@
   - [Full Node Configuration](#full-node-configuration)
     - [Getting trusted hash](#getting-trusted-hash)
     - [Running full node](#running-full-node)
+      - [1. Initialize the full node](#1-initialize-the-full-node)
+      - [2. Edit configurations (adding other celestia full nodes)](#2-edit-configurations-adding-other-celestia-full-nodes)
   - [Light Client Configuration](#light-client-configuration)
     - [Getting trusted hash](#getting-trusted-hash-1)
     - [Running Light Client](#running-light-client)
@@ -24,7 +26,7 @@ make install
 ## Full Node Configuration
 
 ### Getting trusted hash
-<b><u>Caveat: You need a running celestia-app in order to continue this guideline. Please refer to [celestia-app.md](https://github.com/celestiaorg/networks/celestia-app.md) for installation. </u></b>
+> Caveat: You need a running celestia-app in order to continue this guideline. Please refer to [celestia-app.md](https://github.com/celestiaorg/networks/celestia-app.md) for installation.
 
 
 You need to have the trusted hash in order to initialize the full celestia node
@@ -34,7 +36,7 @@ curl -s http://localhost:26657/block?height=1 | grep -A1 block_id | grep hash
 ```
 
 ### Running full node
-1. Initialize the full node
+#### 1. Initialize the full node
 ```sh
 celestia full init --core.remote <ip:port of celestia-app> --headers.trusted-hash <hash_from_celestia_app>
 ```
@@ -44,9 +46,9 @@ Example:
 celestia full init --core.remote tcp://127.0.0.1:26657 --headers.trusted-hash 4632277C441CA6155C4374AC56048CF4CFE3CBB2476E07A548644435980D5E17
 ```
 
-2. Edit configurations
+#### 2. Edit configurations (adding other celestia full nodes)
 
-If you have multiple celestia full nodes, then you need to add them as mutual peers in the `config.toml` file and allow the peer exchange. This is needed in order for celestia full nodes communication between each other.
+In order for your celestia full node to communicate with other celestia full nodes, then you need to add them as `mutual peers` in the `config.toml` file and allow the peer exchange.
 ```sh
 nano ~/.celestia-full/config.toml
 ```
@@ -54,19 +56,23 @@ nano ~/.celestia-full/config.toml
 ...
 [P2P]
   ...
-  MutualPeers = ["/ip4/<ip>/tcp/2121/p2p/<pubKey>"] #add multiaddresses of other celestia full nodes
+  #add multiaddresses of other celestia full nodes
+  
+  MutualPeers = [
+    "/ip4/46.101.22.123/tcp/2121/p2p/12D3KooWD5wCBJXKQuDjhXFjTFMrZoysGVLtVht5hMoVbSLCbV22", 
+    "/ip4/x.x.x.x/tcp/yyy/p2p/abc"] #the /ip4/x.x.x.x is only for example. Don't add it! 
   PeerExchange = true #change this line to true. Be default it's false
   ...
 ...
 ```
 
-3. Start the full node
+1. Start the full node
 ```sh
 celestia full start
 ```
 Now, the celestia full node will start syncing headers and storing blocks from celestia app. 
 
-<u>Note: At startup, we can see the `multiaddress` from celestia full node. This is <b>needed for future light client</b> connections and communication between celestia full nodes</u>
+> Note: At startup, we can see the `multiaddress` from celestia full node. This is <b>needed for future light client</b> connections and communication between celestia full nodes
 
 Example:
 ```sh
@@ -75,19 +81,19 @@ Example:
 
 ## Light Client Configuration
 
-<b><u>Caveat: You don't need to run the light client on the same machine where celestia full node is running</u></b>
+> Caveat: You don't need to run the light client on the same machine where celestia full node is running
 
 ### Getting trusted hash
 You need to have the trusted hash in order to initialize the light client
 In order to know the hash, you need to query the celestia-app:
 
-<i>Note I: It is highly encouraged to run your own non-validating `celestia-app` node to get this trusted hash. However, you can ask for or take this hash from the discord/explorer if you want to just explore how easy it is to run the celestia light client</i>
+> Note: It is highly encouraged to run your own non-validating `celestia-app` node to get this trusted hash. However, you can ask for or take this hash from the discord/explorer if you want to just explore how easy it is to run the celestia light client
 ```sh
 curl -s http://<ip_address>:26657/block?height=1 | grep -A1 block_id | grep hash
 ``` 
 
 ### Running Light Client
-<i>Note II: If you want to run the light client only, then you can ask someone from the discord to send you the `multiaddress` from the celestia full node to connect to</i> 
+> Note: If you want to run the light client only, then you can ask someone from the discord to send you the `multiaddress` from the celestia full node to connect to
 
 To start the light client, we need to know 2 variables:
 - Trusted peer’s multi address to connect to (a celestia full node is the case here)
@@ -118,7 +124,7 @@ This is a list of runnining components you need in order to successfully continu
 - celestia app validator
 - celestia light client
 
-<i>Note: The light client should be connected to a celestia full node to operate correctly. Either deploy your own celestia full node or connect your <b>light client</b> to an existing celestia full node in the network</i>
+> Note: The light client should be connected to a celestia full node to operate correctly. Either deploy your own celestia full node or connect your <b>light client</b> to an existing celestia full node in the network
 
 ### Legend
 You will need 2 terminals in order to see how DASing works:
