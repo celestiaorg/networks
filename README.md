@@ -50,6 +50,8 @@ Celestia Light Client(CLC) lives only in [celestia-node](https://github.com/cele
 
 
 ## Installation guide
+> Caveat: Make sure that you have at least 50+ Gb of free space to safely move on with this guide
+
 You need to install celestia-app, celestia-node in order to move on.
 > Note: It is <b>much easier to run a non-validator celestia app</b> + celestia full node rather then going back and forth in order to be included in the active validator set
 
