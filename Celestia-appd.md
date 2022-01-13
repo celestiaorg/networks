@@ -108,7 +108,6 @@ Make sure the you have `"catching_up": false`, otherwise leave it running until 
 # 2. Creating a Validator
 First we need to create the validator wallet. You can pick whatever wallet name you want. For our example we used "validator" as wallet name:
 ```sh
-cd $HOME
 celestia-appd keys add validator
 ```
 Save the mnemonic output as this is the only way to recover your validator wallet in case you lose it! For the public celestia address, fund the wallet via Discord:
