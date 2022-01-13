@@ -29,7 +29,7 @@ make install
 > Caveat: You need a running celestia-app in order to continue this guideline. Please refer to [celestia-app.md](https://github.com/celestiaorg/networks/celestia-app.md) for installation.
 
 
-You need to have the trusted hash in order to initialize the full celestia node
+You need to have the trusted hash in order to initialize the Celestia full node
 In order to know the hash, you need to query the celestia-app:
 ```sh
 curl -s http://localhost:26657/block?height=1 | grep -A1 block_id | grep hash
