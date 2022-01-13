@@ -1,7 +1,7 @@
 # 1. Running a Node
 Here we describe how to run and sync a node using celestia-appd.
 ## 1.2 Installing Dependencies
-First, make sure to update and upgrade de OS:
+First, make sure to update and upgrade the OS:
 ```sh
 sudo apt update && sudo apt upgrade -y
 ```
@@ -29,7 +29,7 @@ Output should be the version installed:
 go version go1.17.2 linux/amd64
 ```
 ## 1.3 Downloading and Compiling Celestia-App
-The steps above below will create a binary file named celestia-appd inside `$HOME/go/bin` folder which will be used later to run the node.
+The steps below will create a binary file named celestia-appd inside `$HOME/go/bin` folder which will be used later to run the node.
 ```sh
 cd $HOME
 rm -rf celestia-app
@@ -49,7 +49,7 @@ cd $HOME
 rm -rf networks
 git clone https://github.com/celestiaorg/networks.git
 ```
-To initialize the network pick a "node-name" the describes your node. The --chain-id parameter we are using here is "devnet-2". Keep in mind that this might change if a new testnet is deployed.
+To initialize the network pick a "node-name" that describes your node. The --chain-id parameter we are using here is "devnet-2". Keep in mind that this might change if a new testnet is deployed.
 ```sh
 celestia-appd init "node-name" --chain-id devnet-2
 ```
@@ -108,7 +108,7 @@ To check if your node is in sync before going forward:
 ```sh
 curl -s localhost:26657/status | jq .result | jq .sync_info
 ```
-Make sure the you have `"catching_up": false`, otherwise leave it running until it is in sync.
+Make sure that you have `"catching_up": false`, otherwise leave it running until it is in sync.
 
 # 2. Creating a Validator
 First we need to create the validator wallet. You can pick whatever wallet name you want. For our example we used "validator" as wallet name:
