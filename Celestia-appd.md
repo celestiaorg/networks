@@ -135,4 +135,3 @@ celestia-appd tx staking create-validator \
  --from=$VALIDATOR_WALLET \
  --keyring-backend=test
 ```
-Backup the `$HOME/.celestia-app/config/priv_validator_key.json` file as this is the key to recover your validator in case you need it.
