@@ -36,7 +36,7 @@ git clone https://github.com/celestiaorg/celestia-app.git
 cd celestia-app/
 make install
 ```
-The steps above will create a binary file named celestia-appd inside $HOME/go/bin folder which will be used later to run the node.
+The steps above will create a binary file named celestia-appd inside `$HOME/go/bin` folder which will be used later to run the node.
 ## 1.4 Setting up Network
 First clone the networks repository:
 ```sh
@@ -48,7 +48,7 @@ To initialize the network pick a "node-name" the describes your node. The --chai
 ```sh
 celestia-appd init "node-name" --chain-id devnet-2
 ```
-Copy the genesis file. For devnet-2 we are using:
+Copy the `genesis.json` file. For devnet-2 we are using:
 ```sh
 cp $HOME/networks/devnet-2/genesis.json $HOME/.celestia-app/config
 ```
@@ -99,4 +99,8 @@ Check daemon logs in real time:
 ```sh
 sudo journalctl -u celestia-appd.service -f
 ```
-Wait for the node to sync before doing next steps.
+To check if your node is in sync before going forward:
+```sh
+curl -s localhost:26657/status | jq .result | jq .sync_info
+```
+Make sure the you have `"catching_up": false`, otherwise leave it running until it is in sync.
