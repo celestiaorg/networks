@@ -99,7 +99,7 @@ Check daemon logs in real time:
 ```sh
 sudo journalctl -u celestia-appd.service -f
 ```
-To check if your node is in sync before going forward:
+Check if your node is in sync before going forward:
 ```sh
 curl -s localhost:26657/status | jq .result | jq .sync_info
 ```
