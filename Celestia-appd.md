@@ -131,6 +131,27 @@ celestia-appd tx staking create-validator \
  --commission-max-rate=0.2 \
  --commission-max-change-rate=0.01 \
  --min-self-delegation=1000000 \
- --from=$VALIDATOR_WALLET \
- --keyring-backend=test
+ --from=$VALIDATOR_WALLET
 ```
+You will be prompted to confirm the transaction:
+```sh
+confirm transaction before signing and broadcasting [y/N]: y
+```
+Inputing y should provide an output similar to:
+```
+code: 0
+codespace: ""
+data: ""
+gas_used: "0"
+gas_wanted: "0"
+height: "0"
+info: ""
+logs: []
+raw_log: '[]'
+timestamp: ""
+tx: null
+txhash: <tx-hash>
+```
+You should now be able to see your validator from a block explorer such as: http://celestia.observer:3080/validators
+
+
