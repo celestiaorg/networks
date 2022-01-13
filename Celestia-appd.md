@@ -136,4 +136,4 @@ celestia-appd tx staking create-validator \
  --from=$node_name \
  --keyring-backend=test
 ```
-Backup the "$HOME/.celestia-app/config/priv_validator_key.json" file as this is the key to recover your validator in case you need it.
+Backup the `$HOME/.celestia-app/config/priv_validator_key.json file as this is the key to recover your validator in case you need it.
