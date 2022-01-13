@@ -119,10 +119,10 @@ To check if tokens have arrived succesfully the the destination wallet run the c
 ```sh
 celestia-appd q bank balances celes1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
-Create the validator on chain. Pick a MONIKER name of your choice! This is the validator name that will show up on public dashboards and explorers. The WALLET_NAME must be the same you defined previously:
+Create the validator on chain. Pick a MONIKER name of your choice! This is the validator name that will show up on public dashboards and explorers. The VALIDATOR_WALLET must be the same you defined previously:
 ```sh
 MONIKER="your_moniker"
-WALLET_NAME="validator"
+VALIDATOR_WALLET="validator"
 
 celestia-appd tx staking create-validator \
  --amount=1000000celes \
@@ -133,7 +133,7 @@ celestia-appd tx staking create-validator \
  --commission-max-rate=0.2 \
  --commission-max-change-rate=0.01 \
  --min-self-delegation=1000000 \
- --from=$node_name \
+ --from=$VALIDATOR_WALLET \
  --keyring-backend=test
 ```
 Backup the `$HOME/.celestia-app/config/priv_validator_key.json` file as this is the key to recover your validator in case you need it.
