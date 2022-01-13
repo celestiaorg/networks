@@ -37,11 +37,6 @@ git clone https://github.com/celestiaorg/celestia-app.git
 cd celestia-app/
 make install
 ```
-Add binary location to $PATH:
-```
-echo "export PATH=$PATH:$HOME/go/bin" >> $HOME/.bash_profile
-source $HOME/.bash_profile
-```
 ## 1.4 Setting up Network
 First clone the networks repository:
 ```sh
