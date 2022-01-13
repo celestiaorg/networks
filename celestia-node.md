@@ -121,7 +121,7 @@ Now, the celestia light client will start syncing headers. After sync is finishe
 
 ## Pre-Requisites
 This is a list of runnining components you need in order to successfully continue this chapter:
-- celestia app validator
+- celestia app
 - celestia light client
 
 > Note: The light client should be connected to a celestia full node to operate correctly. Either deploy your own celestia full node or connect your <b>light client</b> to an existing celestia full node in the network
