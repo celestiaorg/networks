@@ -29,6 +29,7 @@ Output should be the version installed:
 go version go1.17.2 linux/amd64
 ```
 ## 1.3 Downloading and Compiling Celestia-App
+The steps above below will create a binary file named celestia-appd inside `$HOME/go/bin` folder which will be used later to run the node.
 ```sh
 cd $HOME
 rm -rf celestia-app
@@ -36,7 +37,11 @@ git clone https://github.com/celestiaorg/celestia-app.git
 cd celestia-app/
 make install
 ```
-The steps above will create a binary file named celestia-appd inside `$HOME/go/bin` folder which will be used later to run the node.
+Add binary location to $PATH:
+```
+echo "export PATH=$PATH:$HOME/go/bin" >> $HOME/.bash_profile
+source $HOME/.bash_profile
+```
 ## 1.4 Setting up Network
 First clone the networks repository:
 ```sh
