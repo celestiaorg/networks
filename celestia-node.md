@@ -48,7 +48,7 @@ celestia full init --core.remote tcp://127.0.0.1:26657 --headers.trusted-hash 46
 
 #### 2. Edit configurations (adding other celestia full nodes)
 
-In order for your celestia full node to communicate with other celestia full nodes, then you need to add them as `mutual peers` in the `config.toml` file and allow the peer exchange.
+In order for your Celestia full node to communicate with other Celestia full nodes, then you need to add them as `mutual peers` in the `config.toml` file and allow the peer exchange.
 ```sh
 nano ~/.celestia-full/config.toml
 ```
@@ -70,9 +70,9 @@ nano ~/.celestia-full/config.toml
 ```sh
 celestia full start
 ```
-Now, the celestia full node will start syncing headers and storing blocks from celestia app. 
+Now, the Celestia full node will start syncing headers and storing blocks from Celestia application. 
 
-> Note: At startup, we can see the `multiaddress` from celestia full node. This is <b>needed for future light client</b> connections and communication between celestia full nodes
+> Note: At startup, we can see the `multiaddress` from Celestia full node. This is <b>needed for future light client</b> connections and communication between Celestia full nodes
 
 Example:
 ```sh
@@ -81,22 +81,22 @@ Example:
 
 ## Light Client Configuration
 
-> Caveat: You don't need to run the light client on the same machine where celestia full node is running
+> Caveat: You don't need to run the light client on the same machine where Celestia full node is running
 
 ### Getting trusted hash
 You need to have the trusted hash in order to initialize the light client
 In order to know the hash, you need to query the celestia-app:
 
-> Note: It is highly encouraged to run your own non-validating `celestia-app` node to get this trusted hash. However, you can ask for or take this hash from the discord/explorer if you want to just explore how easy it is to run the celestia light client
+> Note: It is highly encouraged to run your own non-validating `celestia-app` node to get this trusted hash. However, you can ask for or take this hash from the discord/explorer if you want to just explore how easy it is to run the Celestia light client
 ```sh
 curl -s http://<ip_address>:26657/block?height=1 | grep -A1 block_id | grep hash
 ``` 
 
 ### Running Light Client
-> Note: If you want to run the light client only, then you can ask someone from the discord to send you the `multiaddress` from the celestia full node to connect to
+> Note: If you want to run the light client only, then you can ask someone from the discord to send you the `multiaddress` from the Celestia full node to connect to
 
 To start the light client, we need to know 2 variables:
-- Trusted peer’s multi address to connect to (a celestia full node is the case here)
+- Trusted peer’s multi address to connect to (a Celestia full node is the case here)
 - Trusted block hash from celestia-app
 
 1. Initialize the light client
@@ -115,16 +115,16 @@ celestia light init --headers.trusted-peer /ip4/46.101.22.123/tcp/2121/p2p/12D3K
 ```sh
 celestia light start
 ```
-Now, the celestia light client will start syncing headers. After sync is finished, light client will do data availability sampling(DAS) from the full node.
+Now, the Celestia light client will start syncing headers. After sync is finished, light client will do data availability sampling(DAS) from the full node.
 
 # Data Availability Sampling(DAS)
 
 ## Pre-Requisites
 This is a list of runnining components you need in order to successfully continue this chapter:
-- celestia app
-- celestia light client
+- Celestia app
+- Celestia light client
 
-> Note: The light client should be connected to a celestia full node to operate correctly. Either deploy your own celestia full node or connect your <b>light client</b> to an existing celestia full node in the network
+> Note: The light client should be connected to a Celestia full node to operate correctly. Either deploy your own Celestia full node or connect your <b>light client</b> to an existing Celestia full node in the network
 
 ### Legend
 You will need 2 terminals in order to see how DASing works:
