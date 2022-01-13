@@ -89,7 +89,7 @@ Enable and start celestia-appd daemon:
 ```sh
 sudo systemctl enable celestia-appd
 sudo systemctl daemon-reload
-sudo systemctl restart celestia-appd
+sudo systemctl start celestia-appd
 ```
 Check if daemon has been started correctly:
 ```sh
