@@ -113,7 +113,7 @@ Save the mnemonic output as this is the only way to recover your validator walle
 ```
 !faucet celes1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
-To check if tokens have arrived succesfully the the destination wallet run the command below replacing the public address with your own:
+To check if tokens have arrived succesfully to the destination wallet run the command below replacing the public address with your own:
 ```sh
 celestia-appd q bank balances celes1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
