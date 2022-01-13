@@ -1,5 +1,5 @@
 # 1. Running a Node
-Here we describe how to run abd sync a node using celestia-appd.
+Here we describe how to run and sync a node using celestia-appd.
 ## 1.2 Installing Dependencies
 First, make sure to update and upgrade de OS:
 ```
@@ -91,11 +91,11 @@ sudo systemctl enable celestia-appd
 sudo systemctl daemon-reload
 sudo systemctl restart celestia-appd
 ```
-Check if the daemon has been started correctly:
+Check if daemon has been started correctly:
 ```
 sudo systemctl status celestia-appd
 ```
-Check the daemon logs in real time:
+Check daemon logs in real time:
 ```
 sudo journalctl -u celestia-appd.service -f
 ```
