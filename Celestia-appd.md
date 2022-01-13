@@ -99,8 +99,41 @@ Check daemon logs in real time:
 ```sh
 sudo journalctl -u celestia-appd.service -f
 ```
-Check if your node is in sync before going forward:
+To check if your node is in sync before going forward:
 ```sh
 curl -s localhost:26657/status | jq .result | jq .sync_info
 ```
 Make sure the you have `"catching_up": false`, otherwise leave it running until it is in sync.
+
+# 2. Creating a Validator
+First we need to create the validator wallet. You can pick whatever wallet name you want. For our example we used "validator" as wallet name:
+```sh
+cd $HOME
+celestia-appd keys add validator
+```
+Save the mnemonic output as this is the only way to recover your validator wallet in case you lose it! For the public celestia address, fund the wallet via Discord:
+```
+!faucet celes1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+To check if tokens have arrived succesfully the the destination wallet run the command below replacing the public address with your own:
+```sh
+celestia-appd q bank balances celes1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+Create the validator on chain. Pick a MONIKER name of your choice! This is the validator name that will show up on public dashboards and explorers. The WALLET_NAME must be the same you defined previously:
+```sh
+MONIKER="your_moniker"
+WALLET_NAME="validator"
+
+celestia-appd tx staking create-validator \
+ --amount=1000000celes \
+ --pubkey=$(celestia-appd tendermint show-validator) \
+ --moniker=$MONIKER \
+ --chain-id=devnet-2 \
+ --commission-rate=0.1 \
+ --commission-max-rate=0.2 \
+ --commission-max-change-rate=0.01 \
+ --min-self-delegation=1000000 \
+ --from=$node_name \
+ --keyring-backend=test
+```
+Backup the "$HOME/.celestia-app/config/priv_validator_key.json" file as this is the key to recover your validator in case you need it.
