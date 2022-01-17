@@ -134,11 +134,11 @@ You will need 2 terminals in order to see how DASing works:
 ## Steps
 1. In (ST) Submit a `payForMessage` transaction with `celestia-appd`
 ```sh
-celestia-appd tx payment payForMessage <hex_namespace> <hex_message> --from <node_name> --keyring-backend <keyring-name> --chain-id <chain_name> -y
+celestia-appd tx payment payForMessage <hex_namespace> <hex_message> --from <node_name> --keyring-backend <keyring-name> --chain-id <chain_name>
 ```
 Example:
 ```sh 
-celestia-appd tx payment payForMessage 0102030405060708 68656c6c6f43656c6573746961444153 --from eva00 --keyring-backend test --chain-id devnet-2 -y
+celestia-appd tx payment payForMessage 0102030405060708 68656c6c6f43656c6573746961444153 --from eva00 --keyring-backend test --chain-id devnet-2
 ```
 2. In (FT) you should see in logs how DAS is working
 
