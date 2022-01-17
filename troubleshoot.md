@@ -13,7 +13,7 @@ If you get an error such as
 
 this means your key, the field referenced by the `--from` option, does not exist.
 
-> Note: By default, the script for creating a key is utilizing `test` backend. Please, use the flag `--keyring-backend` if you opt for different key-type.
+> Note: By default, the script for creating a key is utilizing `test` backend. Please, use the flag `--keyring-backend` if you opt for a different key-type.
 
 You can fix this by adding your key manually to the keyring via:
 
