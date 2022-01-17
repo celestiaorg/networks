@@ -48,7 +48,7 @@ celestia full init --core.remote tcp://127.0.0.1:26657 --headers.trusted-hash 46
 
 #### 2. Edit configurations (adding other celestia full nodes)
 
-In order for your Celestia full node to communicate with other Celestia full nodes, then you need to add them as `mutual peers` in the `config.toml` file and allow the peer exchange.
+In order for your Celestia full node to communicate with other Celestia full nodes, then you need to add them as `mutual peers` in the `config.toml` file and allow the peer exchange. Please navigate to `networks/devnet-2/celestia-node/mutual_peers.txt` to find the list of mutual peers
 ```sh
 nano ~/.celestia-full/config.toml
 ```
