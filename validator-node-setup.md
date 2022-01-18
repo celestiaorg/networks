@@ -1,4 +1,4 @@
-# 1. Running a Node
+# 1. Running a Celestia Application
 Here we describe how to run and sync a node using celestia-appd.
 ## 1.2 Installing Dependencies
 First, make sure to update and upgrade the OS:
