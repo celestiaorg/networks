@@ -1,6 +1,6 @@
 # 1. Running a Celestia Application
 Here we describe how to run and sync a node using celestia-appd.
-## 1.2 Installing Dependencies
+## 1.1 Installing Dependencies
 First, make sure to update and upgrade the OS:
 ```sh
 sudo apt update && sudo apt upgrade -y
