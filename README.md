@@ -2,18 +2,18 @@
 > Note: This guideline is only relevant for the current devnet. As we approach to testnet, there will be a new guide
 
 - [Run Celestia Devnet](#run-celestia-devnet)
-  - [Celestia 101(Overview)](#celestia-101overview)
+  - [Celestia 101 (Overview)](#celestia-101overview)
     - [Celestia Full Node](#celestia-full-node)
-    - [Celestia Light Client](#celestia-light-client)
+    - [Celestia Light Node](#celestia-light-client)
   - [Installation guide](#installation-guide)
   - [Troubleshoot](#troubleshoot)
 
-## Celestia 101(Overview)
+## Celestia 101 (Overview)
 <i>Conceptually</i>, we have 2 main components in the network: 
 1. `Celestia Full Node`.
-2. `Celestia Light Client`.
+2. `Celestia Light Node`.
 
-> Note: When you see formated text of those 2 above(`Celestia Full Node`, `Celestia Light Client`), remember that we are refering to a <i>conceptual</i> view. Standard formated text is a technical view 
+> Note: When you see formatted text of those 2 above(`Celestia Full Node`, `Celestia Light Node`), remember that we are referring to a <i>conceptual</i> view. Standard formatted text is a technical view 
 
 ### Celestia Full Node
 When we are mentioning `Celestia Full Node`, we are relating to a combination of 2 components: 
@@ -25,7 +25,7 @@ When we are mentioning `Celestia Full Node`, we are relating to a combination of
 
 Technically, Celestia Application and Celestia Full Node are operating on different processes of <b>one instance</b>(e.g. server). Let's break down what each of the parties do. 
 
-Celestia Application(CA) takes care of these points: 
+Celestia Application(CA) is responsible for the following components: 
 - Consensus
 - State Interaction
 - Block Production
@@ -43,7 +43,7 @@ Communication of CA and CFN processes happens over the RPC.
 Celestia Light Client(CLC) lives only in [celestia-node](https://github.com/celestiaorg/celestia-node) repo. What does CLC do: 
 1. Connects to a `Celestia Full Node`.
 2. Syncs the headers.
-3. Does data availability sampling(DAS) afterwards.
+3. Does data availability sampling (DAS) afterwards.
 
 > Note: `Celestia Light Clients` are not communicating between each other and only communicates between `Celestia Full Nodes`
 
