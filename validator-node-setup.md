@@ -28,7 +28,7 @@ Output should be the version installed:
 ```sh
 go version go1.17.2 linux/amd64
 ```
-## 1.3 Downloading and Compiling Celestia-App
+## 1.2 Downloading and Compiling Celestia-App
 The steps below will create a binary file named celestia-appd inside `$HOME/go/bin` folder which will be used later to run the node.
 ```sh
 cd $HOME
@@ -37,7 +37,7 @@ git clone https://github.com/celestiaorg/celestia-app.git
 cd celestia-app/
 make install
 ```
-## 1.4 Setting up Network
+## 1.3 Setting up Network
 First clone the networks repository:
 ```sh
 cd $HOME
@@ -62,7 +62,7 @@ Reset network:
 ```sh
 celestia-appd unsafe-reset-all
 ```
-## 1.5 Run Ceslestia-App using Systemd
+## 1.4 Run Ceslestia-App using Systemd
 Create Celestia-App systemd file:
 ```sh
 sudo tee <<EOF >/dev/null /etc/systemd/system/celestia-appd.service
