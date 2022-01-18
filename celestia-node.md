@@ -7,9 +7,9 @@
     - [Running full node](#running-full-node)
       - [1. Initialize the full node](#1-initialize-the-full-node)
       - [2. Edit configurations (adding other celestia full nodes)](#2-edit-configurations-adding-other-celestia-full-nodes)
-  - [Light Client Configuration](#light-client-configuration)
+  - [Light Node Configuration](#light-node-configuration)
     - [Getting trusted hash](#getting-trusted-hash-1)
-    - [Running Light Client](#running-light-client)
+    - [Running Light Node](#running-light-node)
 - [Data Availability Sampling(DAS)](#data-availability-samplingdas)
   - [Pre-Requisites](#pre-requisites)
     - [Legend](#legend)
@@ -72,34 +72,34 @@ celestia full start
 ```
 Now, the Celestia full node will start syncing headers and storing blocks from Celestia application. 
 
-> Note: At startup, we can see the `multiaddress` from Celestia full node. This is <b>needed for future light client</b> connections and communication between Celestia full nodes
+> Note: At startup, we can see the `multiaddress` from Celestia full node. This is <b>needed for future Light Node</b> connections and communication between Celestia full nodes
 
 Example:
 ```sh
 /ip4/46.101.22.123/tcp/2121/p2p/12D3KooWD5wCBJXKQuDjhXFjTFMrZoysGVLtVht5hMoVbSLCbV22
 ```
 
-## Light Client Configuration
+## Light Node Configuration
 
-> Caveat: You don't need to run the light client on the same machine where Celestia full node is running
+> Caveat: You don't need to run the Light Node on the same machine where Celestia full node is running
 
 ### Getting trusted hash
-You need to have the trusted hash in order to initialize the light client
+You need to have the trusted hash in order to initialize the Light Node
 In order to know the hash, you need to query the celestia-app:
 
-> Note: It is highly encouraged to run your own non-validating `celestia-app` node to get this trusted hash. However, you can ask for or take this hash from the discord/explorer if you want to just explore how easy it is to run the Celestia light client
+> Note: It is highly encouraged to run your own non-validating `celestia-app` node to get this trusted hash. However, you can ask for or take this hash from the discord/explorer if you want to just explore how easy it is to run the Celestia Light Node
 ```sh
 curl -s http://<ip_address>:26657/block?height=1 | grep -A1 block_id | grep hash
 ``` 
 
-### Running Light Client
-> Note: If you want to run the light client only, then you can ask someone from the discord to send you the `multiaddress` from the Celestia full node to connect to
+### Running Light Node
+> Note: If you want to run the Light Node only, then you can ask someone from the discord to send you the `multiaddress` from the Celestia full node to connect to
 
-To start the light client, we need to know 2 variables:
+To start the Light Node, we need to know 2 variables:
 - Trusted peer’s multi address to connect to (a Celestia full node is the case here)
 - Trusted block hash from celestia-app
 
-1. Initialize the light client
+1. Initialize the Light Node
 
 ```sh
 celestia full init --headers.trusted-peer <full_node_multiaddress> --headers.trusted-hash <hash_from_celestia_app>
@@ -111,24 +111,24 @@ Example:
 celestia light init --headers.trusted-peer /ip4/46.101.22.123/tcp/2121/p2p/12D3KooWD5wCBJXKQuDjhXFjTFMrZoysGVLtVht5hMoVbSLCbV22 --headers.trusted-hash 97682277DE3BA40176315102934EDB51CD9727FE31253C326F1F9581E14E2479
 ```
 
-2. Start the light client
+2. Start the Light Node
 ```sh
 celestia light start
 ```
-Now, the Celestia light client will start syncing headers. After sync is finished, light client will do data availability sampling(DAS) from the full node.
+Now, the Celestia Light Node will start syncing headers. After sync is finished, Light Node will do data availability sampling(DAS) from the full node.
 
 # Data Availability Sampling(DAS)
 
 ## Pre-Requisites
 This is a list of runnining components you need in order to successfully continue this chapter:
 - Celestia app
-- Celestia light client
+- Celestia Light Node
 
-> Note: The light client should be connected to a Celestia full node to operate correctly. Either deploy your own Celestia full node or connect your <b>light client</b> to an existing Celestia full node in the network
+> Note: The Light Node should be connected to a Celestia full node to operate correctly. Either deploy your own Celestia full node or connect your <b>Light Node</b> to an existing Celestia full node in the network
 
 ### Legend
 You will need 2 terminals in order to see how DASing works:
-- First terminal(FT) run light client with logs info
+- First terminal(FT) run Light Node with logs info
 - Second terminal(ST) submit payForMessage tx using celestia-app
 
 ## Steps
