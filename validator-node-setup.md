@@ -1,6 +1,14 @@
-# 1. Running a Celestia Application
+- [Running a Celestia Application](#running-a-celestia-application)
+  - [Installing Dependencies](#installing-dependencies)
+  - [Downloading and Compiling Celestia-App](#downloading-and-compiling-celestia-app)
+  - [Setting up Network](#setting-up-network)
+  - [Run Ceslestia-App using Systemd](#run-ceslestia-app-using-systemd)
+- [Creating a Validator](#creating-a-validator)
+
+
+# Running a Celestia Application
 Here we describe how to run and sync a node using celestia-appd.
-## 1.1 Installing Dependencies
+## Installing Dependencies
 First, make sure to update and upgrade the OS:
 ```sh
 sudo apt update && sudo apt upgrade -y
@@ -28,7 +36,7 @@ Output should be the version installed:
 ```sh
 go version go1.17.2 linux/amd64
 ```
-## 1.2 Downloading and Compiling Celestia-App
+## Downloading and Compiling Celestia-App
 The steps below will create a binary file named celestia-appd inside `$HOME/go/bin` folder which will be used later to run the node.
 ```sh
 cd $HOME
@@ -37,7 +45,7 @@ git clone https://github.com/celestiaorg/celestia-app.git
 cd celestia-app/
 make install
 ```
-## 1.3 Setting up Network
+## Setting up Network
 First clone the networks repository:
 ```sh
 cd $HOME
@@ -62,7 +70,7 @@ Reset network:
 ```sh
 celestia-appd unsafe-reset-all
 ```
-## 1.4 Run Ceslestia-App using Systemd
+## Run Ceslestia-App using Systemd
 Create Celestia-App systemd file:
 ```sh
 sudo tee <<EOF >/dev/null /etc/systemd/system/celestia-appd.service
@@ -104,7 +112,7 @@ curl -s localhost:26657/status | jq .result | jq .sync_info
 ```
 Make sure that you have `"catching_up": false`, otherwise leave it running until it is in sync.
 
-# 2. Creating a Validator
+# Creating a Validator
 First we need to create the validator wallet. You can pick whatever wallet name you want. For our example we used "validator" as wallet name:
 ```sh
 celestia-appd keys add validator
