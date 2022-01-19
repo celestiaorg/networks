@@ -1,13 +1,12 @@
-- [Running a Celestia Application](#running-a-celestia-application)
-  - [Installing Dependencies](#installing-dependencies)
-  - [Downloading and Compiling Celestia-App](#downloading-and-compiling-celestia-app)
-  - [Setting up Network](#setting-up-network)
-  - [Run Ceslestia-App using Systemd](#run-ceslestia-app-using-systemd)
+# Running a Celestia Application
+This document descrives how to run a node and how to create a validator using the Celestia Application.
+
+- [Installing Dependencies](#installing-dependencies)
+- [Downloading and Compiling Celestia-App](#downloading-and-compiling-celestia-app)
+- [Setting up Network](#setting-up-network)
+- [Run Ceslestia-App using Systemd](#run-ceslestia-app-using-systemd)
 - [Creating a Validator](#creating-a-validator)
 
-
-# Running a Celestia Application
-Here we describe how to run and sync a node using celestia-appd.
 ## Installing Dependencies
 First, make sure to update and upgrade the OS:
 ```sh
