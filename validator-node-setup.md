@@ -2,9 +2,10 @@
 This document descrives how to run a node and how to create a validator using the Celestia Application.
 
 - [Installing Dependencies](#installing-dependencies)
+- [Installing GO](#installing-go)
 - [Downloading and Compiling Celestia-App](#downloading-and-compiling-celestia-app)
 - [Setting up Network](#setting-up-network)
-- [Run Ceslestia-App using Systemd](#run-ceslestia-app-using-systemd)
+- [Running Ceslestia-App using Systemd](#running-ceslestia-app-using-systemd)
 - [Creating a Validator](#creating-a-validator)
 
 ## Installing Dependencies
@@ -12,11 +13,12 @@ First, make sure to update and upgrade the OS:
 ```sh
 sudo apt update && sudo apt upgrade -y
 ```
-Install essential packages:
+These are essential packages which are necessary execute many tasks like downloading files, compiling and monitoring the node:
 ```sh
 sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential git make ncdu -y
 ```
-Install GO:
+## Installing GO
+It is necessary to install the GO language on the OS so we can later compile the Celestia Application. On our example, we are using version 1.17.2:
 ```sh
 ver="1.17.2"
 cd $HOME
@@ -24,6 +26,9 @@ wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
 sudo rm -rf /usr/local/go
 sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
 rm "go$ver.linux-amd64.tar.gz"
+```
+Now we need to add the /usr/local/go/bin directory to $PATH:
+```
 echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
@@ -43,6 +48,47 @@ rm -rf celestia-app
 git clone https://github.com/celestiaorg/celestia-app.git
 cd celestia-app/
 make install
+```
+To check if the binary was succesfully compiled you can run the binary using the `--help` flag:
+```sh
+cd $HOME/go/bin
+./celestia-appd --help
+```
+You should see a similar output:
+```
+Stargate CosmosHub App
+
+Usage:
+  celestia-appd [command]
+
+Available Commands:
+  add-genesis-account Add a genesis account to genesis.json
+  collect-gentxs      Collect genesis txs and output a genesis.json file
+  config              Create or query an application CLI configuration file
+  debug               Tool for helping with debugging your application
+  export              Export state to JSON
+  gentx               Generate a genesis tx carrying a self delegation
+  help                Help about any command
+  init                Initialize private validator, p2p, genesis, and application configuration files
+  keys                Manage your application's keys
+  migrate             Migrate genesis to a specified target version
+  query               Querying subcommands
+  start               Run the full node
+  status              Query remote node for status
+  tendermint          Tendermint subcommands
+  tx                  Transactions subcommands
+  unsafe-reset-all    Resets the blockchain database, removes address book files, and resets data/priv_validator_state.json to the genesis state
+  validate-genesis    validates the genesis file at the default location or at the location passed as an arg
+  version             Print the application binary version information
+
+Flags:
+  -h, --help                help for celestia-appd
+      --home string         directory for config and data (default "/home/pops/.celestia-app")
+      --log_format string   The logging format (json|plain) (default "plain")
+      --log_level string    The logging level (trace|debug|info|warn|error|fatal|panic) (default "info")
+      --trace               print out full stack trace on errors
+
+Use "celestia-appd [command] --help" for more information about a command.
 ```
 ## Setting up Network
 First clone the networks repository:
@@ -69,7 +115,7 @@ Reset network:
 ```sh
 celestia-appd unsafe-reset-all
 ```
-## Run Ceslestia-App using Systemd
+## Running Ceslestia-App using Systemd
 Create Celestia-App systemd file:
 ```sh
 sudo tee <<EOF >/dev/null /etc/systemd/system/celestia-appd.service
