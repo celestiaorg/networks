@@ -1,12 +1,16 @@
-# Running a Celestia Application
-This document descrives how to run a node and how to create a validator using the Celestia Application.
+- [Running a Non-Validating Celestia Application Node](#running-a-non-validating-celestia-application-node)
+  - [Installing Dependencies](#installing-dependencies)
+  - [Installing GO](#installing-go)
+  - [Downloading and Compiling Celestia-App](#downloading-and-compiling-celestia-app)
+  - [Setting up Network](#setting-up-network)
+  - [Running Ceslestia-App using Systemd](#running-ceslestia-app-using-systemd)
+- [Running a Validator](#running-a-validator)
+  - [Creating a Validator Wallet](#creating-a-validator-wallet)
+  - [Funding the Validator Wallet](#funding-the-validator-wallet)
+  - [Creating the Validator On-Chain](#creating-the-validator-on-chain)
 
-- [Installing Dependencies](#installing-dependencies)
-- [Installing GO](#installing-go)
-- [Downloading and Compiling Celestia-App](#downloading-and-compiling-celestia-app)
-- [Setting up Network](#setting-up-network)
-- [Running Ceslestia-App using Systemd](#running-ceslestia-app-using-systemd)
-- [Creating a Validator](#creating-a-validator)
+# Running a Non-Validating Celestia Application Node
+This chapter describes how to run a Non-Validating Celestia Application Node. Non-Validating nodes allow you to interact with the Celestia Network without having to create and maintain a validator.
 
 ## Installing Dependencies
 First, make sure to update and upgrade the OS:
@@ -18,7 +22,7 @@ These are essential packages which are necessary execute many tasks like downloa
 sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential git make ncdu -y
 ```
 ## Installing GO
-It is necessary to install the GO language on the OS so we can later compile the Celestia Application. On our example, we are using version 1.17.2:
+It is necessary to install the GO language in the OS so we can later compile the Celestia Application. On our example, we are using version 1.17.2:
 ```sh
 ver="1.17.2"
 cd $HOME
@@ -157,20 +161,26 @@ curl -s localhost:26657/status | jq .result | jq .sync_info
 ```
 Make sure that you have `"catching_up": false`, otherwise leave it running until it is in sync.
 
-# Creating a Validator
+# Running a Validator
+Optionally, if you want to join the active validator list, you can create your own validator on-chain following the instructions below. Keep in mind that these steps are necessary ONLY if you want to participate in the consensus.
+
+## Creating a Validator Wallet
 First we need to create the validator wallet. You can pick whatever wallet name you want. For our example we used "validator" as wallet name:
 ```sh
 celestia-appd keys add validator
 ```
-Save the mnemonic output as this is the only way to recover your validator wallet in case you lose it! For the public celestia address, fund the wallet via Discord:
+Save the mnemonic output as this is the only way to recover your validator wallet in case you lose it! 
+## Funding the Validator Wallet
+For the public celestia address, you can fun the validator wallet via Discord sending this message to #faucet channel:
 ```
 !faucet celes1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
-To check if tokens have arrived succesfully to the destination wallet run the command below replacing the public address with your own:
+Wait to see if you get a confirmation that the tokens have been successfully sent. To check if tokens have arrived succesfully to the destination wallet run the command below replacing the public address with your own:
 ```sh
 celestia-appd q bank balances celes1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
-Create the validator on chain. Pick a MONIKER name of your choice! This is the validator name that will show up on public dashboards and explorers. The VALIDATOR_WALLET must be the same you defined previously:
+## Creating the Validator On-Chain
+Pick a MONIKER name of your choice! This is the validator name that will show up on public dashboards and explorers. The VALIDATOR_WALLET must be the same you defined previously. Parameter `--min-self-delegation=1000000` defines the amount of tokens that are self delegated from your validator wallet.
 ```sh
 MONIKER="your_moniker"
 VALIDATOR_WALLET="validator"
