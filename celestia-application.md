@@ -181,7 +181,7 @@ Wait to see if you get a confirmation that the tokens have been successfully sen
 celestia-appd q bank balances celes1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 ## Creating the Validator On-Chain
-Pick a MONIKER name of your choice! This is the validator name that will show up on public dashboards and explorers. The VALIDATOR_WALLET must be the same you defined previously. Parameter `--min-self-delegation=1000000` defines the amount of tokens that are self delegated from your validator wallet.
+Pick a MONIKER name of your choice! This is the validator name that will show up on public dashboards and explorers. VALIDATOR_WALLET must be the same you defined previously. Parameter `--min-self-delegation=1000000` defines the amount of tokens that are self delegated from your validator wallet.
 ```sh
 MONIKER="your_moniker"
 VALIDATOR_WALLET="validator"
