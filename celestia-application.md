@@ -219,7 +219,7 @@ txhash: <tx-hash>
 You should now be able to see your validator from a block explorer such as: http://celestia.observer:3080/validators
 
 ## Delegating Stake to a Validator
-If you want to delegate more stake to any validator, including your own you will need the `celesvaloper` address. You can either check it using the block explorer mentioned above or you can run the command below to get the `celesvaloper` of your local validator wallet in case you want to delegate more to it:
+If you want to delegate more stake to any validator, including your own you will need the `celesvaloper` address of the validator in question. You can either check it using the block explorer mentioned above or you can run the command below to get the `celesvaloper` of your local validator wallet in case you want to delegate more to it:
 ```sh
 celestia-appd keys show $VALIDATOR_WALLET --bech val -a
 ```
