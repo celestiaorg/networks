@@ -8,6 +8,7 @@
   - [Creating a Validator Wallet](#creating-a-validator-wallet)
   - [Funding the Validator Wallet](#funding-the-validator-wallet)
   - [Creating the Validator On-Chain](#creating-the-validator-on-chain)
+  - [Delegating Stake to a Validator](#delegating-stake-to-a-validator)
 
 # Running a Non-Validating Celestia Application Node
 This chapter describes how to run a Non-Validating Celestia Application Node. Non-Validating nodes allow you to interact with the Celestia Network without having to create and maintain a validator.
@@ -201,7 +202,7 @@ You will be prompted to confirm the transaction:
 confirm transaction before signing and broadcasting [y/N]: y
 ```
 Inputing y should provide an output similar to:
-```
+```sh
 code: 0
 codespace: ""
 data: ""
@@ -216,5 +217,40 @@ tx: null
 txhash: <tx-hash>
 ```
 You should now be able to see your validator from a block explorer such as: http://celestia.observer:3080/validators
+
+## Delegating Stake to a Validator
+If you want to delegate more stake to any validator, including your own you will need the `celesvaloper` address. You can either check it using the block explorer mentioned above or you can run the command below to get the `celesvaloper` of your local validator wallet in case you want to delegate more to it:
+```sh
+celestia-appd keys show $VALIDATOR_WALLET --bech val -a
+```
+After enterting the wallet passphrase you should see a similar output:
+```sh
+Enter keyring passphrase:
+celesvaloper1q3v5cugc8cdpud87u4zwy0a74uxkk6u43cv6hd
+```
+To delegate tokens to the the `celesvaloper` validator, as an example you can run:
+```sh
+celestia-appd tx staking delegate celesvaloper1q3v5cugc8cdpud87u4zwy0a74uxkk6u43cv6hd 1000000celes --from=$VALIDATOR_WALLET --chain-id=devnet-2
+```
+If sucessfull, you should see a similar output as:
+```sh
+code: 0
+codespace: ""
+data: ""
+gas_used: "0"
+gas_wanted: "0"
+height: "0"
+info: ""
+logs: []
+raw_log: '[]'
+timestamp: ""
+tx: null
+txhash: <tx-hash>
+```
+You can check if the TX hash went through using the block explorer by inputing the `txhash` ID that was returned.
+
+
+
+
 
 
