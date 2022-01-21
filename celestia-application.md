@@ -247,7 +247,7 @@ timestamp: ""
 tx: null
 txhash: <tx-hash>
 ```
-You can check if the TX hash went through using the block explorer by inputing the `txhash` ID that was returned.
+You can check if the TX hash went through using the block explorer by inputting the `txhash` ID that was returned.
 
 
 
