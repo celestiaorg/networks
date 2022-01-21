@@ -30,7 +30,11 @@ make install
 ```
 
 ## Understanding config.toml
-After initialization, for any type of node, you will find a `config.toml`. Let's break down some of the most used sections
+After initialization, for any type of node, you will find a `config.toml` in path(default location)
+- `~/.celestia-full/config.toml` for full node
+- `~/.celestia-light/config.toml` for light node 
+
+Let's break down some of the most used sections
 ### [Core]
 This section is needed for the Celestia Full Node. By default, `Remote = false`. Still for devnet, we are going to use the remote core option and this can also be set
 by the command line flag `--core.remote` 
