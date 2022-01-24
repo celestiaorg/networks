@@ -30,7 +30,7 @@ make install
 ```
 
 ## Understanding config.toml
-After initialisation, for any type of node, you will find a `config.toml`. Let's break down some of the most used sections
+After initialization, for any type of node, you will find a `config.toml`. Let's break down some of the most used sections
 ### [Core]
 This section is needed for the Celestia Full Node. By default, `Remote = false`. Still for devnet, we are going to use the remote core option and this can also be set
 by the command line flag `--core.remote` 
@@ -45,7 +45,7 @@ The purpose of this config is to set up a bidirectional communication. This is u
 
 ### [Services]
 #### TrustedHash and TrustedPeer
-TrustedHash is needed to properly initialise Celestia Full Node with the active `Remote` Core Client. Celestia Light Node needs to be initialised with the trusted hash, too.
+TrustedHash is needed to properly initialize Celestia Full Node with the active `Remote` Core Client. Celestia Light Node needs to be initialized with the trusted hash, too.
 TrustedPeer is the most crucial field to be filled for correct Celestia Light Node execution. Any Celestia Full Node can be a trusted peer for the Light one. However, the Light node
 by design can not be a trusted peer for another Light Node.
 

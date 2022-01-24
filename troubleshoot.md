@@ -34,7 +34,9 @@ You'll also be asked for a passphrase which is an input you have to define.
 ### Celestia Light Node
 If you get an error such as 
 
-```No Trusted Peer provided. Headers won't be synced accordingly```,
+```
+No Trusted Peer provided. Headers won't be synced accordingly
+```
 
 this means you need to: 
 - check that the trusted peer is initialized in the `TrustedPeer` field in `config.toml`
