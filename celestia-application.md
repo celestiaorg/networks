@@ -4,10 +4,9 @@
   - [Downloading and Compiling Celestia-App](#downloading-and-compiling-celestia-app)
   - [Setting up Network](#setting-up-network)
   - [Running Ceslestia-App using Systemd](#running-ceslestia-app-using-systemd)
-- [Running a Validator](#running-a-validator)
-  - [Creating a Validator Wallet](#creating-a-validator-wallet)
-  - [Funding the Validator Wallet](#funding-the-validator-wallet)
-  - [Creating the Validator On-Chain](#creating-the-validator-on-chain)
+  - [Creating a Wallet](#creating-a-wallet)
+  - [Funding a Wallet](#funding-a-wallet)
+  - [Creating a Validator On-Chain](#creating-a-validator-on-chain)
   - [Delegating Stake to a Validator](#delegating-stake-to-a-validator)
 
 # Running a Non-Validating Celestia Application Node
@@ -161,18 +160,14 @@ To check if your node is in sync before going forward:
 curl -s localhost:26657/status | jq .result | jq .sync_info
 ```
 Make sure that you have `"catching_up": false`, otherwise leave it running until it is in sync.
-
-# Running a Validator
-Optionally, if you want to join the active validator list, you can create your own validator on-chain following the instructions below. Keep in mind that these steps are necessary ONLY if you want to participate in the consensus.
-
-## Creating a Validator Wallet
-First we need to create the validator wallet. You can pick whatever wallet name you want. For our example we used "validator" as wallet name:
+## Creating a Wallet
+You can pick whatever wallet name you want. For our example we used "validator" as the wallet name:
 ```sh
 celestia-appd keys add validator
 ```
 Save the mnemonic output as this is the only way to recover your validator wallet in case you lose it! 
-## Funding the Validator Wallet
-For the public celestia address, you can fun the validator wallet via Discord sending this message to #faucet channel:
+## Funding a Wallet
+For the public celestia address, you can fund the previously created wallet via Discord by sending this message to #faucet channel:
 ```
 !faucet celes1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
@@ -180,7 +175,9 @@ Wait to see if you get a confirmation that the tokens have been successfully sen
 ```sh
 celestia-appd q bank balances celes1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
-## Creating the Validator On-Chain
+## Creating a Validator On-Chain
+Optionally, if you want to join the active validator list, you can create your own validator on-chain following the instructions below. Keep in mind that these steps are necessary ONLY if you want to participate in the consensus.
+
 Pick a MONIKER name of your choice! This is the validator name that will show up on public dashboards and explorers. VALIDATOR_WALLET must be the same you defined previously. Parameter `--min-self-delegation=1000000` defines the amount of tokens that are self delegated from your validator wallet.
 ```sh
 MONIKER="your_moniker"
