@@ -246,4 +246,4 @@ txhash: <tx-hash>
 ```
 You should now be able to see your validator from a block explorer such as: https://celestia.observer/validators
 
-If you want to run a Celestia Node, check the documentation [here](celestiaorg/networks/blob/master/celestia-node.md#running-a-celestia-node).
+If you want to run a Celestia Node, check the documentation [here](./celestia-node.md).
