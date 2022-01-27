@@ -57,7 +57,7 @@ Celestia Light Nodes(CLN) lives only in [celestia-node](https://github.com/celes
 You need to install celestia-app, celestia-node in order to move on.
 > Note: It is <b>much easier to run a non-validator Celestia App</b> + Celestia Full Node rather then going back and forth in order to be included in the active validator set
 
-- [Celestia Application Installation](./celestia-node.md)
+- [Celestia Application Installation](./celestia-application.md)
 - [Celestia Node Installation](./celestia-node.md)
 
 ## Troubleshoot
