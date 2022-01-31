@@ -181,7 +181,7 @@ If you want to delegate more stake to any validator, including your own you will
 ```sh
 celestia-appd keys show $VALIDATOR_WALLET --bech val -a
 ```
-After enterting the wallet passphrase you should see a similar output:
+After entering the wallet passphrase you should see a similar output:
 ```sh
 Enter keyring passphrase:
 celesvaloper1q3v5cugc8cdpud87u4zwy0a74uxkk6u43cv6hd
@@ -190,7 +190,7 @@ To delegate tokens to the the `celesvaloper` validator, as an example you can ru
 ```sh
 celestia-appd tx staking delegate celesvaloper1q3v5cugc8cdpud87u4zwy0a74uxkk6u43cv6hd 1000000celes --from=$VALIDATOR_WALLET --chain-id=devnet-2
 ```
-If sucessfull, you should see a similar output as:
+If sucessful, you should see a similar output as:
 ```sh
 code: 0
 codespace: ""
