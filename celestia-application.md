@@ -120,7 +120,7 @@ Reset network:
 ```sh
 celestia-appd unsafe-reset-all
 ```
-## Running Ceslestia-App using Systemd
+## Running Celestia-App using Systemd
 Create Celestia-App systemd file:
 ```sh
 sudo tee <<EOF >/dev/null /etc/systemd/system/celestia-appd.service
