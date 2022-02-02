@@ -2,11 +2,11 @@
 
 - [Running a Celestia Node](#running-a-celestia-node)
   - [Installation](#installation)
-  - [Full Node Configuration](#full-node-configuration)
+  - [Bridge Node Configuration](#bridge-node-configuration)
     - [Getting trusted hash](#getting-trusted-hash)
-    - [Running full node](#running-full-node)
-      - [1. Initialize the full node](#1-initialize-the-full-node)
-      - [2. Edit configurations (adding other celestia full nodes)](#2-edit-configurations-adding-other-celestia-full-nodes)
+    - [Running bridge node](#running-bridge-node)
+      - [1. Initialize the bridge node](#1-initialize-the-bridge-node)
+      - [2. Edit configurations (adding other celestia bridge nodes)](#2-edit-configurations-adding-other-celestia-bridge-nodes)
   - [Light Node Configuration](#light-node-configuration)
     - [Getting trusted hash](#getting-trusted-hash-1)
     - [Running Light Node](#running-light-node)
@@ -23,40 +23,40 @@ make install
 ```
 
 
-## Full Node Configuration
+## Bridge Node Configuration
 
 ### Getting trusted hash
 > Caveat: You need a running celestia-app in order to continue this guideline. Please refer to [celestia-app.md](https://github.com/celestiaorg/networks/celestia-app.md) for installation.
 
 
-You need to have the trusted hash in order to initialize the Celestia full node
+You need to have the trusted hash in order to initialize the Celestia bridge node
 In order to know the hash, you need to query the celestia-app:
 ```sh
 curl -s http://localhost:26657/block?height=1 | grep -A1 block_id | grep hash
 ```
 
-### Running full node
-#### 1. Initialize the full node
+### Running bridge node
+#### 1. Initialize the bridge node
 ```sh
-celestia full init --core.remote <ip:port of celestia-app> --headers.trusted-hash <hash_from_celestia_app>
+celestia bridge init --core.remote <ip:port of celestia-app> --headers.trusted-hash <hash_from_celestia_app>
 ```
 
 Example:
 ```sh 
-celestia full init --core.remote tcp://127.0.0.1:26657 --headers.trusted-hash 4632277C441CA6155C4374AC56048CF4CFE3CBB2476E07A548644435980D5E17
+celestia bridge init --core.remote tcp://127.0.0.1:26657 --headers.trusted-hash 4632277C441CA6155C4374AC56048CF4CFE3CBB2476E07A548644435980D5E17
 ```
 
-#### 2. Edit configurations (adding other celestia full nodes)
+#### 2. Edit configurations (adding other celestia bridge nodes)
 
-In order for your Celestia full node to communicate with other Celestia full nodes, then you need to add them as `mutual peers` in the `config.toml` file and allow the peer exchange. Please navigate to `networks/devnet-2/celestia-node/mutual_peers.txt` to find the list of mutual peers
+In order for your Celestia bridge node to communicate with other Celestia bridge nodes, then you need to add them as `mutual peers` in the `config.toml` file and allow the peer exchange. Please navigate to `networks/devnet-2/celestia-node/mutual_peers.txt` to find the list of mutual peers
 ```sh
-nano ~/.celestia-full/config.toml
+nano ~/.celestia-bridge/config.toml
 ```
 ```sh
 ...
 [P2P]
   ...
-  #add multiaddresses of other celestia full nodes
+  #add multiaddresses of other celestia bridge nodes
   
   MutualPeers = [
     "/ip4/46.101.22.123/tcp/2121/p2p/12D3KooWD5wCBJXKQuDjhXFjTFMrZoysGVLtVht5hMoVbSLCbV22", 
@@ -66,13 +66,13 @@ nano ~/.celestia-full/config.toml
 ...
 ```
 
-1. Start the full node
+1. Start the bridge node
 ```sh
-celestia full start
+celestia bridge start
 ```
-Now, the Celestia full node will start syncing headers and storing blocks from Celestia application. 
+Now, the Celestia bridge node will start syncing headers and storing blocks from Celestia application. 
 
-> Note: At startup, we can see the `multiaddress` from Celestia full node. This is <b>needed for future Light Node</b> connections and communication between Celestia full nodes
+> Note: At startup, we can see the `multiaddress` from Celestia bridge node. This is <b>needed for future Light Node</b> connections and communication between Celestia bridge nodes
 
 Example:
 ```sh
@@ -81,7 +81,7 @@ Example:
 
 ## Light Node Configuration
 
-> Caveat: You don't need to run the Light Node on the same machine where Celestia full node is running
+> Caveat: You don't need to run the Light Node on the same machine where Celestia bridge node is running
 
 ### Getting trusted hash
 You need to have the trusted hash in order to initialize the Light Node
@@ -93,16 +93,16 @@ curl -s http://<ip_address>:26657/block?height=1 | grep -A1 block_id | grep hash
 ``` 
 
 ### Running Light Node
-> Note: If you want to run the Light Node only, then you can ask someone from the discord to send you the `multiaddress` from the Celestia full node to connect to
+> Note: If you want to run the Light Node only, then you can ask someone from the discord to send you the `multiaddress` from the Celestia bridge node to connect to
 
 To start the Light Node, we need to know 2 variables:
-- Trusted peer’s multi address to connect to (a Celestia full node is the case here)
+- Trusted peer’s multi address to connect to (a Celestia bridge node is the case here)
 - Trusted block hash from celestia-app
 
 1. Initialize the Light Node
 
 ```sh
-celestia full init --headers.trusted-peer <full_node_multiaddress> --headers.trusted-hash <hash_from_celestia_app>
+celestia light init --headers.trusted-peer <bridge_node_multiaddress> --headers.trusted-hash <hash_from_celestia_app>
 ```
 
 Example: 
@@ -115,7 +115,7 @@ celestia light init --headers.trusted-peer /ip4/46.101.22.123/tcp/2121/p2p/12D3K
 ```sh
 celestia light start
 ```
-Now, the Celestia Light Node will start syncing headers. After sync is finished, Light Node will do data availability sampling(DAS) from the full node.
+Now, the Celestia Light Node will start syncing headers. After sync is finished, Light Node will do data availability sampling(DAS) from the bridge node.
 
 # Data Availability Sampling(DAS)
 
@@ -124,7 +124,7 @@ This is a list of runnining components you need in order to successfully continu
 - Celestia app
 - Celestia Light Node
 
-> Note: The Light Node should be connected to a Celestia full node to operate correctly. Either deploy your own Celestia full node or connect your <b>Light Node</b> to an existing Celestia full node in the network
+> Note: The Light Node should be connected to a Celestia bridge node to operate correctly. Either deploy your own Celestia bridge node or connect your <b>Light Node</b> to an existing Celestia bridge node in the network
 
 ### Legend
 You will need 2 terminals in order to see how DASing works:
