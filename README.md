@@ -8,6 +8,8 @@
   - [Installation guide](#installation-guide)
   - [Troubleshoot](#troubleshoot)
 
+Link to the current `devnet-2` explorer: https://celestia.observer/
+
 ## Celestia 101 (Overview)
 <i>Conceptually</i>, we have 2 main components in the network: 
 1. `Celestia Full Node`.
