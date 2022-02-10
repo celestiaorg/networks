@@ -50,7 +50,7 @@ Celestia Light Nodes(CLN) lives only in [celestia-node](https://github.com/celes
 
 
 ## Installation guide
-> Caveat 1: Make sure that you have at least 50+ Gb of free space to safely install+run the Celestia Application + Celestia Full Node and 5+ Gb of free space for Celestia Light Node
+> Caveat 1: Make sure that you have at least 100+ Gb of free space to safely install+run the Celestia Application + Celestia Full Node and 5+ Gb of free space for Celestia Light Node
 
 > Caveat 2: You need to install Celestia Application + Celestia Full Node in one HW instance and Celestia Light Node in the other HW instance
 
