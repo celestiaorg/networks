@@ -13,7 +13,6 @@
   - [Legend](#legend)
   - [Steps](#steps)
 
-> Caveat 1: Make sure that you have at least 5+ Gb of free space for Celestia Light Node
 ## Dependencies
 ### Update packages
 First, make sure to update and upgrade the OS:
@@ -49,6 +48,8 @@ go version go1.17.2 linux/amd64
 ```
 
 ## Install Celestia Node
+> Caveat 1: Make sure that you have at least 5+ Gb of free space for Celestia Light Node
+
 Install the Celestia Node binary. Make sure that you have `git` and `golang` installed.
 ```sh
 git clone https://github.com/celestiaorg/celestia-node.git
@@ -62,9 +63,9 @@ Light Nodes require the following to initialize:
 1. A `trusted hash`, i.e. the hash of the genesis block
 2. A trusted Bridge Node `multiaddress` to connect to
 
-For added security, you can run your own Bridge Node ([guide here](/celestia-bridge-node.md)) to get the trusted hash and address.
+(Optional) For added security, you can run your own Bridge Node ([guide here](/celestia-bridge-node.md)) to get the trusted hash and address.
 
-> Note that you don't need to run the Light Node on the same machine. But if you do, make sure to allocate a different port for the Light Node [see here](troubleshoot.md).
+> Note that you don't need to run the Light Node on the same machine. But if you do, make sure to allocate a different port for the Light Node to avoid conflict [see here](troubleshoot.md).
 
 If you just want to explore how easy it is to run a Celestia Light Node, you can use the 2nd option provided by the following guide.
 
