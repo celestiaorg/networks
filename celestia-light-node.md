@@ -23,7 +23,7 @@ These are essential packages which are necessary execute many tasks like downloa
 sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential git make ncdu -y
 ```
 ### Installing GO
-It is necessary to install the GO language in the OS so we can later compile the Celestia Application. On our example, we are using version 1.17.2:
+It is necessary to install the GO language in the OS so we can later compile the Celestia Node. On our example, we are using version 1.17.2:
 ```sh
 ver="1.17.2"
 cd $HOME
