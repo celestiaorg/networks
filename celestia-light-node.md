@@ -23,7 +23,7 @@ Light Nodes must reference a trusted hash and connect to a trusted Bridge Node `
 
 If you just want to explore how easy it is to run a Celestia Light Node, you can use the constants provided by the following guide. 
 
-For added security, you can run your own Bridge Node (guide here)[TODO]. Note that you don't need to run the Light Node on the same machine.
+For added security, you can run your own Bridge Node ([guide here](/celestia-bridge_node.md)). Note that you don't need to run the Light Node on the same machine.
 
 ### Getting the trusted hash
 You need to have the trusted hash in order to initialize the Light Node
@@ -39,11 +39,11 @@ curl -s http://<ip_address>:26657/block?height=1 | grep -A1 block_id | grep hash
 ```
 
 ### Getting the trusted multiaddress
-#### Option 1: Revisit daemon logs for the its IP4 address
+#### Option 1: Get IP4 from your Bridge Node's daemon logs
 ```
-TODO: get the first 50 logs from Bridge Node daemon
+journalctl -u YOUR_CELESTIA_NODE.service --since "NODE_START_TIME" --until "1_MIN_AFTER_START_TIME"
 ```
-#### Option 2: Use [this multiaddress](/devnet-2/celestia-node/mutual_peers.txt)
+#### Option 2: Use [this multiaddress](/devnet-2/celestia-node/mutual_peers.txt) provided in this repo
 
 ### Running Light Node
 1. Initialize the Light Node
@@ -62,6 +62,47 @@ celestia light init --headers.trusted-peer /ip4/46.101.22.123/tcp/2121/p2p/12D3K
 ```sh
 celestia light start
 ```
+
+Or start it as a daemon process in the background
+```sh
+sudo tee <<EOF >/dev/null /etc/systemd/system/celestia-lightd.service
+[Unit]
+Description=celestia-lightd LightNode daemon
+After=network-online.target
+
+[Service]
+User=$USER
+ExecStart=$HOME/go/bin/celestia light start
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+
+If the file was created succesfully you will be able to see its content:
+
+```cat /etc/systemd/system/celestia-lightd.service```
+
+Enable and start celestia-lightd daemon:
+
+```sh
+sudo systemctl enable celestia-lightd
+sudo systemctl start celestia-lightd
+```
+
+Check if daemon has been started correctly:
+```sh
+sudo systemctl status celestia-lightd
+```
+
+Check daemon logs in real time:
+```sh
+sudo journalctl -u celestia-lightd.service -f
+```
+
 Now, the Celestia Light Node will start syncing headers. After sync is finished, Light Node will do data availability sampling(DAS) from the full node.
 
 # Data Availability Sampling(DAS)
