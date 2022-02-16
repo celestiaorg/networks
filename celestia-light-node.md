@@ -10,6 +10,8 @@
   - [Pre-Requisites](#pre-requisites)
     - [Legend](#legend)
   - [Steps](#steps)
+
+> Caveat 1: Make sure that you have at least 5+ Gb of free space for Celestia Light Node
 ## Dependencies
 ### Update packages
 First, make sure to update and upgrade the OS:

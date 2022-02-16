@@ -16,6 +16,7 @@
     - [2. Edit configurations (adding other celestia full nodes)](#2-edit-configurations-adding-other-celestia-full-nodes)
 - [Running a Validating Bridge Node](#running-a-validating-bridge-node)
 
+ > Caveat: Make sure you have at least 100+ Gb of free space to safely install+run the Bridge Node.
 ## Part 1: Deploy Celestia App
 This section describes part 1 of Celestia Bridge Node setup:  running a Celestia App with an internal Celestia Core.
 

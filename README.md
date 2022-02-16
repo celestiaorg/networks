@@ -1,6 +1,4 @@
 # Celestia Devnet
-> Note: This guideline is only relevant for the current devnet. As we approach to testnet, there will be a new guide
-
 - [Celestia Devnet](#celestia-devnet)
   - [Celestia 101 (Overview)](#celestia-101-overview)
     - [Celestia Full Node](#celestia-full-node)
@@ -8,59 +6,93 @@
   - [Installation guide](#installation-guide)
   - [Troubleshoot](#troubleshoot)
 
-Link to the current `devnet-2` explorer: https://celestia.observer/
+> Note: This guideline is only relevant for the current devnet. As we approach to testnet, there will be a new guide
 
-## Celestia 101 (Overview)
-<i>Conceptually</i>, we have 2 main components in the network: 
-1. `Celestia Full Node`.
-2. `Celestia Light Node`.
+## Quickstart
 
-> Note: When you see formatted text of those 2 above(`Celestia Full Node`, `Celestia Light Node`), remember that we are referring to a <i>conceptual</i> view. Standard formatted text is a technical view 
+Devnet participants have the option of running:
 
-### Celestia Full Node
-When we are mentioning `Celestia Full Node`, we are relating to a combination of 2 components: 
+1. [Celestia Light Nodes](#celestia-light-nodes) (low CPU, 5GB+ disk): [get started]()
+2. [Bridge Nodes](#bridge-nodes) (low CPU, 100GB+ disk): [get started]()
+3. [Bridge Validator Nodes](#bridge-validator-nodes) (same node as 2): [get started]()
+4. _Celestia Full DA Nodes are under development_: [see ADR](https://github.com/celestiaorg/celestia-node/blob/main/docs/adr/adr-003-march2022-testnet.md#full-node)
 
-- Celestia Application (lives in [celestia-app](https://github.com/celestiaorg/celestia-app) repo)
-- Celestia Full Node (lives in [celestia-node](https://github.com/celestiaorg/celestia-node) repo)
+You can view chain activity at the current `devnet-2` explorer: https://celestia.observer/
+## Overview
 
-<i>Conceptually</i>, one can't live without another as we need every new block to be erasure coded in order to do data availability sampling from `Celestia Light Nodes`
+Devnet demonstrates Celestia’s data availability capabilities on a libp2p network and live blockchain. 
 
-Technically, Celestia Application and Celestia Full Node are operating on different processes of <b>one instance</b>(e.g. server). Let's break down what each of the parties do. 
+The current Devnet implementation runs two individual but connected networks:
 
-Celestia Core in tandem with Celestia Application(C-App) are responsible for the following components:
-- Consensus
-- State Interaction
-- Block Production
-- Communication between C-App instances only!
+1. A libp2p network with [**Light Nodes**](#celestia-light-nodes), that handles data availability interactions
+2. A p2p network with [**Validators Nodes**](#bridge-validator-nodes), that handles the underlying consensus and block production. 
 
-Celestia Full Node(CFN) takes care of these points: 
-- Sync blocks from C-App
-- Erasure Codes the blocks
-- Serve headers/shares to Celestia Light Nodes
-- Communication between Celestia Full Nodes and Celestia Light Nodes
+Special [**Bridge Nodes**](#bridge-nodes) process blocks from the underlying consensus network to the data availability network.
 
-Communication of C-App and CFN processes happens over the RPC.
+![Network Overview](./diagrams/networkoverview.png)
 
-### Celestia Light Node
-Celestia Light Nodes(CLN) lives only in [celestia-node](https://github.com/celestiaorg/celestia-node) repo. What does CLN do: 
-1. Connects to a `Celestia Full Node`.
-2. Syncs the headers.
-3. Does data availability sampling (DAS) afterwards.
+> It’s important to note that mainnet may look very different from this devnet implementation, as the architecture continues to be improved. You can read more about devnet decisions here and here (link to ADR). 
 
-> Note: `Celestia Light Nodes` are not communicating between each other and only communicates between `Celestia Full Nodes`
+---
 
+## Celestia Light Nodes
 
+Light nodes (CLN) ensure data availability and can publish transactions. This is the most ubiquitous way to interact with the Celestia network.
 
-## Installation guide
-> Caveat 1: Make sure that you have at least 100+ Gb of free space to safely install+run the Celestia Application + Celestia Full Node and 5+ Gb of free space for Celestia Light Node
+Specifically, Light Nodes: 
 
-> Caveat 2: You need to install Celestia Application + Celestia Full Node in one HW instance and Celestia Light Node in the other HW instance
+1. Connect to a `Celestia Bridge Node` in the DA network. *Note: Light Nodes do not communicate with each other, but only with Bridge Nodes.*
+2. Listen for `ExtendedHeader`s, i.e. wrapped “raw” headers, that notify Celestia Nodes of new block headers and relevant DA metadata.
+3. Perform data availability sampling (DAS) on the received headers
 
-You need to install celestia-app, celestia-node in order to move on.
-> Note: It is <b>much easier to run a non-validator Celestia App</b> + Celestia Full Node rather then going back and forth in order to be included in the active validator set
+![Light Nodes](./diagrams/lightnodes.png)
 
-- [Celestia Application Installation](./celestia-application.md)
-- [Celestia Node Installation](./celestia-node.md)
+**Installation**
+- [Light Node Setup Guide](/celestia-light-node.md)
+- Source code repository(s):
+    - Celestia-Node
+
+---
+
+## Bridge Nodes
+
+Bridge Nodes connect the aforementioned p2p and libp2p networks.
+
+Specifically, Bridge Nodes: 
+
+1. Import and process “raw” headers & blocks from a trusted Core process in the p2p network. *Note: Celestia Core can be run as either an internal process or simply accessed via a remote endpoint.* 
+2. Validate and erasure code the blocks
+3. Produce block shares to Light Nodes in the DA network.
+
+![Bridge Nodes](./diagrams/bridgenodes.png)
+
+From an implementation perspective, Bridge Nodes run two separate processes: 
+
+1. Celestia App (with a Celestia Core) [see repo](https://github.com/celestiaorg/celestia-app)
+    - **Celestia app** is the state machine where the application and the proof-of-stake logic is run. Celestia App is built on Cosmos SDK and also encompasses Celestia Core.
+    - **Celestia Core** is the state interaction, consensus and block production layer. It is built on Tendermint Core, modified to store (1) invalid transactions and (2) data roots of erasure coded blocks, among other changes. see ADR.
+2. Celestia Node [see repo](https://github.com/celestiaorg/celestia-node)
+    - **Celestia Node** augments the above with a separate p2p network that mainly exists to serve data availability sampling requests. The team sometimes refer to this as the "halo" network.
+
+**Installation**
+- [Bridge Node Setup Guide](/celestia-bridge-node.md)
+- Repositories:
+    - [celestia-app](https://github.com/celestiaorg/celestia-app)
+    - [celestia-node](https://github.com/celestiaorg/celestia-node)
+
+---
+
+## Bridge Validator Nodes
+
+Bridge Nodes have the option of validating the P2P network using its Celestia App component. However, running validator nodes is not a requirement to learn about Celestia’s main value proposition.
+
+> Only the top 100 validators make it into the active validator set. The team is not looking for additional validators at the moment and recommend running light or full nodes instead.
+
+**Installation**
+
+- Validator Setup Guide
+- Repositories:
+    - [celestia-app](https://github.com/celestiaorg/celestia-app)
 
 ## Troubleshoot
 Please navigate to [this link](./troubleshoot.md) to find more details
