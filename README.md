@@ -12,9 +12,9 @@
 
 Devnet participants have the option of running:
 
-1. [Celestia Light Nodes](#celestia-light-nodes) (low CPU, 5GB+ disk): [get started]()
-2. [Bridge Nodes](#bridge-nodes) (low CPU, 100GB+ disk): [get started]()
-3. [Bridge Validator Nodes](#bridge-validator-nodes) (same node as 2): [get started]()
+1. [Celestia Light Nodes](#celestia-light-nodes) (low CPU, 5GB+ disk): [get started](celestia-light-node.md)
+2. [Bridge Nodes](#bridge-nodes) (low CPU, 100GB+ disk): [get started](celestia-bridge-node.md)
+3. [Bridge Validator Nodes](#bridge-validator-nodes) (same node as 2): [get started](celestia-bridge-node.md#running-a-validating-bridge-node)
 4. _Celestia Full DA Nodes are under development_: [see ADR](https://github.com/celestiaorg/celestia-node/blob/main/docs/adr/adr-003-march2022-testnet.md#full-node)
 
 You can view chain activity at the current `devnet-2` explorer: https://celestia.observer/
