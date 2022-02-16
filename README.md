@@ -29,7 +29,7 @@ The current Devnet implementation runs two individual but connected networks:
 
 Special [**Bridge Nodes**](#bridge-nodes) process blocks from the underlying consensus network to the data availability network.
 
-![Network Overview](./diagrams/networkoverview.png)
+![Network Overview](diagrams/NetworkOverview.png)
 
 > It’s important to note that mainnet may look very different from this devnet implementation, as the architecture continues to be improved. You can read more about devnet decisions here and here (link to ADR). 
 
@@ -45,7 +45,7 @@ Specifically, Light Nodes:
 2. Listen for `ExtendedHeader`s, i.e. wrapped “raw” headers, that notify Celestia Nodes of new block headers and relevant DA metadata.
 3. Perform data availability sampling (DAS) on the received headers
 
-![Light Nodes](./diagrams/lightnodes.png)
+![Light Nodes](diagrams/lightnodes.png)
 
 **Installation**
 - [Light Node Setup Guide](/celestia-light-node.md)
@@ -64,7 +64,7 @@ Specifically, Bridge Nodes:
 2. Validate and erasure code the blocks
 3. Produce block shares to Light Nodes in the DA network.
 
-![Bridge Nodes](./diagrams/bridgenodes.png)
+![Bridge Nodes](diagrams/bridgenodes.png)
 
 From an implementation perspective, Bridge Nodes run two separate processes: 
 
