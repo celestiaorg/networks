@@ -1,7 +1,8 @@
-# Running a Celestia Bridge Node
+# Run a Celestia Bridge Node
+
 - [Dependencies](#dependencies)
   - [Update packages](#update-packages)
-  - [Intall go](#install-go)
+  - [Install go](#install-go)
 - [Part 1: Deploy the Celestia App](#part-1-deploy-the-celestia-app)
   - [Install Celestia-App](#install-celestia-app)
   - [Set up P2P Network](#set-up-p2p-network)
@@ -53,9 +54,10 @@ go version go1.17.2 linux/amd64
 
 ## Part 1: Deploy the Celestia App
 This section describes part 1 of Celestia Bridge Node setup: running a Celestia App daemon with an internal Celestia Core node.
-### Install Celestia-App
+
 > Caveat: Make sure you have at least 100+ Gb of free space to safely install+run the Bridge Node.
 
+### Install Celestia App
 The steps below will create a binary file named celestia-appd inside `$HOME/go/bin` folder which will be used later to run the node.
 ```sh
 cd $HOME

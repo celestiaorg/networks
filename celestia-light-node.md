@@ -1,12 +1,12 @@
-# Running a Celestia Light Node
+# Run a Celestia Light Node
 
 - [Dependencies](#dependencies)
   - [Update packages](#update-packages)
   - [Intall go](#install-go)
 - [Install Celestia Node](#install-celestia-node)
-  - [Light Node Configuration](#configure-the-light-node)
-  - [Getting trusted hash](#get-the-trusted-hash)
-  - [Getting trusted multiaddress](#get-the-trusted-multiaddress)
+  - [Configure the Light Node](#configure-the-light-node)
+  - [Get the trusted hash](#get-the-trusted-hash)
+  - [Get the trusted multiaddress](#get-the-trusted-multiaddress)
   - [Run the Light Node](#run-the-light-node)
 - [Data Availability Sampling (DAS)](#data-availability-samplingdas)
   - [Pre-Requisites](#pre-requisites)
@@ -67,31 +67,31 @@ Light Nodes require the following to initialize:
 
 > Note that you don't need to run the Light Node on the same machine. But if you do, make sure to allocate a different port for the Light Node to avoid conflict [see here](troubleshoot.md).
 
-If you just want to explore how easy it is to run a Celestia Light Node, you can use the 2nd option provided by the following guide.
+If you just want to explore how easy it is to run a Celestia Light Node, you can use the 2nd option provided below.
 
 ### Get the trusted hash
-#### Option 1: Query your Bridge Node for the trusted hash:
+**Option 1**: Query your Bridge Node for the trusted hash:
 ```sh
 curl -s http://<ip_address>:26657/block?height=1 | grep -A1 block_id | grep hash
 ``` 
 
-#### Option 2: Use the following hash provided by the team: 
+**Option 2**: Use the following hash provided by the team: 
 ```sh
 4632277C441CA6155C4374AC56048CF4CFE3CBB2476E07A548644435980D5E17
 ```
 
 ### Get the trusted multiaddress
-#### Option 1: Get your Bridge Node's IP4 from its daemon logs
+**Option 1**: Get your Bridge Node's IP4 from its daemon logs
 ```
 journalctl -u YOUR_CELESTIA_NODE.service --since "NODE_START_TIME" --until "1_MIN_AFTER_START_TIME"
 ```
-#### Option 2: Use one of [these multiaddresses](/devnet-2/celestia-app/seeds.txt) provided in this repo
+**Option 2**: Use one of [these multiaddresses](/devnet-2/celestia-app/seeds.txt) provided in this repo
 
 ### Run the Light Node
 1. Initialize the Light Node
 
 ```sh
-celestia full init --headers.trusted-peer <full_node_multiaddress> --headers.trusted-hash <hash_from_celestia_app>
+celestia light init --headers.trusted-peer <full_node_multiaddress> --headers.trusted-hash <hash_from_celestia_app>
 ```
 
 Example: 
@@ -128,32 +128,31 @@ If the file was created succesfully you will be able to see its content:
 
 ```cat /etc/systemd/system/celestia-lightd.service```
 
-Enable and start celestia-lightd daemon:
+3. Enable and start celestia-lightd daemon:
 
 ```sh
 sudo systemctl enable celestia-lightd
 sudo systemctl start celestia-lightd
 ```
 
-Check if daemon has been started correctly:
+4. Check if daemon has been started correctly:
 ```sh
 sudo systemctl status celestia-lightd
 ```
 
-Check daemon logs in real time:
+5. Check daemon logs in real time:
 ```sh
 sudo journalctl -u celestia-lightd.service -f
 ```
 
-Now, the Celestia Light Node will start syncing headers. After sync is finished, Light Node will do data availability sampling(DAS) from the full node.
+Now, the Celestia Light Node will start syncing headers. After sync is finished, Light Node will do data availability sampling(DAS) from the Bridge Node.
 
 ## Data Availability Sampling(DAS)
 
 ### Pre-Requisites
 This is a list of runnining components you need in order to successfully continue this chapter:
-- Celestia Light Node
-- Light Node Connection to a Bridge Node
-- A Celestia wallet 
+- A Celestia Light Node connected to a Bridge Node
+- A Celestia wallet
 
 > Note: The Light Node should be connected to a Bridge Node to operate correctly. Either deploy your own Bridge Node or connect your <b>Light Node</b> to an existing Bridge Node in the network
 
