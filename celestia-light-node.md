@@ -10,7 +10,8 @@
   - [Run the Light Node](#run-the-light-node)
 - [Data Availability Sampling (DAS)](#data-availability-samplingdas)
   - [Pre-Requisites](#pre-requisites)
-  - [Legend](#legend)
+  - [Create a Wallet](#create-a-wallet)
+  - [Fund the Wallet](#fund-the-wallet)
   - [Steps](#steps)
 
 ## Dependencies
@@ -109,7 +110,7 @@ Or start it as a daemon process in the background
 ```sh
 sudo tee <<EOF >/dev/null /etc/systemd/system/celestia-lightd.service
 [Unit]
-Description=celestia-lightd LightNode daemon
+Description=celestia-lightd Light Node
 After=network-online.target
 
 [Service]
@@ -150,22 +151,20 @@ Now, the Celestia Light Node will start syncing headers. After sync is finished,
 ## Data Availability Sampling(DAS)
 
 ### Pre-Requisites
-This is a list of runnining components you need in order to successfully continue this chapter:
+To continue, you will need:
 - A Celestia Light Node connected to a Bridge Node
 - A Celestia wallet
 
-> Note: The Light Node should be connected to a Bridge Node to operate correctly. Either deploy your own Bridge Node or connect your <b>Light Node</b> to an existing Bridge Node in the network
+Open 2 terminals in order to see how DASing works:
+1. First terminal: tail your Light Node logs
+2. Second terminal: use Celestia App's CLI to submit a paid `payForMessage` tx to the network
 
-### Legend
-You will need 2 terminals in order to see how DASing works:
-- First terminal(FT) run Light Node with logs info
-- Second terminal(ST) submit payForMessage tx using celestia-app
+### Create a wallet
+First, you need a wallet to pay for the transaction.
 
-### Create a Celestia wallet
+**Option 1**: Use the Keplr wallet which has beta support for Celestia. https://staking.celestia.observer/
 
-#### Option 1: Use the Keplr wallet which has beta support for Celestia. https://staking.celestia.observer/
-
-#### Option 2: Download the Celestia App binary which has a CLI for creating wallets
+**Option 2**: Download the Celestia App binary which has a CLI for creating wallets
 1. Download the celestia-appd binary inside `$HOME/go/bin` folder which will be used to create wallets.
 ```sh
 git clone https://github.com/celestiaorg/celestia-app.git
@@ -184,11 +183,13 @@ celestia-appd keys add mywallet
 ```
 Save the mnemonic output as this is the only way to recover your validator wallet in case you lose it! 
 
-4. You can fund an existing wallet via Discord by sending this message to #faucet channel:
+### Fund the Wallet
+You can fund an existing wallet via Discord by sending this message to #faucet channel:
 ```
 !faucet celes1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
-5. Wait to see if you get a confirmation that the tokens have been successfully sent. To check if tokens have arrived succesfully to the destination wallet run the command below replacing the public address with your own:
+
+Wait to see if you get a confirmation that the tokens have been successfully sent. To check if tokens have arrived succesfully to the destination wallet run the command below replacing the public address with your own:
 ```sh
 celestia-appd q bank balances celes1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
