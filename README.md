@@ -50,7 +50,7 @@ Specifically, Light Nodes:
 **Installation**
 - [Light Node Setup Guide](/celestia-light-node.md)
 - Source code repository(s):
-    - Celestia-Node
+    - [celestia-node](https://github.com/celestiaorg/celestia-node)
 
 ---
 
@@ -69,10 +69,12 @@ Specifically, Bridge Nodes:
 From an implementation perspective, Bridge Nodes run two separate processes: 
 
 1. Celestia App (with a Celestia Core) [see repo](https://github.com/celestiaorg/celestia-app)
-    - **Celestia app** is the state machine where the application and the proof-of-stake logic is run. Celestia App is built on Cosmos SDK and also encompasses Celestia Core.
-    - **Celestia Core** is the state interaction, consensus and block production layer. It is built on Tendermint Core, modified to store (1) invalid transactions and (2) data roots of erasure coded blocks, among other changes. see ADR.
+    - **Celestia app** is the state machine where the application and the proof-of-stake logic is run. 
+    > Celestia App is built on [Cosmos SDK](https://docs.cosmos.network/) and also encompasses **Celestia Core**.
+    - **Celestia Core** is the state interaction, consensus and block production layer. 
+    > Celestia Core is built on [Tendermint Core](https://docs.tendermint.com/), modified to store (1) invalid transactions and (2) data roots of erasure coded blocks, among other changes. see ADR.
 2. Celestia Node [see repo](https://github.com/celestiaorg/celestia-node)
-    - **Celestia Node** augments the above with a separate p2p network that mainly exists to serve data availability sampling requests. The team sometimes refer to this as the "halo" network.
+    - **Celestia Node** augments the above with a separate libp2p network that serves data availability sampling requests. The team sometimes refer to this as the "halo" network.
 
 **Installation**
 - [Bridge Node Setup Guide](/celestia-bridge-node.md)
