@@ -1,6 +1,6 @@
 # Running a Celestia Bridge Node
 
-- [Part 1: Deploy Celestia App](#part-1:-deploy-celestia-app)
+- [Part 1: Deploy Celestia App](#part-1%3A-deploy-celestia-app)
   - [Installing Dependencies](#installing-dependencies)
   - [Installing GO](#installing-go)
   - [Downloading and Compiling Celestia-App](#downloading-and-compiling-celestia-app)
@@ -9,7 +9,7 @@
   - [Creating a Wallet](#creating-a-wallet)
   - [Funding a Wallet](#funding-a-wallet)
   - [Delegating Stake to a Validator](#delegating-stake-to-a-validator)
-- [Part 2: Deploy Celestia Node](#part-2:-deploy-celestia-node)
+- [Part 2: Deploy Celestia Node](#part-2%3A-deploy-celestia-node)
   - [Getting trusted hash](#getting-trusted-hash)
   - [Running Celestia Node](#running-full-node)
     - [1. Initialize the full node](#1-initialize-the-full-node)
