@@ -45,7 +45,7 @@ Specifically, Light Nodes:
 2. Listen for `ExtendedHeader`s, i.e. wrapped “raw” headers, that notify Celestia Nodes of new block headers and relevant DA metadata.
 3. Perform data availability sampling (DAS) on the received headers
 
-![Light Nodes](diagrams/lightnodes.png)
+![Light Nodes](diagrams/LightNodes.png)
 
 **Installation**
 - [Light Node Setup Guide](/celestia-light-node.md)
@@ -64,7 +64,7 @@ Specifically, Bridge Nodes:
 2. Validate and erasure code the blocks
 3. Produce block shares to Light Nodes in the DA network.
 
-![Bridge Nodes](diagrams/bridgenodes.png)
+![Bridge Nodes](diagrams/BridgeNodes.png)
 
 From an implementation perspective, Bridge Nodes run two separate processes: 
 
