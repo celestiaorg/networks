@@ -33,8 +33,6 @@ Special [**Bridge Nodes**](#bridge-nodes) process blocks from the underlying con
 
 > It’s important to note that mainnet may look very different from this devnet implementation, as the architecture continues to be improved. You can read more about devnet decisions here and here (link to ADR). 
 
----
-
 ## Celestia Light Nodes
 
 Light nodes (CLN) ensure data availability and can publish transactions. This is the most ubiquitous way to interact with the Celestia network.
@@ -51,8 +49,6 @@ Specifically, Light Nodes:
 - [Light Node Setup Guide](/celestia-light-node.md)
 - Source code repository(s):
     - [celestia-node](https://github.com/celestiaorg/celestia-node)
-
----
 
 ## Celestia Bridge Nodes
 
@@ -81,8 +77,6 @@ From an implementation perspective, Bridge Nodes run two separate processes:
 - Repositories:
     - [celestia-app](https://github.com/celestiaorg/celestia-app)
     - [celestia-node](https://github.com/celestiaorg/celestia-node)
-
----
 
 ## Validator Bridge Nodes
 
