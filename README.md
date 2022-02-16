@@ -82,7 +82,7 @@ From an implementation perspective, Bridge Nodes run two separate processes:
 
 Bridge Nodes have the option of validating the P2P network using its Celestia App component. However, running validator nodes is not a requirement to learn about Celestia’s main value proposition.
 
-> Only the top 100 validators make it into the active validator set. The team is not looking for additional validators at the moment and recommend running light or full nodes instead.
+> Only the top 100 validators make it into the active validator set. The team is not looking for additional validators at the moment and recommend running light or bridge nodes instead.
 
 **Installation**
 
