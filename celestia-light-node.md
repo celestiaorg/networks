@@ -57,7 +57,7 @@ Light Nodes must reference a trusted hash and connect to a trusted Bridge Node `
 
 If you just want to explore how easy it is to run a Celestia Light Node, you can use the constants provided by the following guide. 
 
-> For added security, you can run your own Bridge Node ([guide here](/celestia-bridge_node.md)). Note that you don't need to run the Light Node on the same machine.
+> For added security, you can run your own Bridge Node ([guide here](/celestia-bridge-node.md)). Note that you don't need to run the Light Node on the same machine.
 
 ### Getting the trusted hash
 You need to have the trusted hash in order to initialize the Light Node
