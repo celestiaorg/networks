@@ -1,7 +1,8 @@
 # Running a Celestia Light Node
 
 - [Running a Celestia Node](#running-a-celestia-node)
-  - [Installation](#installation)
+  - [Dependencies](#dependencies)
+  - [Install Celestia Node](#install-celestia-node)
   - [Light Node Configuration](#light-node-configuration)
     - [Getting trusted hash](#getting-trusted-hash-1)
     - [Running Light Node](#running-light-node)
@@ -9,8 +10,41 @@
   - [Pre-Requisites](#pre-requisites)
     - [Legend](#legend)
   - [Steps](#steps)
+## Dependencies
+### Update packages
+First, make sure to update and upgrade the OS:
+```sh
+sudo apt update && sudo apt upgrade -y
+```
+These are essential packages which are necessary execute many tasks like downloading files, compiling and monitoring the node:
+```sh
+sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential git make ncdu -y
+```
+### Installing GO
+It is necessary to install the GO language in the OS so we can later compile the Celestia Application. On our example, we are using version 1.17.2:
+```sh
+ver="1.17.2"
+cd $HOME
+wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
+rm "go$ver.linux-amd64.tar.gz"
+```
+Now we need to add the `/usr/local/go/bin` directory to `$PATH`:
+```
+echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile
+source $HOME/.bash_profile
+```
+To check if Go was installed correctly run:
+```sh
+go version
+```
+Output should be the version installed:
+```sh
+go version go1.17.2 linux/amd64
+```
 
-## Installation
+## Install Celestia Node
 Make sure that you have `git` and `golang` installed
 ```sh
 git clone https://github.com/celestiaorg/celestia-node.git
@@ -23,7 +57,7 @@ Light Nodes must reference a trusted hash and connect to a trusted Bridge Node `
 
 If you just want to explore how easy it is to run a Celestia Light Node, you can use the constants provided by the following guide. 
 
-For added security, you can run your own Bridge Node ([guide here](/celestia-bridge_node.md)). Note that you don't need to run the Light Node on the same machine.
+> For added security, you can run your own Bridge Node ([guide here](/celestia-bridge_node.md)). Note that you don't need to run the Light Node on the same machine.
 
 ### Getting the trusted hash
 You need to have the trusted hash in order to initialize the Light Node
@@ -111,6 +145,7 @@ Now, the Celestia Light Node will start syncing headers. After sync is finished,
 This is a list of runnining components you need in order to successfully continue this chapter:
 - Celestia Light Node
 - Light Node Connection to a Bridge Node
+- A Celestia wallet 
 
 > Note: The Light Node should be connected to a Bridge Node to operate correctly. Either deploy your own Bridge Node or connect your <b>Light Node</b> to an existing Bridge Node in the network
 
@@ -120,15 +155,44 @@ You will need 2 terminals in order to see how DASing works:
 - Second terminal(ST) submit payForMessage tx using celestia-app
 
 ## Steps
-1. In (ST) Submit a `payForMessage` transaction with `celestia-appd`
+1. Create a Celestia wallet. 
+Download the celestia-appd binary inside `$HOME/go/bin` folder which will be used to create wallets.
 ```sh
-celestia-appd tx payment payForMessage <hex_namespace> <hex_message> --from <node_name> --keyring-backend <keyring-name> --chain-id <chain_name>
+git clone https://github.com/celestiaorg/celestia-app.git
+cd celestia-app/
+make install
+```
+To check if the binary was succesfully compiled you can run the binary using the `--help` flag:
+```sh
+cd $HOME/go/bin
+./celestia-appd --help
+```
+
+Create the wallet with any wallet name you want e.g.
+```sh
+celestia-appd keys add mywallet
+```
+Save the mnemonic output as this is the only way to recover your validator wallet in case you lose it! 
+
+You can fund an existing wallet via Discord by sending this message to #faucet channel:
+```
+!faucet celes1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+Wait to see if you get a confirmation that the tokens have been successfully sent. To check if tokens have arrived succesfully to the destination wallet run the command below replacing the public address with your own:
+```sh
+celestia-appd q bank balances celes1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+2. In (ST) Submit a `payForMessage` transaction with `celestia-appd`
+```sh
+celestia-appd tx payment payForMessage <hex_namespace> <hex_message> --from <wallet_name> --keyring-backend <keyring-name> --chain-id <chain_name>
 ```
 Example:
 ```sh 
-celestia-appd tx payment payForMessage 0102030405060708 68656c6c6f43656c6573746961444153 --from eva00 --keyring-backend test --chain-id devnet-2
+celestia-appd tx payment payForMessage 0102030405060708 68656c6c6f43656c6573746961444153 --from myWallet --keyring-backend test --chain-id devnet-2
 ```
-2. In (FT) you should see in logs how DAS is working
+
+3. In (FT) you should see in logs how DAS is working
 
 Example:
 ```sh
