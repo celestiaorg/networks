@@ -1,10 +1,10 @@
 # Celestia Devnet
-- [Celestia Devnet](#celestia-devnet)
-  - [Celestia 101 (Overview)](#celestia-101-overview)
-    - [Celestia Full Node](#celestia-full-node)
-    - [Celestia Light Node](#celestia-light-node)
-  - [Installation guide](#installation-guide)
-  - [Troubleshoot](#troubleshoot)
+- [Quickstart](#quickstart)
+- [Overview](#overview)
+- [Celestia Light Nodes](#celestia-light-nodes)
+- [Celestia Bridge Nodes](#celestia-bridge-nodes)
+- [Validator Bridge Nodes](#validator-bridge-nodes)
+- [Troubleshoot](#troubleshoot)
 
 > Note: This guideline is only relevant for the current devnet. As we approach to testnet, there will be a new guide
 
@@ -54,7 +54,7 @@ Specifically, Light Nodes:
 
 ---
 
-## Bridge Nodes
+## Celestia Bridge Nodes
 
 Bridge Nodes connect the aforementioned p2p and libp2p networks.
 
@@ -84,7 +84,7 @@ From an implementation perspective, Bridge Nodes run two separate processes:
 
 ---
 
-## Bridge Validator Nodes
+## Validator Bridge Nodes
 
 Bridge Nodes have the option of validating the P2P network using its Celestia App component. However, running validator nodes is not a requirement to learn about Celestia’s main value proposition.
 
