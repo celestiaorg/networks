@@ -49,7 +49,7 @@ go version go1.17.2 linux/amd64
 ```
 
 ## Install Celestia Node
-Make sure that you have `git` and `golang` installed
+Install the Celestia Node binary. Make sure that you have `git` and `golang` installed.
 ```sh
 git clone https://github.com/celestiaorg/celestia-node.git
 cd celestia-node/
@@ -58,17 +58,17 @@ make install
 
 ### Configure the Light Node
 
-To initialize, Light Nodes must reference: 
-1. A trusted hash, i.e. the hash of the genesis block
+Light Nodes require the following to initialize: 
+1. A `trusted hash`, i.e. the hash of the genesis block
 2. A trusted Bridge Node `multiaddress` to connect to
 
-If you just want to explore how easy it is to run a Celestia Light Node, you can use the constants provided by the following guide. 
+For added security, you can run your own Bridge Node ([guide here](/celestia-bridge-node.md)) to get the trusted hash and address.
 
-> For added security, you can run your own Bridge Node ([guide here](/celestia-bridge-node.md)). Note that you don't need to run the Light Node on the same machine.
+> Note that you don't need to run the Light Node on the same machine. But if you do, make sure to allocate a different port for the Light Node [see here](troubleshoot.md).
+
+If you just want to explore how easy it is to run a Celestia Light Node, you can use the 2nd option provided by the following guide.
 
 ### Get the trusted hash
-You need to have the trusted hash in order to initialize the Light Node
-
 #### Option 1: Query your Bridge Node for the trusted hash:
 ```sh
 curl -s http://<ip_address>:26657/block?height=1 | grep -A1 block_id | grep hash
@@ -80,11 +80,11 @@ curl -s http://<ip_address>:26657/block?height=1 | grep -A1 block_id | grep hash
 ```
 
 ### Get the trusted multiaddress
-#### Option 1: Get IP4 from your Bridge Node's daemon logs
+#### Option 1: Get your Bridge Node's IP4 from its daemon logs
 ```
 journalctl -u YOUR_CELESTIA_NODE.service --since "NODE_START_TIME" --until "1_MIN_AFTER_START_TIME"
 ```
-#### Option 2: Use [this multiaddress](/devnet-2/celestia-node/mutual_peers.txt) provided in this repo
+#### Option 2: Use one of [these multiaddresses](/devnet-2/celestia-app/seeds.txt) provided in this repo
 
 ### Run the Light Node
 1. Initialize the Light Node
