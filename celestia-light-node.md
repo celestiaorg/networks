@@ -161,36 +161,40 @@ You will need 2 terminals in order to see how DASing works:
 - First terminal(FT) run Light Node with logs info
 - Second terminal(ST) submit payForMessage tx using celestia-app
 
-### Steps
-1. Create a Celestia wallet. 
-Download the celestia-appd binary inside `$HOME/go/bin` folder which will be used to create wallets.
+### Create a Celestia wallet
+
+#### Option 1: Use the Keplr wallet which has beta support for Celestia. https://staking.celestia.observer/
+
+#### Option 2: Download the Celestia App binary which has a CLI for creating wallets
+1. Download the celestia-appd binary inside `$HOME/go/bin` folder which will be used to create wallets.
 ```sh
 git clone https://github.com/celestiaorg/celestia-app.git
 cd celestia-app/
 make install
 ```
-To check if the binary was succesfully compiled you can run the binary using the `--help` flag:
+2. To check if the binary was succesfully compiled you can run the binary using the `--help` flag:
 ```sh
 cd $HOME/go/bin
 ./celestia-appd --help
 ```
 
-Create the wallet with any wallet name you want e.g.
+3. Create the wallet with any wallet name you want e.g.
 ```sh
 celestia-appd keys add mywallet
 ```
 Save the mnemonic output as this is the only way to recover your validator wallet in case you lose it! 
 
-You can fund an existing wallet via Discord by sending this message to #faucet channel:
+4. You can fund an existing wallet via Discord by sending this message to #faucet channel:
 ```
 !faucet celes1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
-Wait to see if you get a confirmation that the tokens have been successfully sent. To check if tokens have arrived succesfully to the destination wallet run the command below replacing the public address with your own:
+5. Wait to see if you get a confirmation that the tokens have been successfully sent. To check if tokens have arrived succesfully to the destination wallet run the command below replacing the public address with your own:
 ```sh
 celestia-appd q bank balances celes1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-2. In (ST) Submit a `payForMessage` transaction with `celestia-appd`
+### Send a transaction
+In (ST) Submit a `payForMessage` transaction with `celestia-appd`
 ```sh
 celestia-appd tx payment payForMessage <hex_namespace> <hex_message> --from <wallet_name> --keyring-backend <keyring-name> --chain-id <chain_name>
 ```
@@ -199,7 +203,8 @@ Example:
 celestia-appd tx payment payForMessage 0102030405060708 68656c6c6f43656c6573746961444153 --from myWallet --keyring-backend test --chain-id devnet-2
 ```
 
-3. In (FT) you should see in logs how DAS is working
+### Observe DAS in action
+In (FT) you should see in logs how DAS is working
 
 Example:
 ```sh
