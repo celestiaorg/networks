@@ -92,7 +92,7 @@ Bridge Nodes have the option of validating the P2P network using its Celestia Ap
 
 **Installation**
 
-- Validator Setup Guide
+- [Validator Setup Guide](celestia-bridge-node.md#running-a-validating-bridge-node)
 - Repositories:
     - [celestia-app](https://github.com/celestiaorg/celestia-app)
 
