@@ -5,8 +5,8 @@
   - [Intall go](#install-go)
 - [Install Celestia Node](#install-celestia-node)
   - [Configure the Light Node](#configure-the-light-node)
-  - [Get the trusted hash](#get-the-trusted-hash)
   - [Get the trusted multiaddress](#get-the-trusted-multiaddress)
+  - [Get the trusted hash](#get-the-trusted-hash)
   - [Run the Light Node](#run-the-light-node)
 - [Data Availability Sampling (DAS)](#data-availability-samplingdas)
   - [Pre-Requisites](#pre-requisites)
@@ -70,23 +70,28 @@ Light Nodes require the following to initialize:
 
 If you just want to explore how easy it is to run a Celestia Light Node, you can use the 2nd option provided below.
 
-### Get the trusted hash
-**Option 1**: Query your Bridge Node for the trusted hash:
-```sh
-curl -s http://<ip_address>:26657/block?height=1 | grep -A1 block_id | grep hash
-``` 
-
-**Option 2**: Use the following hash provided by the team: 
-```sh
-4632277C441CA6155C4374AC56048CF4CFE3CBB2476E07A548644435980D5E17
-```
-
 ### Get the trusted multiaddress
-**Option 1**: Get your Bridge Node's IP4 from its daemon logs
-```
+**Option 1**: Get your Bridge Node's `multiaddress` from its daemon logs
+```sh
 journalctl -u YOUR_CELESTIA_NODE.service --since "NODE_START_TIME" --until "1_MIN_AFTER_START_TIME"
 ```
-**Option 2**: Use one of [these multiaddresses](/devnet-2/celestia-app/seeds.txt) provided in this repo
+**Option 2**: Use one of these [seed multiaddresses](/devnet-2/celestia-node/mutual_peers.txt) provided in this repo
+> If the seed nodes have maxed out peer connections, simply ask in Discord for another `multiaddress`.
+
+### Get the trusted hash
+Query your `multiaddress` for its trusted hash:
+```sh
+curl -s http://<ip_address>:26657/block?height=1 | grep -A1 block_id | grep hash
+
+# For example:
+Given multiaddress: TBA
+
+# Run: 
+curl http://TBA:26657/block?height=1 | grep -A1 block_id | grep hash
+
+# Result:
+"hash": "TBA"
+```
 
 ### Run the Light Node
 1. Initialize the Light Node
@@ -99,14 +104,13 @@ Example:
 
 ```sh 
 celestia light init --headers.trusted-peer /ip4/46.101.22.123/tcp/2121/p2p/12D3KooWD5wCBJXKQuDjhXFjTFMrZoysGVLtVht5hMoVbSLCbV22 --headers.trusted-hash 4632277C441CA6155C4374AC56048CF4CFE3CBB2476E07A548644435980D5E17
+
+# Output: 
+... Node Store initialized
 ```
 
 2. Start the Light Node
-```sh
-celestia light start
-```
-
-Or start it as a daemon process in the background
+Start the Light Node as daemon process in the background
 ```sh
 sudo tee <<EOF >/dev/null /etc/systemd/system/celestia-lightd.service
 [Unit]
