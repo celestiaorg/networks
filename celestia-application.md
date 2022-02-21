@@ -52,6 +52,7 @@ cd $HOME
 rm -rf celestia-app
 git clone https://github.com/celestiaorg/celestia-app.git
 cd celestia-app/
+git checkout 2015a0cac19c841d5971c1155c53fa2b9f736d6b
 make install
 ```
 To check if the binary was succesfully compiled you can run the binary using the `--help` flag:
