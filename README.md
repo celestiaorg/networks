@@ -51,14 +51,14 @@ From an implementation perspective, Bridge Nodes run two separate processes:
 ### Celestia Light Nodes
 ![Light Nodes](diagrams/LightNodes.png)
 
-Specifically, Light Nodes:
+In the Devnet, Light Nodes:
 1. Connect to a [Celestia Bridge Node](#celestia-validator-bridge-nodes) in the DA network. *Note: Light Nodes do not communicate with each other, but only with Bridge Nodes.*
 2. Listen for `ExtendedHeader`s, i.e. wrapped “raw” headers, that notify Celestia Nodes of new block headers and relevant DA metadata.
 3. Perform data availability sampling (DAS) on the received headers
 
 ## Run a Light Node
 
-Light nodes (CLN) ensure data availability. This is the most ubiquitous way to interact with the Celestia network.
+Light nodes (CLN) ensure data availability. This is the most common way to interact with the Celestia network.
 > Note: In future implementations, Light Nodes can also publish transactions ([see ADR](https://github.com/celestiaorg/celestia-node/blob/main/docs/adr/adr-004-state-interaction.md)), though in Devnet, transactions are left to Bridge Nodes.
 
 **Installation**
