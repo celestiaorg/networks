@@ -110,6 +110,7 @@ celestia light init --headers.trusted-peer /ip4/46.101.22.123/tcp/2121/p2p/12D3K
 ```
 
 2. Start the Light Node
+
 Start the Light Node as daemon process in the background
 ```sh
 sudo tee <<EOF >/dev/null /etc/systemd/system/celestia-lightd.service
@@ -199,7 +200,7 @@ celestia-appd q bank balances celes1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 ### Send a transaction
-In (ST) Submit a `payForMessage` transaction with `celestia-appd`
+In the second terminal, submit a `payForMessage` transaction with `celestia-appd` (or do so in the wallet):
 ```sh
 celestia-appd tx payment payForMessage <hex_namespace> <hex_message> --from <wallet_name> --keyring-backend <keyring-name> --chain-id <chain_name>
 ```
@@ -209,7 +210,7 @@ celestia-appd tx payment payForMessage 0102030405060708 68656c6c6f43656c65737469
 ```
 
 ### Observe DAS in action
-In (FT) you should see in logs how DAS is working
+In the Light Node logs you should see how data availability sampling works:
 
 Example:
 ```sh
