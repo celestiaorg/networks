@@ -27,7 +27,7 @@ Devnet demonstrates Celestia’s data availability capabilities by running two i
 
 ![Network Overview](diagrams/NetworkOverview.png)
 
-1. A libp2p **DA network** with [Bridge Nodes](#bridge-nodes) which process blocks from the underlying p2p consensus network and [Light Nodes](#celestia-light-nodes), which do data availability sampling on Bridge Nodes' blocks.
+1. A libp2p **DA network** with [Bridge Nodes](#bridge-nodes) which relay and process blocks from the celestia-core network and [Light Nodes](#celestia-light-nodes), which do data availability sampling those blocks.
 2. A p2p **Consensus network** with [**Validators Nodes**](#bridge-validator-nodes) (which are part of Bridge Nodes), that handles the underlying consensus and block production. 
 
 > Note that mainnet may look very different from this devnet implementation, as the architecture continues to be improved. You can read more about devnet decisions here ([see ADR](https://github.com/celestiaorg/celestia-node/blob/main/docs/adr/adr-003-march2022-testnet.md)).
