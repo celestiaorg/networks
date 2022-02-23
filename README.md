@@ -22,7 +22,7 @@ Devnet participants have the option of running:
 You can view chain activity at the current `devnet-2` explorer: https://celestia.observer/
 ## Overview
 
-Devnet demonstrates Celestia’s data availability capabilities on a libp2p network and a syncing blockchain. 
+Devnet demonstrates Celestia’s data availability capabilities by running two individual but connected networks:
 
 The Devnet implementation actually runs two individual but connected networks:
 
