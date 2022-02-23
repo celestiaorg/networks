@@ -24,7 +24,6 @@ You can view chain activity at the current `devnet-2` explorer: https://celestia
 
 Devnet demonstrates Celestia’s data availability capabilities by running two individual but connected networks:
 
-The Devnet implementation actually runs two individual but connected networks:
 
 ![Network Overview](diagrams/NetworkOverview.png)
 
