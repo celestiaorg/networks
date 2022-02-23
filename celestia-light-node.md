@@ -61,36 +61,26 @@ make install
 ### Configure the Light Node
 
 Light Nodes require the following to initialize: 
-1. A `trusted hash`, i.e. the hash of the genesis block
-2. A trusted Bridge Node `multiaddress` to connect to
+1. A trusted Bridge Node `multiaddress` to connect to
+2. A `trusted hash` on the Bridge Node, e.g. the hash of the genesis block
 
-(Optional) For added security, you can run your own Bridge Node ([guide here](/celestia-bridge-node.md)) to get the trusted hash and address.
+**Option A**: For added security, you can run your own Bridge Node ([guide here](/celestia-bridge-node.md)) to get the trusted hash and your own `multiaddress`. Note that you don't need to run the Light Node on the same machine. But if you do, make sure to allocate a different port for the Light Node to avoid port conflict ([see here](troubleshoot.md)).
 
-> Note that you don't need to run the Light Node on the same machine. But if you do, make sure to allocate a different port for the Light Node to avoid conflict [see here](troubleshoot.md).
-
-If you just want to explore how easy it is to run a Celestia Light Node, you can use the 2nd option provided below.
+**Option B**: If you just want to explore how easy it is to run a Celestia Light Node without running a Bridge Node, you can simply ask for a working `multiaddress` and `trusted hash` in the [Devnet Discord](https://discord.com/channels/638338779505229824/920642717057421393).
 
 ### Get the trusted multiaddress
-**Option 1**: Get your Bridge Node's `multiaddress` from its daemon logs
+Get your Bridge Node's `multiaddress` from its daemon logs
 ```sh
 journalctl -u YOUR_CELESTIA_NODE.service --since "NODE_START_TIME" --until "1_MIN_AFTER_START_TIME"
 ```
-**Option 2**: Use one of these [seed multiaddresses](/devnet-2/celestia-node/mutual_peers.txt) provided in this repo
-> If the seed nodes have maxed out peer connections, simply ask in Discord for another `multiaddress`.
 
 ### Get the trusted hash
 Query your `multiaddress` for its trusted hash:
 ```sh
 curl -s http://<ip_address>:26657/block?height=1 | grep -A1 block_id | grep hash
 
-# For example:
-Given multiaddress: TBA
-
-# Run: 
-curl http://TBA:26657/block?height=1 | grep -A1 block_id | grep hash
-
 # Result:
-"hash": "TBA"
+"hash": "4632277C441CA6155C4374AC56048CF4CFE3CBB2476E07A548644435980D5E17"
 ```
 
 ### Run the Light Node
