@@ -38,7 +38,7 @@ Specifically, Bridge Nodes:
 
 1. Import and process “raw” headers & blocks from a trusted Core process (meaning a trusted RPC connection to a celestia-core node) in the Consensus network. Bridge Nodes can run this Core process internally (embedded) or simply connect to a remote endpoint. Bridge Nodes also have the option of being an active validator in the Consensus network.
 2. Validate and erasure code the "raw" blocks
-3. Supply block shares with DA metadata to Light Nodes in the DA network.
+3. Supply block shares with data availability headers to Light Nodes in the DA network.
 
 From an implementation perspective, Bridge Nodes run two separate processes:
 
