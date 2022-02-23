@@ -51,7 +51,7 @@ From an implementation perspective, Bridge Nodes run two separate processes:
 ### Celestia Light Nodes
 ![Light Nodes](diagrams/LightNodes.png)
 
-Specifically, Light Nodes:
+In the Devnet, Light Nodes:
 1. Connect to a [Celestia Bridge Node](#celestia-validator-bridge-nodes) in the DA network. *Note: Light Nodes do not communicate with each other, but only with Bridge Nodes.*
 2. Listen for `ExtendedHeader`s, i.e. wrapped “raw” headers, that notify Celestia Nodes of new block headers and relevant DA metadata.
 3. Perform data availability sampling (DAS) on the received headers
