@@ -6,7 +6,7 @@ Inspired from instructions [here](https://github.com/celestiaorg/networks/blob/a
 
 The initial setup assumes you create 3 Digital Ocean Droplets, other cloud provider VMs sharing a VPC likely work but haven't been tested. It is assumed that you have a terminal with an ssh key that has permissions for all 3 VM nodes. 
 
-A walkthrough video is available [here](https://www.loom.com/share/e8dd61974ede492db51f3bf7331970da)
+A walk through video is available [here](https://www.loom.com/share/e8dd61974ede492db51f3bf7331970da)
 
 ## Run on all Nodes
 ```

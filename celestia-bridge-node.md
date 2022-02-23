@@ -28,8 +28,8 @@ These are essential packages which are necessary execute many tasks like downloa
 ```sh
 sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential git make ncdu -y
 ```
-### Install GO
-It is necessary to install the GO language in the OS so we can later compile the Celestia Application. On our example, we are using version 1.17.2:
+## Installing GO
+It is necessary to install the GO language in the OS, so we can later compile the Celestia Application. On our example, we are using version 1.17.2:
 ```sh
 ver="1.17.2"
 cd $HOME
@@ -66,7 +66,7 @@ git clone https://github.com/celestiaorg/celestia-app.git
 cd celestia-app/
 make install
 ```
-To check if the binary was succesfully compiled you can run the binary using the `--help` flag:
+To check if the binary was successfully compiled you can run the binary using the `--help` flag:
 ```sh
 cd $HOME/go/bin
 ./celestia-appd --help
@@ -151,7 +151,7 @@ LimitNOFILE=4096
 WantedBy=multi-user.target
 EOF
 ```
-If the file was created succesfully you will be able to see its content:
+If the file was created successfully you will be able to see its content:
 ```sh
 cat /etc/systemd/system/celestia-appd.service
 ```
@@ -186,7 +186,7 @@ For the public celestia address, you can fund the previously created wallet via 
 ```
 !faucet celes1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
-Wait to see if you get a confirmation that the tokens have been successfully sent. To check if tokens have arrived succesfully to the destination wallet run the command below replacing the public address with your own:
+Wait to see if you get a confirmation that the tokens have been successfully sent. To check if tokens have arrived successfully to the destination wallet run the command below replacing the public address with your own:
 ```sh
 celestia-appd q bank balances celes1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
@@ -205,7 +205,7 @@ To delegate tokens to the the `celesvaloper` validator, as an example you can ru
 ```sh
 celestia-appd tx staking delegate celesvaloper1q3v5cugc8cdpud87u4zwy0a74uxkk6u43cv6hd 1000000celes --from=$VALIDATOR_WALLET --chain-id=devnet-2
 ```
-If sucessful, you should see a similar output as:
+If successful, you should see a similar output as:
 ```sh
 code: 0
 codespace: ""
@@ -301,7 +301,7 @@ You will be prompted to confirm the transaction:
 ```sh
 confirm transaction before signing and broadcasting [y/N]: y
 ```
-Inputing y should provide an output similar to:
+Inputting y should provide an output similar to:
 ```sh
 code: 0
 codespace: ""
