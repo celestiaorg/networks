@@ -120,7 +120,7 @@ Now, the Celestia Light Node will start syncing headers. After sync is finished,
 # Data Availability Sampling(DAS)
 
 ## Pre-Requisites
-This is a list of runnining components you need in order to successfully continue this chapter:
+This is a list of running components you need in order to successfully continue this chapter:
 - Celestia app
 - Celestia Light Node
 
