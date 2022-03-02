@@ -1,12 +1,13 @@
 # Celestia Devnet
-- [Quickstart](#quickstart)
-- [Overview](#overview)
-  - [Celestia Bridge Nodes](#celestia-validator-bridge-nodes)
-  - [Celestia Light Nodes](#celestia-light-nodes)
-- [Run a Light Node](#run-a-light-node)
-- [Run a Bridge Node](#run-a-bridge-node)
-- [Run a Validator Bridge Node](#run-a-validator-bridge-node)
-- [Troubleshoot](#troubleshoot)
+- [Celestia Devnet](#celestia-devnet)
+  - [Quickstart](#quickstart)
+  - [Overview](#overview)
+    - [Celestia (Validator) Bridge Nodes](#celestia-validator-bridge-nodes)
+    - [Celestia Light Nodes](#celestia-light-nodes)
+  - [Run a Light Node](#run-a-light-node)
+  - [Run a Bridge Node](#run-a-bridge-node)
+  - [Run a Validator Bridge Node](#run-a-validator-bridge-node)
+  - [Troubleshoot](#troubleshoot)
 
 > Note: This guideline is only relevant for the current devnet. As we approach to testnet, there will be a new guide
 
@@ -78,12 +79,7 @@ Bridge Nodes connect the aforementioned Consensus and DA networks.
 
 ## Run a Validator Bridge Node
 
-<<<<<<< HEAD
 Bridge Nodes have the option of validating the P2P network using its Celestia App component. However, running validator nodes is not a requirement to learn about Celestia’s main value proposition.
-=======
-## Installation guide
-> Caveat 1: Make sure that you have at least 100+ Gb of free space to safely install+run the Celestia Application + Celestia Full Node and 10+ Gb of free space for Celestia Light Node
->>>>>>> adding config.toml section for better understanding
 
 > Only the top 100 validators make it into the active validator set. The team is not looking for additional validators at the moment and recommend running light or bridge nodes instead.
 
