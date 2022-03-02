@@ -1,19 +1,25 @@
-- [Running a Non-Validating Celestia Application Node](#running-a-non-validating-celestia-application-node)
-  - [Installing Dependencies](#installing-dependencies)
-  - [Installing GO](#installing-go)
-  - [Downloading and Compiling Celestia-App](#downloading-and-compiling-celestia-app)
-  - [Setting up Network](#setting-up-network)
-  - [Running Celestia-App using Systemd](#running-ceslestia-app-using-systemd)
-  - [Creating a Wallet](#creating-a-wallet)
-  - [Funding a Wallet](#funding-a-wallet)
-  - [Delegating Stake to a Validator](#delegating-stake-to-a-validator)
-  - [Creating a Validator On-Chain](#creating-a-validator-on-chain)
+# Run a Celestia Bridge Node
 
+- [Dependencies](#dependencies)
+  - [Update packages](#update-packages)
+  - [Install go](#install-go)
+- [Part 1: Deploy the Celestia App](#part-1-deploy-the-celestia-app)
+  - [Install Celestia-App](#install-celestia-app)
+  - [Set up P2P Network](#set-up-p2p-network)
+  - [Run Celestia-App using Systemd](#run-celestia-app-using-systemd)
+  - [Create a Wallet](#create-a-wallet)
+  - [Fund a Wallet](#fund-a-wallet)
+  - [Delegate Stake to a Validator](#delegate-stake-to-a-validator)
+- [Part 2: Deploy the Celestia Node](#part-2-deploy-the-celestia-node)
+  - [Get the trusted hash](#get-the-trusted-hash)
+  - [Initialize the Bridge Node](#initialize-the-bridge-node)
+  - [Configure the Bridge Node](#initialize-the-bridge-node)
+  - [Start the Bridge Node](#start-the-bridge-node)
+- [Run a Validator Bridge Node](#run-a-validator-bridge-node)
 
-# Running a Non-Validating Celestia Application Node
-This chapter describes how to run a Non-Validating Celestia Application Node. Non-Validating nodes allow you to interact with the Celestia Network without having to create and maintain a validator.
+## Dependencies
 
-## Installing Dependencies
+### Update Packages
 First, make sure to update and upgrade the OS:
 ```sh
 sudo apt update && sudo apt upgrade -y
@@ -45,7 +51,13 @@ Output should be the version installed:
 ```sh
 go version go1.17.2 linux/amd64
 ```
-## Downloading and Compiling Celestia-App
+
+## Part 1: Deploy the Celestia App
+This section describes part 1 of Celestia Bridge Node setup: running a Celestia App daemon with an internal Celestia Core node.
+
+> Caveat: Make sure you have at least 100+ Gb of free space to safely install+run the Bridge Node.
+
+### Install Celestia App
 The steps below will create a binary file named celestia-appd inside `$HOME/go/bin` folder which will be used later to run the node.
 ```sh
 cd $HOME
@@ -95,7 +107,7 @@ Flags:
 
 Use "celestia-appd [command] --help" for more information about a command.
 ```
-## Setting up Network
+### Set up P2P Network
 First clone the networks repository:
 ```sh
 cd $HOME
@@ -120,7 +132,7 @@ Reset network:
 ```sh
 celestia-appd unsafe-reset-all
 ```
-## Running Celestia-App using Systemd
+### Run Celestia-App using Systemd
 Create Celestia-App systemd file:
 ```sh
 sudo tee <<EOF >/dev/null /etc/systemd/system/celestia-appd.service
@@ -161,13 +173,15 @@ To check if your node is in sync before going forward:
 curl -s localhost:26657/status | jq .result | jq .sync_info
 ```
 Make sure that you have `"catching_up": false`, otherwise leave it running until it is in sync.
-## Creating a Wallet
+
+### Create a Wallet
 You can pick whatever wallet name you want. For our example we used "validator" as the wallet name:
 ```sh
 celestia-appd keys add validator
 ```
 Save the mnemonic output as this is the only way to recover your validator wallet in case you lose it! 
-## Funding a Wallet
+
+### Fund a Wallet
 For the public celestia address, you can fund the previously created wallet via Discord by sending this message to #faucet channel:
 ```
 !faucet celes1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -176,7 +190,8 @@ Wait to see if you get a confirmation that the tokens have been successfully sen
 ```sh
 celestia-appd q bank balances celes1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
-## Delegating Stake to a Validator
+
+### Delegate Stake to a Validator
 If you want to delegate more stake to any validator, including your own you will need the `celesvaloper` address of the validator in question. You can either check it using the block explorer mentioned above or you can run the command below to get the `celesvaloper` of your local validator wallet in case you want to delegate more to it:
 ```sh
 celestia-appd keys show $VALIDATOR_WALLET --bech val -a
@@ -206,7 +221,64 @@ tx: null
 txhash: <tx-hash>
 ```
 You can check if the TX hash went through using the block explorer by inputting the `txhash` ID that was returned.
-## Creating a Validator On-Chain
+
+## Part 2: Deploy the Celestia Node
+This section describes part 2 of Celestia Bridge Node setup: running a Celestia Node daemon.
+
+### Get the trusted hash
+> Caveat: You need a running celestia-app in order to continue this guideline. Please refer to [celestia-app.md](https://github.com/celestiaorg/networks/celestia-app.md) for installation.
+
+You need to have the trusted hash in order to initialize the Celestia Bridge Node. In order to know the hash, you need to query the Celestia App:
+```sh
+curl -s http://localhost:26657/block?height=1 | grep -A1 block_id | grep hash
+```
+
+### Initialize the Bridge Node
+```sh
+celestia bridge init --core.remote <ip:port of celestia-app> --headers.trusted-hash <hash_from_celestia_app>
+```
+
+Example:
+```sh 
+celestia bridge init --core.remote tcp://127.0.0.1:26657 --headers.trusted-hash 4632277C441CA6155C4374AC56048CF4CFE3CBB2476E07A548644435980D5E17
+```
+
+### Configure the Bridge Node
+
+In order for your Celestia Bridge Node to communicate with other Bridge Ndoes, then you need to add them as `mutual peers` in the `config.toml` file and allow the peer exchange. Please navigate to `networks/devnet-2/celestia-node/mutual_peers.txt` to find the list of mutual peers
+```sh
+nano ~/.celestia-bridge/config.toml
+```
+```sh
+...
+[P2P]
+  ...
+  #add multiaddresses of other celestia bridge nodes
+  
+  MutualPeers = [
+    "/ip4/46.101.22.123/tcp/2121/p2p/12D3KooWD5wCBJXKQuDjhXFjTFMrZoysGVLtVht5hMoVbSLCbV22", 
+    "/ip4/x.x.x.x/tcp/yyy/p2p/abc"] #the /ip4/x.x.x.x is only for example. Don't add it! 
+  PeerExchange = true #change this line to true. Be default it's false
+  ...
+...
+```
+
+### Start the Bridge Node
+```sh
+celestia bridge start
+```
+Now, the Celestia bridge node will start syncing headers and storing blocks from Celestia application. 
+
+> Note: At startup, we can see the `multiaddress` from Celestia Bridge Node. This is <b>needed for future Light Node</b> connections and communication between Celestia Bridge Nodes
+
+Example:
+```sh
+/ip4/46.101.22.123/tcp/2121/p2p/12D3KooWD5wCBJXKQuDjhXFjTFMrZoysGVLtVht5hMoVbSLCbV22
+```
+
+---
+
+## Run a Validator Bridge Node
 Optionally, if you want to join the active validator list, you can create your own validator on-chain following the instructions below. Keep in mind that these steps are necessary ONLY if you want to participate in the consensus.
 
 Pick a MONIKER name of your choice! This is the validator name that will show up on public dashboards and explorers. VALIDATOR_WALLET must be the same you defined previously. Parameter `--min-self-delegation=1000000` defines the amount of tokens that are self delegated from your validator wallet.
