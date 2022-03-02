@@ -41,4 +41,4 @@ No Trusted Peer provided. Headers won't be synced accordingly
 this means you need to: 
 - check that the trusted peer is initialized in the `TrustedPeer` field in `config.toml`
 - be sure that the address of the trusted peer is reachable
-- ensure that the trusted peer is a Celestia Full Node and it's live
+- ensure that the trusted peer is a Celestia Bridge Node and it's live
