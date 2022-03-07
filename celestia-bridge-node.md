@@ -236,7 +236,8 @@ make install
 ```
 Verify that the binary is working and check the version with `celestia version` command:
 
-```sh
+```console
+$ celestia version
 Semantic version: v0.2.0
 Commit: 1fcf0c0bb5d5a4e18b51cf12440ce86a84cf7a72
 Build Date: Fri 04 Mar 2022 01:15:07 AM CET
