@@ -25,6 +25,7 @@ by the command line flag `--core.remote`.
 
 ### [P2P]
 #### Bootstrap
+Bootstrappers help new nodes to find peers faster in the network. 
 By default, the `Bootstrapper = false` and the `BootstrapPeers` is empty. If you want your node to be a bootstrapper, then activate `Bootstrapper = true`.
 BootstrapPeers are already provided by default during initialisation. If you want to add your own manually, you need to provide the multiaddresses of the peers. 
 
@@ -36,5 +37,6 @@ The purpose of this config is to set up a bidirectional communication. This is u
 #### TrustedHash and TrustedPeer
 `TrustedHash` is needed to properly initialize a Celestia Bridge Node with an already-running `Remote` Celestia Core node. Celestia Light Node will take a genesis hash as the trusted one, if no hash is manually provided during initialization phase.
 
-`TrustedPeers` is the array of Bridge Nodes' peers that Celestia Light Node trusts. By default, this is an empty array as the Celestia Light Node trusts no one and syncs from genesis to latest block, if the `TrustedHash` is empty, too.
-Light nodes by design can not be trusted peers for other Light Nodes.
+`TrustedPeers` is the array of Bridge Nodes' peers that Celestia Light Node trusts. By default, bootstrap peers becomes trusted peers for Celestia Light Nodes if a user is not setting the trusted peer params 
+in config file.
+Any Celestia Bridge Node can be a trusted peer for the Light one. However, the Light node by design can not be a trusted peer for another Light Node.
