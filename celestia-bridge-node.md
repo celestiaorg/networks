@@ -225,6 +225,26 @@ You can check if the TX hash went through using the block explorer by inputting 
 ## Part 2: Deploy the Celestia Node
 This section describes part 2 of Celestia Bridge Node setup: running a Celestia Node daemon.
 
+### Install Celestia Node
+Install the Celestia Node binary, which will be used to run the Bridge Node.
+```sh
+cd $HOME
+rm -rf celestia-node
+git clone https://github.com/celestiaorg/celestia-node.git
+cd celestia-node/
+make install
+```
+Verify that the binary is working and check the version with `celestia version` command:
+
+```console
+$ celestia version
+Semantic version: v0.2.0
+Commit: 1fcf0c0bb5d5a4e18b51cf12440ce86a84cf7a72
+Build Date: Fri 04 Mar 2022 01:15:07 AM CET
+System version: amd64/linux
+Golang version: go1.17.5
+```
+
 ### Get the trusted hash
 > Caveat: You need a running celestia-app in order to continue this guideline. Please refer to [celestia-app.md](https://github.com/celestiaorg/networks/celestia-app.md) for installation.
 
