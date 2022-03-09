@@ -1,21 +1,23 @@
 # Run a Celestia Bridge Node
 
-- [Dependencies](#dependencies)
-  - [Update packages](#update-packages)
-  - [Install go](#install-go)
-- [Part 1: Deploy the Celestia App](#part-1-deploy-the-celestia-app)
-  - [Install Celestia-App](#install-celestia-app)
-  - [Set up P2P Network](#set-up-p2p-network)
-  - [Run Celestia-App using Systemd](#run-celestia-app-using-systemd)
-  - [Create a Wallet](#create-a-wallet)
-  - [Fund a Wallet](#fund-a-wallet)
-  - [Delegate Stake to a Validator](#delegate-stake-to-a-validator)
-- [Part 2: Deploy the Celestia Node](#part-2-deploy-the-celestia-node)
-  - [Get the trusted hash](#get-the-trusted-hash)
-  - [Initialize the Bridge Node](#initialize-the-bridge-node)
-  - [Configure the Bridge Node](#initialize-the-bridge-node)
-  - [Start the Bridge Node](#start-the-bridge-node)
-- [Run a Validator Bridge Node](#run-a-validator-bridge-node)
+- [Run a Celestia Bridge Node](#run-a-celestia-bridge-node)
+  - [Dependencies](#dependencies)
+    - [Update Packages](#update-packages)
+  - [Installing GO](#installing-go)
+  - [Part 1: Deploy the Celestia App](#part-1-deploy-the-celestia-app)
+    - [Install Celestia App](#install-celestia-app)
+    - [Set up P2P Network](#set-up-p2p-network)
+    - [Run Celestia-App using Systemd](#run-celestia-app-using-systemd)
+    - [Create a Wallet](#create-a-wallet)
+    - [Fund a Wallet](#fund-a-wallet)
+    - [Delegate Stake to a Validator](#delegate-stake-to-a-validator)
+  - [Part 2: Deploy the Celestia Node](#part-2-deploy-the-celestia-node)
+    - [Install Celestia Node](#install-celestia-node)
+    - [Get the trusted hash](#get-the-trusted-hash)
+    - [Initialize the Bridge Node](#initialize-the-bridge-node)
+    - [Configure the Bridge Node](#configure-the-bridge-node)
+    - [Start the Bridge Node](#start-the-bridge-node)
+  - [Run a Validator Bridge Node](#run-a-validator-bridge-node)
 
 ## Dependencies
 
@@ -64,6 +66,7 @@ cd $HOME
 rm -rf celestia-app
 git clone https://github.com/celestiaorg/celestia-app.git
 cd celestia-app/
+git checkout tags/v0.1.0 -b v0.1.0
 make install
 ```
 To check if the binary was successfully compiled you can run the binary using the `--help` flag:
