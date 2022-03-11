@@ -1,12 +1,13 @@
 # Celestia Devnet
-- [Quickstart](#quickstart)
-- [Overview](#overview)
-  - [Celestia Bridge Nodes](#celestia-validator-bridge-nodes)
-  - [Celestia Light Nodes](#celestia-light-nodes)
-- [Run a Light Node](#run-a-light-node)
-- [Run a Bridge Node](#run-a-bridge-node)
-- [Run a Validator Bridge Node](#run-a-validator-bridge-node)
-- [Troubleshoot](#troubleshoot)
+- [Celestia Devnet](#celestia-devnet)
+  - [Quickstart](#quickstart)
+  - [Overview](#overview)
+    - [Celestia (Validator) Bridge Nodes](#celestia-validator-bridge-nodes)
+    - [Celestia Light Nodes](#celestia-light-nodes)
+  - [Run a Light Node](#run-a-light-node)
+  - [Run a Bridge Node](#run-a-bridge-node)
+  - [Run a Validator Bridge Node](#run-a-validator-bridge-node)
+  - [Troubleshoot](#troubleshoot)
 
 > Note: This guideline is only relevant for the current devnet. As we approach to testnet, there will be a new guide
 

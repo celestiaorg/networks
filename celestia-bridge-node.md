@@ -269,6 +269,8 @@ celestia bridge init --core.remote tcp://127.0.0.1:26657 --headers.trusted-hash 
 ### Configure the Bridge Node
 
 In order for your Celestia Bridge Node to communicate with other Bridge Ndoes, then you need to add them as `mutual peers` in the `config.toml` file and allow the peer exchange. Please navigate to `networks/devnet-2/celestia-node/mutual_peers.txt` to find the list of mutual peers
+
+For more information on `config.toml`, please navigate to [this link](./config-toml.md)
 ```sh
 nano ~/.celestia-bridge/config.toml
 ```
