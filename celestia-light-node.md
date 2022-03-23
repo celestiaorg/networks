@@ -54,6 +54,7 @@ Install the Celestia Node binary. Make sure that you have `git` and `golang` ins
 ```sh
 git clone https://github.com/celestiaorg/celestia-node.git
 cd celestia-node/
+git checkout v0.2.0
 make install
 ```
 
