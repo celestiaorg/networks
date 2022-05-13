@@ -37,6 +37,41 @@
           "pub_key": null,
           "account_number": "0",
           "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "celes1xatktkl2uyagr7feszzcdpt97spuc2pge9pueg",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "celes1hvn49uu3g2w6rpjv99jgr0jlmv3at4c99y5uuk",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "celes1eqpxqz6g3vfgvm6l0vju2dx58t49jldj5rd85h",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "celes1gwzdrhmzwmgkv3ksqmm4wmtjft7qkx2dwu2h6x",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "celes1a2k23yf6n70sw3krz6jteym9ctm6n5um6ww74s",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
         }
       ]
     },
@@ -47,7 +82,52 @@
       },
       "balances": [
         {
+          "address": "celes1xatktkl2uyagr7feszzcdpt97spuc2pge9pueg",
+          "coins": [
+            {
+              "denom": "uceles",
+              "amount": "10000000000000000000000000"
+            }
+          ]
+        },
+        {
           "address": "celes18u4nx78fl7mzceu0nu9c2j8affnw68c3dkygfa",
+          "coins": [
+            {
+              "denom": "uceles",
+              "amount": "10000000000000000000000000"
+            }
+          ]
+        },
+        {
+          "address": "celes1gwzdrhmzwmgkv3ksqmm4wmtjft7qkx2dwu2h6x",
+          "coins": [
+            {
+              "denom": "uceles",
+              "amount": "10000000000000000000000000"
+            }
+          ]
+        },
+        {
+          "address": "celes1hvn49uu3g2w6rpjv99jgr0jlmv3at4c99y5uuk",
+          "coins": [
+            {
+              "denom": "uceles",
+              "amount": "10000000000000000000000000"
+            }
+          ]
+        },
+        {
+          "address": "celes1eqpxqz6g3vfgvm6l0vju2dx58t49jldj5rd85h",
+          "coins": [
+            {
+              "denom": "uceles",
+              "amount": "10000000000000000000000000"
+            }
+          ]
+        },
+        {
+          "address": "celes1a2k23yf6n70sw3krz6jteym9ctm6n5um6ww74s",
           "coins": [
             {
               "denom": "uceles",
