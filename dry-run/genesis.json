@@ -407,7 +407,7 @@
                 },
                 "value": {
                   "denom": "uceles",
-                  "amount": "10000000000000000000000000"
+                  "amount": "1000000000"
                 }
               }
             ],
@@ -439,7 +439,7 @@
             }
           },
           "signatures": [
-            "4bBbEIxahXyvcV7fUhUrYsb/6k1WvoHJJK+fMIh48S8R6uK02hR/H/Ua+s64fbxJwKerfTTXFOxZzcc9PHuLCQ=="
+            "mNVNYmJNiMM4d08nd9zOdRznO5m3MkylNOefiwoU2v0C5/zDip3bYxFpBNFJ/1kNQMv+11wwi9xg8N83Wih42Q=="
           ]
         }
       ]
