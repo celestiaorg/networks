@@ -1,5 +1,5 @@
 {
-  "genesis_time": "2022-05-23T16:02:31.713132226Z",
+  "genesis_time": "2022-05-24T13:02:31.713132226Z",
   "chain_id": "mamaki",
   "initial_height": "1",
   "consensus_params": {
@@ -1287,7 +1287,7 @@
       },
       "tally_params": {
         "quorum": "0.334000000000000000",
-        "threshold": "0.500000000000000000",
+        "threshold": "0.667000000000000000",
         "veto_threshold": "0.334000000000000000"
       }
     },
@@ -1310,7 +1310,7 @@
     "payment": {},
     "slashing": {
       "params": {
-        "signed_blocks_window": "100",
+        "signed_blocks_window": "200",
         "min_signed_per_window": "0.500000000000000000",
         "downtime_jail_duration": "600s",
         "slash_fraction_double_sign": "0.050000000000000000",
