@@ -157,6 +157,13 @@
           "pub_key": null,
           "account_number": "0",
           "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "celestia1xheppmt689acf7mp6je59tmjqgstjghkyt2zre",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
         }
       ]
     },
@@ -181,6 +188,15 @@
             {
               "denom": "utia",
               "amount": "120000000000000"
+            }
+          ]
+        },
+        {
+          "address": "celestia1xheppmt689acf7mp6je59tmjqgstjghkyt2zre",
+          "coins": [
+            {
+              "denom": "utia",
+              "amount": "1000000"
             }
           ]
         },
@@ -332,7 +348,7 @@
       "supply": [
         {
           "denom": "utia",
-          "amount": "1000000000000000"
+          "amount": "1000000001000000"
         }
       ],
       "denom_metadata": [
