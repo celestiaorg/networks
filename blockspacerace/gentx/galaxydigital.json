@@ -5,10 +5,10 @@
                 "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
                 "description": {
                     "moniker": "GalaxyDigital",
-                    "identity": "",
-                    "website": "",
-                    "security_contact": "",
-                    "details": ""
+                    "identity": "1718CFB46A0EC7FA",
+                    "website": "www.galaxy.com",
+                    "security_contact": "bci@galaxy.com",
+                    "details": "Galaxy is a digital asset and blockchain leader helping institutions, startups, and qualified individuals shape a changing economy. We provide platform solutions custom-made for a digitally native ecosystem."
                 },
                 "commission": {
                     "rate": "0.100000000000000000",
@@ -24,7 +24,7 @@
                 },
                 "value": {
                     "denom": "utia",
-                    "amount": "1000000000000"
+                    "amount": "5000000000000"
                 },
                 "evm_address": "0x767f7576944D321374921DF138589a30e3C5030d"
             }
