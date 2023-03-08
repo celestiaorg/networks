@@ -5,8 +5,8 @@
         "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
         "description": {
           "moniker": "Brochain",
-          "identity": "",
-          "website": "",
+          "identity": "96C52B0DC1222AD6",
+          "website": "https://brocha.in",
           "security_contact": "",
           "details": ""
         },
@@ -24,7 +24,7 @@
         },
         "value": {
           "denom": "utia",
-          "amount": "1000000000000"
+          "amount": "5000000000000"
         },
         "evm_address": "0xb554eF925E558f3AAE8c4EFC7Da940118901c22a"
       }
@@ -58,6 +58,6 @@
     "tip": null
   },
   "signatures": [
-    "R589gEoZUWZ5mLQmrRT70AnfWy+T09sc8w9+9QTks7IQy7f59X/V2hLsY3CtQaLTj0RXBWj4n4TgkPqbBfMCBQ=="
+    "55eov5z+V93VR/yLodb/Ctm8weKV7jxe6lgXJhh/WsoDf0gXUsA/qv3eXP6gmf6wiPFu7K28TTyuismxF2+fMQ=="
   ]
 }
