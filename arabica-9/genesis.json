@@ -61037,7 +61037,6 @@
       "minter": {
         "inflation_rate": "0.080000000000000000",
         "annual_provisions": "0.000000000000000000",
-        "genesis_time": "1970-01-01T00:00:00Z",
         "previous_block_time": null,
         "bond_denom": "utia"
       }
