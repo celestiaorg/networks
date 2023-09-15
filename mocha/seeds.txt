@@ -1,2 +1,3 @@
 8084e73b70dbe7fba3602be586de45a516012e6f@144.76.112.238:26656,
-9aa8a73ea9364aa3cf7806d4dd25b6aed88d8152@celestia.seed.mzonder.com:11156
+9aa8a73ea9364aa3cf7806d4dd25b6aed88d8152@celestia.seed.mzonder.com:11156,
+5c82cf33a32f40e2d914da1864927865d8d3824c@celestia-testnet-seed.itrocket.net:11656
