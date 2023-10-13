@@ -8,122 +8,123 @@ jobs:
   validate_user:
     runs-on: ubuntu-latest
     env:
-      VALIDATOR_LIST: ->
-        - "tiagocmachado"
-        - "EdouardLvdl"
-        - "gle1pn1r"
-        - "creeea"
-        - "veeloup"
-        - "trader-payne"
-        - "cryptovestor21"
-        - "activenodes"
-        - "staking4all"
-        - "ilhanu"
-        - "Suleymann85"
-        - "ivandiazperez"
-        - "wainach"
-        - "Cumulo-pro"
-        - "santosdios"
-        - "0x-Fury"
-        - "okannako"
-        - "Ryabina-io"
-        - "Gunter038"
-        - "nodestake"
-        - "GPvalidator"
-        - "y3v63n"
-        - "redref"
-        - "jim-counter"
-        - "travellingsoldier85"
-        - "kooltek68"
-        - "qubelabsio"
-        - "DasRasyo"
-        - "chichi13"
-        - "jmc000"
-        - "JejomStark"
-        - "kj89"
-        - "kjnodes"
-        - "neoprom"
-        - "mkaczanowski"
-        - "RishiSid"
-        - "kooltek68"
-        - "travellingsoldier85"
-        - "clock-workorange"
-        - "kinrokinro"
-        - "evgeny-garanin"
-        - "bonsfi"
-        - "calintatar1"
-        - "krisboit"
-        - "carameleon"
-        - "quantumcore1"
-        - "gaia"
-        - "packetstracer"
-        - "daniel-ck89"
-        - "staked_blaise"
-        - "yash_bhut"
-        - "jmo_oo"
-        - "kennystaked"
-        - "AlexToTheMoon"
-        - "richard-stakingcabin"
-        - "vincent-stakingcabin"
-        - "shivlim"
-        - "BlackBlocks-io"
-        - "WayneWayner"
-        - "rfunduk"
-        - "victorfrancax1"
-        - "jennyhys"
-        - "llPorZall"
-        - "pops-one"
-        - "yelllowsin"
-        - "rooiie"
-        - "stakemepro"
-        - "pciavald"
-        - "Daeinar"
-        - "koenmtb1"
-        - "kobigurk"
-        - "Brightlystake"
-        - "mabalaru"
-        - "dantanasescu"
-        - "imperator-co"
-        - "easy2stake"
-        - "suntzu93"
-        - "spidey-169"
-        - "larry0x"
-        - "AviaOne"
-        - "nodersteam"
-        - "HoytRen"
-        - "Aderks"
-        - "matilote"
-        - "ayushvtf"
-        - "silviu@bwarelabs.com"
-        - "mihai.ciuciu@bwarelabs.com"
-        - "kim201212"
-        - "puneetfinoa"
-        - "aonif"
-        - "bo-everstake"
-        - "upnodedev"
-        - "curlycrypto184"
-        - "JoseCT-HS"
-        - "legg"
-        - "jamescorbett"
-        - "frannovo"
-        - "MilosTodorovic"
-        - "Chainode"
-        - "neulerfzco"
-        - "maxzonder"
-        - "Northa"
-        - "Validatus-com"
-        - "b-harvest"
-        - "dshyionak-bd"
-        - "macunha1"
-        - "JackPMallon"
-        - "fkbenjamin"
-        - "86b"
-        - "SimonKraus"
-        - "ecov773"
-        - "mgl2150"
-        - "sibuser"
-        - "sjors-lemniscap"
-        - "zheli"
+      VALIDATOR_LIST: (
+        "tiagocmachado",
+        "EdouardLvdl",
+        "gle1pn1r",
+        "creeea",
+        "veeloup",
+        "trader-payne",
+        "cryptovestor21",
+        "activenodes",
+        "staking4all",
+        "ilhanu",
+        "Suleymann85",
+        "ivandiazperez",
+        "wainach",
+        "Cumulo-pro",
+        "santosdios",
+        "0x-Fury",
+        "okannako",
+        "Ryabina-io",
+        "Gunter038",
+        "nodestake",
+        "GPvalidator",
+        "y3v63n",
+        "redref",
+        "jim-counter",
+        "travellingsoldier85",
+        "kooltek68",
+        "qubelabsio",
+        "DasRasyo",
+        "chichi13",
+        "jmc000",
+        "JejomStark",
+        "kj89",
+        "kjnodes",
+        "neoprom",
+        "mkaczanowski",
+        "RishiSid",
+        "kooltek68",
+        "travellingsoldier85",
+        "clock-workorange",
+        "kinrokinro",
+        "evgeny-garanin",
+        "bonsfi",
+        "calintatar1",
+        "krisboit",
+        "carameleon",
+        "quantumcore1",
+        "gaia",
+        "packetstracer",
+        "daniel-ck89",
+        "staked_blaise",
+        "yash_bhut",
+        "jmo_oo",
+        "kennystaked",
+        "AlexToTheMoon",
+        "richard-stakingcabin",
+        "vincent-stakingcabin",
+        "shivlim",
+        "BlackBlocks-io",
+        "WayneWayner",
+        "rfunduk",
+        "victorfrancax1",
+        "jennyhys",
+        "llPorZall",
+        "pops-one",
+        "yelllowsin",
+        "rooiie",
+        "stakemepro",
+        "pciavald",
+        "Daeinar",
+        "koenmtb1",
+        "kobigurk",
+        "Brightlystake",
+        "mabalaru",
+        "dantanasescu",
+        "imperator-co",
+        "easy2stake",
+        "suntzu93",
+        "spidey-169",
+        "larry0x",
+        "AviaOne",
+        "nodersteam",
+        "HoytRen",
+        "Aderks",
+        "matilote",
+        "ayushvtf",
+        "silviu@bwarelabs.com",
+        "mihai.ciuciu@bwarelabs.com",
+        "kim201212",
+        "puneetfinoa",
+        "aonif",
+        "bo-everstake",
+        "upnodedev",
+        "curlycrypto184",
+        "JoseCT-HS",
+        "legg",
+        "jamescorbett",
+        "frannovo",
+        "MilosTodorovic",
+        "Chainode",
+        "neulerfzco",
+        "maxzonder",
+        "Northa",
+        "Validatus-com",
+        "b-harvest",
+        "dshyionak-bd",
+        "macunha1",
+        "JackPMallon",
+        "fkbenjamin",
+        "86b",
+        "SimonKraus",
+        "ecov773",
+        "mgl2150",
+        "sibuser",
+        "sjors-lemniscap",
+        "zheli",
+        )
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -140,6 +141,13 @@ jobs:
       - name: Check if user is valid
         id: check_user
         run: echo "valid=${{ contains(fromJson(steps.get_validator_list.outputs.validator_list), steps.author.outputs.author) }}" >> $GITHUB_OUTPUT
+      - name: Check if user is valid env
+        id: check_user_env
+        run: echo "valid=${{ contains(fromJson(env.VALIDATOR_LIST), steps.author.outputs.author) }}" >> $GITHUB_OUTPUT
+      - name: Log valid
+        run: |
+          echo ${{ steps.check_user.outputs.valid }}
+          echo ${{ steps.check_user_env.outputs.valid }}
       - name: Add comment if user is not valid
         if: steps.check_user.outputs.valid == 'false'
         uses: actions/github-script@v4
