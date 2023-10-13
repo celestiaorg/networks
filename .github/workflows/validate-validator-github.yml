@@ -1,0 +1,32 @@
+name: Validate GitHub User
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  validate_user:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Get PR author
+        id: author
+        run: echo "::set-output name=author::$(jq -r '.pull_request.user.login' $GITHUB_EVENT_PATH)"
+      - name: Get validator list
+        id: get_validator_list
+        run: echo "::set-output name=validator_list::$(cat validator_list.txt)"
+      - name: Log Validator list
+        run: echo ${{ steps.get_validator_list.outputs.validator_list }}
+      - name: Check if user is valid
+        id: check_user
+        run: echo "::set-output name=valid::${{ contains(fromJson(steps.get_validator_list.outputs.validator_list), steps.author.outputs.author) }}"
+      - name: Add comment if user is not valid
+        if: steps.check_user.outputs.valid == 'false'
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { owner, repo, number } = context.issue;
+            const comment = `@MSevey The PR was submitted by someone not on the GitHub user validator list.`;
+            await github.issues.createComment({ owner, repo, issue_number: number, body: comment });
