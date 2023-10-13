@@ -2,7 +2,7 @@ name: Validate GitHub User
 
 on:
   pull_request:
-    # types: [opened]
+    types: [opened]
 
 jobs:
   validate_user:
@@ -126,6 +126,7 @@ jobs:
         "sibuser",
         "sjors-lemniscap",
         "zheli",
+        "MSevey",
         )
     steps:
       - name: Checkout code
