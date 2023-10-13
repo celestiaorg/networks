@@ -12,15 +12,15 @@ jobs:
         uses: actions/checkout@v2
       - name: Get PR author
         id: author
-        run: echo "::set-output name=author::$(jq -r '.pull_request.user.login' $GITHUB_EVENT_PATH)"
+        run: echo "author=$(jq -r '.pull_request.user.login' $GITHUB_EVENT_PATH)" >> $GITHUB_OUTPUT
       - name: Get validator list
         id: get_validator_list
-        run: echo "::set-output name=validator_list::$(cat validator_list.txt)"
+        run: echo "validator_list=$(cat validator_list.txt)" >> $GITHUB_OUTPUT
       - name: Log Validator list
         run: echo ${{ steps.get_validator_list.outputs.validator_list }}
       - name: Check if user is valid
         id: check_user
-        run: echo "::set-output name=valid::${{ contains(fromJson(steps.get_validator_list.outputs.validator_list), steps.author.outputs.author) }}"
+        run: echo "valid=${{ contains(fromJson(steps.get_validator_list.outputs.validator_list), steps.author.outputs.author) }}" >> $GITHUB_OUTPUT
       - name: Add comment if user is not valid
         if: steps.check_user.outputs.valid == 'false'
         uses: actions/github-script@v4
