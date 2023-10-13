@@ -2,7 +2,7 @@ name: Validate GitHub User
 
 on:
   pull_request:
-    types: [opened]
+    # types: [opened]
 
 jobs:
   validate_user:
@@ -15,7 +15,7 @@ jobs:
         run: echo "author=$(jq -r '.pull_request.user.login' $GITHUB_EVENT_PATH)" >> $GITHUB_OUTPUT
       - name: Get validator list
         id: get_validator_list
-        run: echo "validator_list=$(cat validator_list.txt)" >> $GITHUB_OUTPUT
+        run: echo "validator_list=$(cat .github/workflows/validator_list.txt)" >> $GITHUB_OUTPUT
       - name: Log Validator list
         run: echo ${{ steps.get_validator_list.outputs.validator_list }}
       - name: Check if user is valid
