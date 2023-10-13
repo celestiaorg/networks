@@ -1,0 +1,21 @@
+name: Validate Genesis
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.21
+      - name: Download celestiaorg/celestia-app
+        run: git clone https://github.com/celestiaorg/celestia-app.git
+      - name: Install Celestiaorg/celestia-app
+        run: cd celestia-app && make install
+      - name: Validate Genesis
+        run: celestia-appd validate-genesis /path/t0/genesis-file
