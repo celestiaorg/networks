@@ -7,6 +7,8 @@ on:
 jobs:
   validate_user:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     env:
       VALIDATOR_LIST: (
         "tiagocmachado",
@@ -149,10 +151,13 @@ jobs:
           echo ${{ steps.check_user_env.outputs.valid }}
       - name: Add comment if user is not valid
         if: steps.check_user_env.outputs.valid == 'false'
-        uses: actions/github-script@v4
+        uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const { owner, repo, number } = context.issue;
-            const comment = `@MSevey The PR was submitted by someone not on the GitHub user validator list.`;
-            await github.issues.createComment({ owner, repo, issue_number: number, body: comment });
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '@MSevey The PR was submitted by someone not on the GitHub user validator list.'
+            })
