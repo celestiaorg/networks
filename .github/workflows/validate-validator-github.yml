@@ -131,25 +131,24 @@ jobs:
       - name: Get PR author
         id: author
         run: echo "author=$(jq -r '.pull_request.user.login' $GITHUB_EVENT_PATH)" >> $GITHUB_OUTPUT
-      - name: Get validator list
-        id: get_validator_list
-        run: echo "validator_list=${{ env.VALIDATOR_LIST }}" >> $GITHUB_OUTPUT
-      - name: Log Validator env
-        run: echo ${{ env.VALIDATOR_LIST }}
-      - name: Log Validator list
-        run: echo ${{ steps.get_validator_list.outputs.validator_list }}
-      - name: Check if user is valid
-        id: check_user
-        run: echo "valid=${{ contains(fromJson(steps.get_validator_list.outputs.validator_list), steps.author.outputs.author) }}" >> $GITHUB_OUTPUT
+      # - name: Get validator list
+      #   id: get_validator_list
+      #   run: echo "validator_list=${{ env.VALIDATOR_LIST }}" >> $GITHUB_OUTPUT
+      # - name: Log Validator env
+      #   run: echo ${{ env.VALIDATOR_LIST }}
+      # - name: Log Validator list
+      #   run: echo ${{ steps.get_validator_list.outputs.validator_list }}
+      # - name: Check if user is valid
+      #   id: check_user
+      #   run: echo "valid=${{ contains(fromJson(steps.get_validator_list.outputs.validator_list), steps.author.outputs.author) }}" >> $GITHUB_OUTPUT
       - name: Check if user is valid env
         id: check_user_env
-        run: echo "valid=${{ contains(fromJson(env.VALIDATOR_LIST), steps.author.outputs.author) }}" >> $GITHUB_OUTPUT
+        run: echo "valid=${{ contains(env.VALIDATOR_LIST, steps.author.outputs.author) }}" >> $GITHUB_OUTPUT
       - name: Log valid
         run: |
-          echo ${{ steps.check_user.outputs.valid }}
           echo ${{ steps.check_user_env.outputs.valid }}
       - name: Add comment if user is not valid
-        if: steps.check_user.outputs.valid == 'false'
+        if: steps.check_user_env.outputs.valid == 'false'
         uses: actions/github-script@v4
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
