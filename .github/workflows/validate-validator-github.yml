@@ -8,7 +8,7 @@ jobs:
   validate_user:
     runs-on: ubuntu-latest
     env:
-      VALIDATOR_LIST: >
+      VALIDATOR_LIST: ->
         - "tiagocmachado"
         - "EdouardLvdl"
         - "gle1pn1r"
