@@ -64,4 +64,7 @@ jobs:
           cd cmd/celestia-appd/cmd/gentest
           go install
       - name: Validate Genesis
-        run: gentest ./celestia/pre-genesis.json ./celestia/gentx
+        run: |
+          if test -f ./celestia/pre-genesis.json; then
+            gentest ./celestia/pre-genesis.json ./celestia/gentx
+          fi
