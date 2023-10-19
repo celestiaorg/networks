@@ -2,7 +2,6 @@ name: Validate GitHub User
 
 on:
   pull_request:
-    types: [opened]
 
 jobs:
   validate_user:
@@ -127,10 +126,18 @@ jobs:
         "sjors-lemniscap",
         "zheli",
         "MSevey",
+        "liamsi",
+        "YazzyYaz",
+        "evan-forbes",
+        "qubelabsio",
+        "sysrex",
+        "mindstyle85",
+        "jcstein",
+        "mojtaba-esk",
+        "eugea",
         )
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
       - name: Get PR author
         id: author
         run: echo "author=$(jq -r '.pull_request.user.login' $GITHUB_EVENT_PATH)" >> $GITHUB_OUTPUT
@@ -149,3 +156,6 @@ jobs:
               repo: context.repo.repo,
               body: '@MSevey The PR was submitted by someone not on the GitHub user validator list.'
             })
+      - name: Fail CI if user is not valid
+        if: steps.check_user_env.outputs.valid == 'false'
+        run: exit 1
