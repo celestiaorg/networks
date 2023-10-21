@@ -106,7 +106,7 @@ func verifyJSON(filePath string) error {
 		if err != nil {
 			return err
 		}
-		if amountInt < 1 || amountInt > 9 {
+		if amountInt < 1000000 || amountInt > 9000000 {
 			return fmt.Errorf("Invalid amount: expected between 1 and 9, got %v", amountInt)
 		}
 	default:
