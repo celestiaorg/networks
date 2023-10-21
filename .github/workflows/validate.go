@@ -101,13 +101,14 @@ func verifyJSON(filePath string) error {
 			return fmt.Errorf("Invalid amount: expected at least %v got %v", expectedAmountInt*8/10, amountInt)
 		}
 	case ok10:
-		// convert amount to uint and verify it is between 1 and 9
+		// convert amount to uint and verify it is between 1 and 9 tia
 		amountInt, err := strconv.ParseUint(amount.(string), 10, 64)
 		if err != nil {
 			return err
 		}
-		if amountInt < 1 || amountInt > 9 {
-			return fmt.Errorf("Invalid amount: expected between 1 and 9, got %v", amountInt)
+		// 1 tia = 1000000 utia
+		if amountInt < 1000000 || amountInt > 9000000 {
+			return fmt.Errorf("Invalid amount: expected between 1000000 and 9000000 utia, got %v", amountInt)
 		}
 	default:
 		return errors.New("Address not found in approved list")
