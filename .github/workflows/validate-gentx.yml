@@ -29,8 +29,8 @@ jobs:
     if: needs.find-gentx-files.outputs.gentx-changed == 'true'
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
+        # with:
+        # ref: ${{ github.event.pull_request.head.ref }}
       - name: Check user csv
         id: check-user-pr
         run: go run .github/workflows/checkuser.go ${{github.actor}} ${{github.event.number}}
