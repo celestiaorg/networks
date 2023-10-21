@@ -1,6 +1,13 @@
 name: Validate Gentx
 on:
-  pull_request:
+  # Using pull_request_target to allow forks to write comments and update the
+  # csv file that is tracking the authors.
+  # This is OK because of the branch protections we have on the repo so forks
+  # can't change anything without their PR being approved.
+  #
+  # NOTE: This means we should be careful when extending this specific workflow
+  # file.
+  pull_request_target:
 
 jobs:
   find-gentx-files:
