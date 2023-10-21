@@ -3,7 +3,7 @@ on:
   pull_request:
   push:
     branches:
-      - main
+      - master
 jobs:
   no-change:
     runs-on: ubuntu-latest
@@ -65,6 +65,6 @@ jobs:
           go install
       - name: Validate Genesis
         run: |
-          if test -f ./celestia/pre-genesis.json; then
+          if [[-f ./celestia/pre-genesis.json && -d ./celestia/gentx ]]; then
             gentest ./celestia/pre-genesis.json ./celestia/gentx
           fi
