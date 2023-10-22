@@ -29,15 +29,13 @@ jobs:
       - uses: actions/checkout@v4
       - name: List all changed files
         run: |
-          - name: Validate JSON formatting
-            run: |
-              for file in ${{ needs.find-gentx-files.outputs.gentx-files }}; do
-                formatted=$(jq -c . $file)
-                if [ "$formatted" != "$(cat $file)" ]; then
-                  echo "$file gentx file not formatted"
-                  exit 1
-                fi
-              done
+          for file in ${{ needs.find-gentx-files.outputs.gentx-files }}; do
+            formatted=$(jq -c . $file)
+            if [ "$formatted" != "$(cat $file)" ]; then
+              echo "$file gentx file not formatted"
+              exit 1
+            fi
+          done
 
   valid-gentx:
     needs: find-gentx-files
