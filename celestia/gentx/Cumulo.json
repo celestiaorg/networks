@@ -4,7 +4,7 @@
       {
         "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
         "description": {
-          "moniker": "",
+          "moniker": "Cumulo",
           "identity": "77158D6796D16CD0",
           "website": "https://cumulo.pro",
           "security_contact": "cumulo.pro@gmail.com",
@@ -57,6 +57,6 @@
     "tip": null
   },
   "signatures": [
-    "ZOPI1iu21MEAU2XgDrmD4RRdwo3yvjdSa0KPYe6aGkBq3z5StJAVJZAuzYxYUW/mGFE0MT3QY61Xv3T3bgrWVw=="
+    "hQ4oQ9bBTZQTLrgVyqeSkDVUMV0FPDCQe2LRVl7fzgotR1Y9IkwvIoLNEBG434Ckz10PSe14MTmxYGUzBO8xJQ=="
   ]
 }
