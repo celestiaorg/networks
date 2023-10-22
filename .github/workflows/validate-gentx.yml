@@ -24,7 +24,7 @@ jobs:
   jq-format:
     needs: find-gentx-files
     runs-on: ubuntu-latest
-    if: ${{ needs.find-gentx-files.outputs.gentx-files != "" }}
+    if: ${{ needs.find-gentx-files.outputs.gentx-files != '' }}
     steps:
       - uses: actions/checkout@v4
       - name: List all changed files
@@ -42,7 +42,7 @@ jobs:
   valid-gentx:
     needs: find-gentx-files
     runs-on: ubuntu-latest
-    if: ${{ needs.find-gentx-files.outputs.gentx-files != "" }}
+    if: ${{ needs.find-gentx-files.outputs.gentx-files != '' }}
     steps:
       - uses: actions/checkout@v4
       - name: Setup Go
