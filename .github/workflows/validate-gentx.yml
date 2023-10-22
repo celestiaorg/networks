@@ -27,12 +27,16 @@ jobs:
     if: ${{ needs.find-gentx-files.outputs.gentx-files != '' }}
     steps:
       - uses: actions/checkout@v4
-      - name: List all changed files
+      - name: Check gentx files against jq
         run: |
           for file in ${{ needs.find-gentx-files.outputs.gentx-files }}; do
-            formatted=$(jq -c . $file)
+            formatted=$(jq . $file)
             if [ "$formatted" != "$(cat $file)" ]; then
               echo "$file gentx file not formatted"
+              echo "expected:"
+              echo $formatted
+              echo "found:"
+              cat $file
               exit 1
             fi
           done
