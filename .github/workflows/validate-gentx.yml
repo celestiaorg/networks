@@ -28,42 +28,6 @@ jobs:
           echo "gentx-files=${{ steps.changed-files.outputs.all_changed_files }}" >> "$GITHUB_OUTPUT"
           echo "gentx-changed=${{ steps.changed-files.outputs.any_changed }}" >> "$GITHUB_OUTPUT"
 
-  check-user-pr:
-    needs: find-gentx-files
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-    if: needs.find-gentx-files.outputs.gentx-changed == 'true'
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.COMMIT_CSV_UPDATE }}
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.event.pull_request.head.ref }}
-      - uses: actions/setup-go@v4
-        with:
-          go-version: 1.21
-      - name: Check user csv
-        id: check-user-pr
-        run: go run .github/workflows/checkuser.go ${{github.actor}} ${{github.event.number}}
-      - name: Add comment about user in csv
-        if: failure()
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: 'User has previously submitted a gentx PR'
-            })
-      - name: Commit changes to the csv
-        if: success()
-        uses: EndBug/add-and-commit@v9
-        with:
-          message: "Add ${{github.actor}} with pr ${{github.event.number}} to usersprs.csv file"
-
   jq-format:
     needs: find-gentx-files
     runs-on: ubuntu-latest
