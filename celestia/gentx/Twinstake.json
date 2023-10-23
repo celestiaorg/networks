@@ -1,0 +1,62 @@
+{
+    "body": {
+        "messages": [
+            {
+                "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+                "description": {
+                    "moniker": "Twinstake",
+                    "identity": "A7823F4D765E18AB",
+                    "website": "https://twinstake.io",
+                    "security_contact": "hello@twinstake.io",
+                    "details": "Twinstake is an institutional-grade, non-custodial staking provider designed and built in collaboration with leaders in the digital assets space. The platform offers industry leading performance, institutional-grade security and uncompromising Know Your Client (KYC) procedures."
+                },
+                "commission": {
+                    "rate": "0.100000000000000000",
+                    "max_rate": "0.200000000000000000",
+                    "max_change_rate": "0.020000000000000000"
+                },
+                "min_self_delegation": "1",
+                "delegator_address": "celestia1mhux0vt6qszz8qwv8axggt02jjm7tuvdvgq835",
+                "validator_address": "celestiavaloper1mhux0vt6qszz8qwv8axggt02jjm7tuvdfhz78j",
+                "pubkey": {
+                    "@type": "/cosmos.crypto.ed25519.PubKey",
+                    "key": "qWEq7neppaXl9C3BkYN9OXBy9A5lIiOV551oFzj097c="
+                },
+                "value": {
+                    "denom": "utia",
+                    "amount": "63300000000"
+                }
+            }
+        ],
+        "memo": "f2ecdd78f28e5e3764e2273c568529110dc173a4@10.4.20.109:26656",
+        "timeout_height": "0",
+        "extension_options": [],
+        "non_critical_extension_options": []
+    },
+    "auth_info": {
+        "signer_infos": [
+            {
+                "public_key": {
+                    "@type": "/cosmos.crypto.secp256k1.PubKey",
+                    "key": "A5vi4mCFMtIvQfe/ggD23jUTOyYM94uRPh5K6ah2to2c"
+                },
+                "mode_info": {
+                    "single": {
+                        "mode": "SIGN_MODE_DIRECT"
+                    }
+                },
+                "sequence": "0"
+            }
+        ],
+        "fee": {
+            "amount": [],
+            "gas_limit": "210000",
+            "payer": "",
+            "granter": ""
+        },
+        "tip": null
+    },
+    "signatures": [
+        "J6q8ZJKjSJUKupfZl/198NwvCYzYMp6NiEW29q5yKAdpUXMIwmcc6AIbhv+tYu+dZ05x4sEzC/7Kp3WK0TuQGw=="
+    ]
+}
