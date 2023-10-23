@@ -5,9 +5,9 @@
         "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
         "description": {
           "moniker": "ContributionDAO",
-          "identity": "3034BD2560DD86B4",
-          "website": "https://contributiondao.com",
-          "security_contact": "contacts@contributiondao.com",
+          "identity": "",
+          "website": "",
+          "security_contact": "",
           "details": ""
         },
         "commission": {
