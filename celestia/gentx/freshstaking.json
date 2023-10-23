@@ -13,7 +13,7 @@
         "commission": {
           "rate": "0.050000000000000000",
           "max_rate": "0.200000000000000000",
-          "max_change_rate": "0.010000000000000000"
+          "max_change_rate": "0.050000000000000000"
         },
         "min_self_delegation": "1",
         "delegator_address": "celestia17h2x3j7u44qkrq0sk8ul0r2qr440rwgjzhd27f",
@@ -57,6 +57,6 @@
     "tip": null
   },
   "signatures": [
-    "TPaNBLTIUiw0QwJCzqxxwkDV/REOGC1EZQ+1CjvTL20nTPDRU6zZs5r8dprc1jfaMGByk3zvz9rNfZxPtJYU4A=="
+    "bl5kZW0Bz50KPLF4m90hH4dKwtKmx/GhDDKYbmuaOaALbeUd/7Bc3oBDPbhB0TCdRPvFi/xsaI9+ErKXXxOfQg=="
   ]
 }
