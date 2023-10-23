@@ -34,9 +34,14 @@ jobs:
             if [ "$formatted" != "$(cat $file)" ]; then
               echo "$file gentx file not formatted"
               echo "expected:"
-              echo $formatted
+              echo "$formatted"
               echo "found:"
               cat $file
+              echo ""
+              echo "Hexdump of file:"
+              head -c 100 "$file" | hexdump -C
+              echo "Hexdump of jq output:"
+              echo "$formatted" | head -c 100 | hexdump -C
               exit 1
             fi
           done
