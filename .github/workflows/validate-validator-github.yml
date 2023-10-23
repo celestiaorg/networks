@@ -10,6 +10,7 @@ jobs:
       pull-requests: write
     env:
       VALIDATOR_LIST: (
+        "silviugae",
         "tiagocmachado",
         "EdouardLvdl",
         "gle1pn1r",
