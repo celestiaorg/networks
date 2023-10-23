@@ -1,0 +1,62 @@
+{
+    "body": {
+      "messages": [
+        {
+          "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+          "description": {
+            "moniker": "spidey",
+            "identity": "",
+            "website": "",
+            "security_contact": "",
+            "details": ""
+          },
+          "commission": {
+            "rate": "0.050000000000000000",
+            "max_rate": "0.120000000000000000",
+            "max_change_rate": "0.010000000000000000"
+          },
+          "min_self_delegation": "1",
+          "delegator_address": "celestia1st4h4ymu52hwtl3s0n298t6adj0vputxzdv7sd",
+          "validator_address": "celestiavaloper1st4h4ymu52hwtl3s0n298t6adj0vputx8jw8xt",
+          "pubkey": {
+            "@type": "/cosmos.crypto.ed25519.PubKey",
+            "key": "Fbfw6jVFxmKZiP90xYqWEprG/KskYFJjFtNnKAEwXLU="
+          },
+          "value": {
+            "denom": "utia",
+            "amount": "8000000"
+          }
+        }
+      ],
+      "memo": "628be619499c74be464792627db29a8e83b432c9@192.168.0.103:26656",
+      "timeout_height": "0",
+      "extension_options": [],
+      "non_critical_extension_options": []
+    },
+    "auth_info": {
+      "signer_infos": [
+        {
+          "public_key": {
+            "@type": "/cosmos.crypto.secp256k1.PubKey",
+            "key": "A2jd/+FkwixJ4gLOPpNXf1vlm0p0JQvutj+qBdNC64dM"
+          },
+          "mode_info": {
+            "single": {
+              "mode": "SIGN_MODE_DIRECT"
+            }
+          },
+          "sequence": "0"
+        }
+      ],
+      "fee": {
+        "amount": [],
+        "gas_limit": "210000",
+        "payer": "",
+        "granter": ""
+      },
+      "tip": null
+    },
+    "signatures": [
+      "q0lXQGzKuFbTgJAitAyxUG8rJvVNwUZ7BeqzXOyjI9t9f5GVQ9l6sAbnsmgKLGKiSd+QxmqH4jUWU5W8GWO7rQ=="
+    ]
+  }
