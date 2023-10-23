@@ -13,7 +13,7 @@
         "commission": {
           "rate": "0.050000000000000000",
           "max_rate": "0.200000000000000000",
-          "max_change_rate": "0.010000000000000000"
+          "max_change_rate": "0.050000000000000000"
         },
         "min_self_delegation": "1",
         "delegator_address": "celestia1m07mptc7nhz2qk55qa8xeyqt992sktddw354an",
