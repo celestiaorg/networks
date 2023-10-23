@@ -33,11 +33,10 @@ jobs:
           go-version: 1.21.1
       - name: Download celestiaorg/celestia-app
         run: git clone https://github.com/celestiaorg/celestia-app.git
-      - name: Checkout test branch and Install celestia-app
+      - name: Checkout latest celestia-app release
         run: |
           cd celestia-app
           git checkout v1.2.0
-          go mod tidy
           make install
       # Validation checks https://github.com/cosmos/cosmos-sdk/blob/bff3104781cca3c409fecfa3efebd80a40eb48c3/x/genutil/types/genesis.go#L53
       - name: Validate Pre Genesis
