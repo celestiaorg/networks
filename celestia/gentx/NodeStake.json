@@ -1,0 +1,62 @@
+{
+  "body": {
+    "messages": [
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+        "description": {
+          "moniker": "NodeStake",
+          "identity": "94EFE192B2C52424",
+          "website": "https://nodestake.top",
+          "security_contact": "info@nodestake.top",
+          "details": "NodeStake is the professional validator, infrastructure provider and IBC relayer.⚛️7*24h | https://twitter.com/Nodestake_top"
+        },
+        "commission": {
+          "rate": "0.050000000000000000",
+          "max_rate": "0.200000000000000000",
+          "max_change_rate": "0.200000000000000000"
+        },
+        "min_self_delegation": "1",
+        "delegator_address": "celestia19f0w9svr905fhefusyx4z8sf83j6et0g3p3ppp",
+        "validator_address": "celestiavaloper19f0w9svr905fhefusyx4z8sf83j6et0g57nch8",
+        "pubkey": {
+          "@type": "/cosmos.crypto.ed25519.PubKey",
+          "key": "+Fd7ar/vc1cnJVgX3px7N5LrDbQsirHND+5wtfRK1DA="
+        },
+        "value": {
+          "denom": "utia",
+          "amount": "53800000000"
+        }
+      }
+    ],
+    "memo": "8240e8a13594d40b6839f183795c551503309d3c@57.128.87.18:26656",
+    "timeout_height": "0",
+    "extension_options": [],
+    "non_critical_extension_options": []
+  },
+  "auth_info": {
+    "signer_infos": [
+      {
+        "public_key": {
+          "@type": "/cosmos.crypto.secp256k1.PubKey",
+          "key": "AyXNapUUTmRRsDn68E0Ld+4/y8HnqKZ7VcX1ZAeyJ8U3"
+        },
+        "mode_info": {
+          "single": {
+            "mode": "SIGN_MODE_DIRECT"
+          }
+        },
+        "sequence": "0"
+      }
+    ],
+    "fee": {
+      "amount": [],
+      "gas_limit": "210000",
+      "payer": "",
+      "granter": ""
+    },
+    "tip": null
+  },
+  "signatures": [
+    "8caqvV/PprLl0R5F5g79Q9BcLo5FNr2mjgVAMtg6JD4H4imUhUlRmQsEhaY+7EYvrCthJ7NZ+UUB7B0CbjvqnA=="
+  ]
+}

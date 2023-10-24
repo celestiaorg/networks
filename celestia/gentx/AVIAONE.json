@@ -1,0 +1,62 @@
+{
+  "body": {
+    "messages": [
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+        "description": {
+          "moniker": "AVIAONE 🟢",
+          "identity": "DCD3D6C0BF61C200",
+          "website": "https://aviaone.com",
+          "security_contact": "",
+          "details": "Staking with Aviaone 🟢 generate a yield and your tokens stays on your wallet 🔑 🔒. NO TRANSFER REQUIRED 👍"
+        },
+        "commission": {
+          "rate": "0.050000000000000000",
+          "max_rate": "0.500000000000000000",
+          "max_change_rate": "0.100000000000000000"
+        },
+        "min_self_delegation": "1",
+        "delegator_address": "celestia1e7jh5dt02ee5k6vrfls0ttuxyj9k0g5a42tl2q",
+        "validator_address": "celestiavaloper1e7jh5dt02ee5k6vrfls0ttuxyj9k0g5as4fxux",
+        "pubkey": {
+          "@type": "/cosmos.crypto.ed25519.PubKey",
+          "key": "XKPJp8fSr/wPh3RcIAApC25x2B/jLoRmYXkUzBu5MV4="
+        },
+        "value": {
+          "denom": "utia",
+          "amount": "8000000"
+        }
+      }
+    ],
+    "memo": "9a82b9bc0ab0f15692952aa829c8ba7d2f55315f@1.2.3.4:26656",
+    "timeout_height": "0",
+    "extension_options": [],
+    "non_critical_extension_options": []
+  },
+  "auth_info": {
+    "signer_infos": [
+      {
+        "public_key": {
+          "@type": "/cosmos.crypto.secp256k1.PubKey",
+          "key": "A7pAfmtfGBPoc/Pa92lD8kmFJa2DL/lIfcCjeipTrooO"
+        },
+        "mode_info": {
+          "single": {
+            "mode": "SIGN_MODE_DIRECT"
+          }
+        },
+        "sequence": "0"
+      }
+    ],
+    "fee": {
+      "amount": [],
+      "gas_limit": "210000",
+      "payer": "",
+      "granter": ""
+    },
+    "tip": null
+  },
+  "signatures": [
+    "Y/Et8EZcYHb/8wp0p/NnU+Z2fDv13mhi5yqlInRSt6p1HqXEXvLYpKrygfOs4lWMHT1VVUl+pkqAsGlGGfvg/w=="
+  ]
+}
