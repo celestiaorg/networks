@@ -1,0 +1,62 @@
+{
+  "body": {
+    "messages": [
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+        "description": {
+          "moniker": "ZKValidator",
+          "identity": "",
+          "website": "https://zkvalidator.com",
+          "security_contact": "devops@zkvalidator.com",
+          "details": "Zero Knowledge Validator: Stake & Support ZKP Research & Privacy Tech"
+        },
+        "commission": {
+          "rate": "0.100000000000000000",
+          "max_rate": "0.200000000000000000",
+          "max_change_rate": "0.100000000000000000"
+        },
+        "min_self_delegation": "1",
+        "delegator_address": "celestia187avawwq7qhanrkxf45mayztdqsr49huzqmmm3",
+        "validator_address": "celestiavaloper187avawwq7qhanrkxf45mayztdqsr49hu8lezdh",
+        "pubkey": {
+          "@type": "/cosmos.crypto.ed25519.PubKey",
+          "key": "ueUh8xh/b1zlBcCgblxHrZ9impMwKOkgyG5P3f1HkjE="
+        },
+        "value": {
+          "denom": "utia",
+          "amount": "8000000"
+        }
+      }
+    ],
+    "memo": "572cb08735d4572fe62b2fc8b9555c479d8e162f@65.108.137.217:26656",
+    "timeout_height": "0",
+    "extension_options": [],
+    "non_critical_extension_options": []
+  },
+  "auth_info": {
+    "signer_infos": [
+      {
+        "public_key": {
+          "@type": "/cosmos.crypto.secp256k1.PubKey",
+          "key": "Al8SRkVkR6L279CtmVXYOt10l44z6oCINYal8nhxbb8O"
+        },
+        "mode_info": {
+          "single": {
+            "mode": "SIGN_MODE_DIRECT"
+          }
+        },
+        "sequence": "0"
+      }
+    ],
+    "fee": {
+      "amount": [],
+      "gas_limit": "210000",
+      "payer": "",
+      "granter": ""
+    },
+    "tip": null
+  },
+  "signatures": [
+    "cMqEzGokIHcDsvm2cDqSYPVz8g1XNHAourNmAKPWmJd2iyfCfxyMCW3ofAjW7uaLfwwT4L8uqSPhow49E9VOHQ=="
+  ]
+}
