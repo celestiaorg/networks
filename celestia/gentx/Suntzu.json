@@ -1,0 +1,62 @@
+{
+  "body": {
+    "messages": [
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+        "description": {
+          "moniker": "Suntzu",
+          "identity": "7DD13EEADCA17730",
+          "website": "",
+          "security_contact": "",
+          "details": "The best choice for staking!"
+        },
+        "commission": {
+          "rate": "0.070000000000000000",
+          "max_rate": "0.200000000000000000",
+          "max_change_rate": "0.010000000000000000"
+        },
+        "min_self_delegation": "1",
+        "delegator_address": "celestia1vl2ef86uxflhdy2qvy9f7qdpwzuw5jmar6gejm",
+        "validator_address": "celestiavaloper1vl2ef86uxflhdy2qvy9f7qdpwzuw5jmax92qya",
+        "pubkey": {
+          "@type": "/cosmos.crypto.ed25519.PubKey",
+          "key": "rx/gvLop1aFsgQuat/513H30+xoRhDJo1rEySxQ3xdM="
+        },
+        "value": {
+          "denom": "utia",
+          "amount": "75555984000"
+        }
+      }
+    ],
+    "memo": "53784ef1e0d9767258b1da5d39c337f66baed5ba@65.21.29.41:26656",
+    "timeout_height": "0",
+    "extension_options": [],
+    "non_critical_extension_options": []
+  },
+  "auth_info": {
+    "signer_infos": [
+      {
+        "public_key": {
+          "@type": "/cosmos.crypto.secp256k1.PubKey",
+          "key": "A5IeYS5KJMaSPh9ItQ7IYNKvF+2SAKygleqvOZcjN3Z2"
+        },
+        "mode_info": {
+          "single": {
+            "mode": "SIGN_MODE_DIRECT"
+          }
+        },
+        "sequence": "0"
+      }
+    ],
+    "fee": {
+      "amount": [],
+      "gas_limit": "210000",
+      "payer": "",
+      "granter": ""
+    },
+    "tip": null
+  },
+  "signatures": [
+    "B/QXHd1K8DjnJj7q8ZFxorg0ulwYsW7CaklAW9YrirNdVB//99kyuHdggpItJIFjekHulTY9a8Qti9kE6ObPiw=="
+  ]
+}
