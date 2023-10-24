@@ -5,10 +5,10 @@
         "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
         "description": {
           "moniker": "ContributionDAO",
-          "identity": "",
-          "website": "",
+          "identity": "3034BD2560DD86B4",
+          "website": "https://contributiondao.com",
           "security_contact": "",
-          "details": ""
+          "details": "Bootstrapping Quality Talents and Onboarding Users to the Projects for making opportunities in Web 3.0 accessible to everyone."
         },
         "commission": {
           "rate": "0.100000000000000000",
@@ -24,7 +24,7 @@
         },
         "value": {
           "denom": "utia",
-          "amount": "9000000"
+          "amount": "60000000000"
         }
       }
     ],
@@ -57,6 +57,6 @@
     "tip": null
   },
   "signatures": [
-    "JonWbqbn/FdujgtZekcydjk+qRTmMtg2475ajBM669YlheEhXSI5Lnm2B41SW3P4rnvqfRULQMd4IXuHjqs4Uw=="
+    "ESTEmLIJIzFhCrttczelyjZp6tEyDBxrkUPni4elHyxE3K00a2sI4145PRmx50KAFcNCdc9OSOxDSuhauN1dvQ=="
   ]
 }
