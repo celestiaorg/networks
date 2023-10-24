@@ -8,7 +8,7 @@
           "identity": "2E0040A44894A00D",
           "website": "https://blackblocks.io",
           "security_contact": "security@blackblocks.io",
-          "details": "Collaborative validator featuring WayneWayner, a top-10 participant in the Blockspace Race (incentivized validator testnet), and winner of the light node challenge, along with BlackBlocks GmbH, a professional node infrastructure company. Our validator is housed at firstcolo FRA4, Germany."
+          "details": "Collaborative validator featuring WayneWayner, a top-10 participant in the Blockspace Race (incentivized testnet), and winner of the light node challenge, along with BlackBlocks GmbH, a professional node infrastructure company. Our validator is housed at firstcolo FRA4, Germany."
         },
         "commission": {
           "rate": "0.050000000000000000",
@@ -57,6 +57,6 @@
     "tip": null
   },
   "signatures": [
-    "MhcCWLeW1TkZqV43I1gtVOq6XFFQlT2hiZ8Lxp/9gIU8Lo0x3XaoA/wGbhQMXS+NILP06H0OvpD1/8OJDULZWg=="
+    "YFNUBuV50Emy5+67IzeSqOzed4MumhoIlpY1s8XZUPZkutgEFio+HDgPvNTk7h0aufhGwwTjxunhmwptTBFRKQ=="
   ]
 }
