@@ -1,0 +1,73 @@
+name: Validate Genesis
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+jobs:
+  no-change:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check for Genesis file changes
+        id: changed-genesis-files
+        uses: tj-actions/changed-files@v39
+        with:
+          files: "**/*genesis.json"
+
+      - name: Fail if any changes in genesis file
+        if: steps.changed-genesis-files.outputs.any_changed == 'true'
+        run: |
+          echo "change in genesis.json file detected!"  
+          exit 1
+
+  appd-validate-genesis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: 1.21.1
+      - name: Download celestiaorg/celestia-app
+        run: git clone https://github.com/celestiaorg/celestia-app.git
+      - name: Checkout latest celestia-app release
+        run: |
+          cd celestia-app
+          git checkout v1.2.0
+          make install
+      # Validation checks https://github.com/cosmos/cosmos-sdk/blob/bff3104781cca3c409fecfa3efebd80a40eb48c3/x/genutil/types/genesis.go#L53
+      - name: Validate Pre Genesis
+        run: |
+          if test -f ./celestia/pre-genesis.json; then
+            celestia-appd validate-genesis ./celestia/pre-genesis.json
+          fi
+      - name: Validate Genesis
+        run: |
+          if test -f ./celestia/genesis.json; then
+            celestia-appd validate-genesis ./celestia/genesis.json
+          fi
+
+  run-network:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: 1.21
+      - name: Download celestiaorg/celestia-app
+        run: git clone https://github.com/celestiaorg/celestia-app.git
+      - name: Checkout test branch and Install gentest util
+        run: |
+          cd celestia-app
+          git checkout evan/mainnet-tooling
+          cd cmd/celestia-appd/cmd/gentest
+          go install
+      - name: Validate Genesis
+        run: |
+          if test -f ./celestia/pre-genesis.json && test -d ./celestia/gentx; then
+            gentest ./celestia/pre-genesis.json ./celestia/gentx
+          fi

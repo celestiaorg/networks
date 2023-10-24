@@ -1,0 +1,6 @@
+0293f2cf7184da95bc6ea6ff31c7e97578b9c7ff@65.109.106.95:26656
+8f14ec71e1d712c912c27485a169c2519628cfb6@celest-test-seed.theamsolutions.info:22256
+fedea9723696360d429a23792225594779cc7cd7@celestia-testnet-seed.itrocket.net:11656
+f97a75fb69d3a5fe893dca7c8d238ccc0bd66a8f@celestia-blockspacerace.seed.brocha.in:30583
+c97019ef9ee43e93ad9019514b612e6b8363c3fd@138.201.63.38:26686
+9aa8a73ea9364aa3cf7806d4dd25b6aed88d8152@celestia-itn.seed.mzonder.com:11656
