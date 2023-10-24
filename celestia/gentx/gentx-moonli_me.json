@@ -1,0 +1,62 @@
+{
+  "body": {
+    "messages": [
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+        "description": {
+          "moniker": "moonli.me",
+          "identity": "662AEC27BD90D036",
+          "website": "https://moonli.me",
+          "security_contact": "tequila@moonli.me",
+          "details": "Independent Staking Provider"
+        },
+        "commission": {
+          "rate": "0.100000000000000000",
+          "max_rate": "0.250000000000000000",
+          "max_change_rate": "0.020000000000000000"
+        },
+        "min_self_delegation": "1",
+        "delegator_address": "celestia1qx43f066sh6728avms4qq09cj2a3mg83ghswuv",
+        "validator_address": "celestiavaloper1qx43f066sh6728avms4qq09cj2a3mg83dgjh22",
+        "pubkey": {
+          "@type": "/cosmos.crypto.ed25519.PubKey",
+          "key": "njOL+kmlgZZHb6mf3/Mrep9jUK6A3lhpQyIkknlME4U="
+        },
+        "value": {
+          "denom": "utia",
+          "amount": "8000000"
+        }
+      }
+    ],
+    "memo": "95c00bb9f24e907891e9a98c4ad506af093a7944@87.106.237.243:26656",
+    "timeout_height": "0",
+    "extension_options": [],
+    "non_critical_extension_options": []
+  },
+  "auth_info": {
+    "signer_infos": [
+      {
+        "public_key": {
+          "@type": "/cosmos.crypto.secp256k1.PubKey",
+          "key": "A1YaPP8z4mCftWTYZJ+YVjmUv31YOizQSKjC7lLMIPjS"
+        },
+        "mode_info": {
+          "single": {
+            "mode": "SIGN_MODE_DIRECT"
+          }
+        },
+        "sequence": "0"
+      }
+    ],
+    "fee": {
+      "amount": [],
+      "gas_limit": "210000",
+      "payer": "",
+      "granter": ""
+    },
+    "tip": null
+  },
+  "signatures": [
+    "BOjr5W3zPV4zwwCNgk98Q1Q/aNuBmEcI3Yt6V0MJQvtPBpzUxeRdCG4trwxV/izoKAAXT8B6jFL3Mknn5HjMGw=="
+  ]
+}
