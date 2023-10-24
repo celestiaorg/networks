@@ -1,0 +1,62 @@
+{
+  "body": {
+    "messages": [
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+        "description": {
+          "moniker": "NakoTurk",
+          "identity": "CD2574B68358E7B3",
+          "website": "https://github.com/okannako",
+          "security_contact": "cryptochainnakoturk@gmail.com",
+          "details": "Validator | Node Runner | Crypto and Blockchain Enthusiast 🔗"
+        },
+        "commission": {
+          "rate": "0.050000000000000000",
+          "max_rate": "0.200000000000000000",
+          "max_change_rate": "0.010000000000000000"
+        },
+        "min_self_delegation": "1",
+        "delegator_address": "celestia1pnzrk7yzx0nr9xrcjyswj7ram4qxlrfz0cy49u",
+        "validator_address": "celestiavaloper1pnzrk7yzx0nr9xrcjyswj7ram4qxlrfz28xvn6",
+        "pubkey": {
+          "@type": "/cosmos.crypto.ed25519.PubKey",
+          "key": "wABEWz0WhQoHosUoSM0nw86u261vJiikQ2jgCQ0mNYk="
+        },
+        "value": {
+          "denom": "utia",
+          "amount": "8000000"
+        }
+      }
+    ],
+    "memo": "1d824f2cf4df9c9da98c120b78be3f4319a1d7ff@46.4.23.42:26656",
+    "timeout_height": "0",
+    "extension_options": [],
+    "non_critical_extension_options": []
+  },
+  "auth_info": {
+    "signer_infos": [
+      {
+        "public_key": {
+          "@type": "/cosmos.crypto.secp256k1.PubKey",
+          "key": "As8v1Yy3cZpQG2Cq9UIAmgm5EvutOdbirgTKOMfRNar2"
+        },
+        "mode_info": {
+          "single": {
+            "mode": "SIGN_MODE_DIRECT"
+          }
+        },
+        "sequence": "0"
+      }
+    ],
+    "fee": {
+      "amount": [],
+      "gas_limit": "210000",
+      "payer": "",
+      "granter": ""
+    },
+    "tip": null
+  },
+  "signatures": [
+    "Lbbwq9/5sxXhMqJ3cfcr1ogeDCk6IiLeLVQ0epoOHdUuIvUw4S0YQCZR0syQem745JjtJmaWSup8lCsNO8TN0A=="
+  ]
+}
