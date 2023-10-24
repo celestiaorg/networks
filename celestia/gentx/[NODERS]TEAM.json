@@ -24,7 +24,7 @@
         },
         "value": {
           "denom": "utia",
-          "amount": "53000000"
+          "amount": "53000000000"
         }
       }
     ],
@@ -57,6 +57,6 @@
     "tip": null
   },
   "signatures": [
-    "Ctf03azseIkivE81GpFP3M3tMLtvJItXY9FyJVfojUQbsc6SFKb/FLw6flwvKmGo+Sf5G15/yMTtsBYMJvUJOw=="
+    "vdaeijCeWN/bfYsDA5pZ0cvDZJKWi+UqTLn/TztYTaEwAXjz5K7WXYBPZkCIdWvlrV+vaadPbx63TYKs/GvYmA=="
   ]
 }
