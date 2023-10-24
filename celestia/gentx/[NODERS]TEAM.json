@@ -1,0 +1,62 @@
+{
+  "body": {
+    "messages": [
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+        "description": {
+          "moniker": "[NODERS]TEAM",
+          "identity": "B38EBF2F38B998F4",
+          "website": "https://noders.team",
+          "security_contact": "office@noders.team",
+          "details": "Tell me what node you set, and I will tell you who you are"
+        },
+        "commission": {
+          "rate": "0.100000000000000000",
+          "max_rate": "0.200000000000000000",
+          "max_change_rate": "0.020000000000000000"
+        },
+        "min_self_delegation": "1",
+        "delegator_address": "celestia139mu0a0ucz0gmrkavm5wjar2lpx7yvxq5xgd0j",
+        "validator_address": "celestiavaloper139mu0a0ucz0gmrkavm5wjar2lpx7yvxq3e25e5",
+        "pubkey": {
+          "@type": "/cosmos.crypto.ed25519.PubKey",
+          "key": "m7tzBRBy/nTfmNCNelQtq0Bme3QOK3Bv+ACrnUfNFgo="
+        },
+        "value": {
+          "denom": "utia",
+          "amount": "53000000000"
+        }
+      }
+    ],
+    "memo": "24a869f01efa19104dbce61ae6697952a9e9a5d2@0.0.0.0:26656",
+    "timeout_height": "0",
+    "extension_options": [],
+    "non_critical_extension_options": []
+  },
+  "auth_info": {
+    "signer_infos": [
+      {
+        "public_key": {
+          "@type": "/cosmos.crypto.secp256k1.PubKey",
+          "key": "Alxb70AydK7EravoM1kz5aIV76emXA9iJqxFHQZBeese"
+        },
+        "mode_info": {
+          "single": {
+            "mode": "SIGN_MODE_DIRECT"
+          }
+        },
+        "sequence": "0"
+      }
+    ],
+    "fee": {
+      "amount": [],
+      "gas_limit": "210000",
+      "payer": "",
+      "granter": ""
+    },
+    "tip": null
+  },
+  "signatures": [
+    "vdaeijCeWN/bfYsDA5pZ0cvDZJKWi+UqTLn/TztYTaEwAXjz5K7WXYBPZkCIdWvlrV+vaadPbx63TYKs/GvYmA=="
+  ]
+}
