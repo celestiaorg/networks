@@ -22,7 +22,10 @@
           "@type": "/cosmos.crypto.ed25519.PubKey",
           "key": "DUjLobSYVLIGTJaUHx7dpExRTnh/E5FhktNDVq18Zv0="
         },
-        "value": { "denom": "utia", "amount": "75000000000" }
+        "value": {
+          "denom": "utia",
+          "amount": "75000000000"
+        }
       }
     ],
     "memo": "b9d80602f39f644380258592766f924efecf692b@192.168.1.200:26656",
@@ -37,11 +40,20 @@
           "@type": "/cosmos.crypto.secp256k1.PubKey",
           "key": "A9wy/tPya7kfXNsnRVbEn2PxzxD8nS2Qap8r4yrk84FJ"
         },
-        "mode_info": { "single": { "mode": "SIGN_MODE_LEGACY_AMINO_JSON" } },
+        "mode_info": {
+          "single": {
+            "mode": "SIGN_MODE_LEGACY_AMINO_JSON"
+          }
+        },
         "sequence": "0"
       }
     ],
-    "fee": { "amount": [], "gas_limit": "210000", "payer": "", "granter": "" },
+    "fee": {
+      "amount": [],
+      "gas_limit": "210000",
+      "payer": "",
+      "granter": ""
+    },
     "tip": null
   },
   "signatures": [
