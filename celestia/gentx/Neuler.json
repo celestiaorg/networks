@@ -11,7 +11,7 @@
           "details": "Accelerating decentralization"
         },
         "commission": {
-          "rate": "0.050000000000000000",
+          "rate": "0.120000000000000000",
           "max_rate": "0.120000000000000000",
           "max_change_rate": "0.050000000000000000"
         },
@@ -57,6 +57,6 @@
     "tip": null
   },
   "signatures": [
-    "cMRW7sIXJZnNq2kZhPpauX21Svf4j2633rSAuI7JTO8Aiz7FLfHTjQtfKd70oDVwkfMwcqiTpcfL37x0d3lpoA=="
+    "usBO9bvS54XnvaHBS+RYW9yZZX/AwyOrxD155bM35pZBFRPBcmkiRDBY1hWsFa9C8dzG+wKnrdZPYhuEQ8h4Vw=="
   ]
 }
