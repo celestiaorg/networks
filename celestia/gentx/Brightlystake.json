@@ -1,0 +1,62 @@
+{
+  "body": {
+    "messages": [
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+        "description": {
+          "moniker": "Brightlystake",
+          "identity": "545033B5FD01FC86",
+          "website": "https://brightlystake.com",
+          "security_contact": "",
+          "details": "Stake with confidence"
+        },
+        "commission": {
+          "rate": "0.050000000000000000",
+          "max_rate": "0.100000000000000000",
+          "max_change_rate": "0.010000000000000000"
+        },
+        "min_self_delegation": "1",
+        "delegator_address": "celestia19y52qzj4hxw0u68krfptkjlm77cvth8ddre8j6",
+        "validator_address": "celestiavaloper19y52qzj4hxw0u68krfptkjlm77cvth8dgum7yu",
+        "pubkey": {
+          "@type": "/cosmos.crypto.ed25519.PubKey",
+          "key": "NHPP98+UqQ+0ra4cnCXpTWtt0wO5c/gxilOs2VUIjY8="
+        },
+        "value": {
+          "denom": "utia",
+          "amount": "8000000"
+        }
+      }
+    ],
+    "memo": "728855e7e1ef75604444bbe3223abc957deddc2c@172.31.18.244:26656",
+    "timeout_height": "0",
+    "extension_options": [],
+    "non_critical_extension_options": []
+  },
+  "auth_info": {
+    "signer_infos": [
+      {
+        "public_key": {
+          "@type": "/cosmos.crypto.secp256k1.PubKey",
+          "key": "AosmapJlb5xofnox4iVQ7apwR9jZ6BymsfH1SrCHpMBx"
+        },
+        "mode_info": {
+          "single": {
+            "mode": "SIGN_MODE_DIRECT"
+          }
+        },
+        "sequence": "0"
+      }
+    ],
+    "fee": {
+      "amount": [],
+      "gas_limit": "210000",
+      "payer": "",
+      "granter": ""
+    },
+    "tip": null
+  },
+  "signatures": [
+    "q3zoiNFSxsO9YlV3AW1Fk+Lh+/JR9v3pAy0T9SJjce0Tq5iWZ5K2dJXtrVP+m505tAnyOGAvWmUfwF/CmGWeyw=="
+  ]
+}
