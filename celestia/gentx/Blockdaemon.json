@@ -1,0 +1,62 @@
+{
+  "body": {
+    "messages": [
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+        "description": {
+          "moniker": "Blockdaemon",
+          "identity": "35892AC552B8A0A8",
+          "website": "blockdaemon.com",
+          "security_contact": "support@blockdaemon.com",
+          "details": ""
+        },
+        "commission": {
+          "rate": "0.100000000000000000",
+          "max_rate": "0.200000000000000000",
+          "max_change_rate": "0.010000000000000000"
+        },
+        "min_self_delegation": "1",
+        "delegator_address": "celestia1evu846d408jdz5ju4883gtq9pnjvs8hzq8z2c9",
+        "validator_address": "celestiavaloper1evu846d408jdz5ju4883gtq9pnjvs8hz9cqnwr",
+        "pubkey": {
+          "@type": "/cosmos.crypto.ed25519.PubKey",
+          "key": "xwbuyz6bUNd+Ef79w0ysCU4qgDru1OZTn/yHnPaw5JE="
+        },
+        "value": {
+          "denom": "utia",
+          "amount": "66400000000"
+        }
+      }
+    ],
+    "memo": "f103c4809c8263b311463422195e6ad8526911d6@74.118.136.167:26656",
+    "timeout_height": "0",
+    "extension_options": [],
+    "non_critical_extension_options": []
+  },
+  "auth_info": {
+    "signer_infos": [
+      {
+        "public_key": {
+          "@type": "/cosmos.crypto.secp256k1.PubKey",
+          "key": "A300nveLJb2Bpjxs6P9kRN9jB4WbN1b52Aba8M9B3OAR"
+        },
+        "mode_info": {
+          "single": {
+            "mode": "SIGN_MODE_DIRECT"
+          }
+        },
+        "sequence": "0"
+      }
+    ],
+    "fee": {
+      "amount": [],
+      "gas_limit": "210000",
+      "payer": "",
+      "granter": ""
+    },
+    "tip": null
+  },
+  "signatures": [
+    "MbsoeQpVClnDHILJChY55dwoqrKHZ+YOCrrLVZeGkyEVPw3k3UpHnwHS51kBTEUQDyp3it2EyJV4La2cx5V86g=="
+  ]
+}
