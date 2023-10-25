@@ -10,6 +10,7 @@ jobs:
       pull-requests: write
     env:
       VALIDATOR_LIST: (
+        "ybstaked",
         "nodebreaker0-0",
         "silviugae",
         "tiagocmachado",
