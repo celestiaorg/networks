@@ -11,7 +11,7 @@
           "details": "Somos LatamNodes una comunidad latina. GVSDA, We are a Latin America based validator supporting the Latino community in Web3"
         },
         "commission": {
-          "rate": "0.010000000000000000",
+          "rate": "0.050000000000000000",
           "max_rate": "0.120000000000000000",
           "max_change_rate": "0.010000000000000000"
         },
@@ -57,6 +57,6 @@
     "tip": null
   },
   "signatures": [
-    "l/jXQJiYlZUpfUdreHrfaCm5AxZHfaKQBdGuE16mQ1Va13tx3wMm8KEAlJbvLi2j32xtakJ7yU9vAPeqKVlO8w=="
+    "Zlwq7/UImeRVU7n9Amr8S+LgkZea+6+RXTLkhkDFFe5T6YYiI5clKB7VZ4o9K5jOXtTEeF+GZMgV6MrGVYASiQ=="
   ]
 }
