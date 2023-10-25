@@ -1,68 +1,62 @@
 {
-  "body":{
-     "messages":[
-        {
-           "@type":"/cosmos.staking.v1beta1.MsgCreateValidator",
-           "description":{
-              "moniker":"Upnode | 0% Fee",
-              "identity":"D0084E1600CCC9F7",
-              "website":"https://upnode.org",
-              "security_contact":"hello@upnode.org",
-              "details":"We reimburse the 5% fee every month. Professionally managed institutional grade blockchain infrastructure provider."
-           },
-           "commission":{
-              "rate":"0.050000000000000000",
-              "max_rate":"0.250000000000000000",
-              "max_change_rate":"0.050000000000000000"
-           },
-           "min_self_delegation":"1",
-           "delegator_address":"celestia133t4gpv4vhpqgfn9gr8l4u423zrglg8rnlm9h9",
-           "validator_address":"celestiavaloper133t4gpv4vhpqgfn9gr8l4u423zrglg8rkqeupr",
-           "pubkey":{
-              "@type":"/cosmos.crypto.ed25519.PubKey",
-              "key":"nfJs6LqABJd1oDZLo1HuHdWtbgOWBmWmtwu95gg7180="
-           },
-           "value":{
-              "denom":"utia",
-              "amount":"9000000"
-           }
+  "body": {
+    "messages": [
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+        "description": {
+          "moniker": "Upnode | 0% Fee",
+          "identity": "",
+          "website": "",
+          "security_contact": "",
+          "details": ""
+        },
+        "commission": {
+          "rate": "0.050000000000000000",
+          "max_rate": "0.250000000000000000",
+          "max_change_rate": "0.050000000000000000"
+        },
+        "min_self_delegation": "1",
+        "delegator_address": "celestia133t4gpv4vhpqgfn9gr8l4u423zrglg8rnlm9h9",
+        "validator_address": "celestiavaloper133t4gpv4vhpqgfn9gr8l4u423zrglg8rkqeupr",
+        "pubkey": {
+          "@type": "/cosmos.crypto.ed25519.PubKey",
+          "key": "nfJs6LqABJd1oDZLo1HuHdWtbgOWBmWmtwu95gg7180="
+        },
+        "value": {
+          "denom": "utia",
+          "amount": "9000000"
         }
-     ],
-     "memo":"5b0d1b8cb6f893426168300f69a82750d4be8729@193.35.57.185:11656",
-     "timeout_height":"0",
-     "extension_options":[
-        
-     ],
-     "non_critical_extension_options":[
-        
-     ]
+      }
+    ],
+    "memo": "31ed748afff7f41677d7122448fb6ddfe9b10537@192.168.1.102:26656",
+    "timeout_height": "0",
+    "extension_options": [],
+    "non_critical_extension_options": []
   },
-  "auth_info":{
-     "signer_infos":[
-        {
-           "public_key":{
-              "@type":"/cosmos.crypto.secp256k1.PubKey",
-              "key":"AoA05phFtVWokIR6LUODUAqMhlzoiVPvM/iDRMBJl8x+"
-           },
-           "mode_info":{
-              "single":{
-                 "mode":"SIGN_MODE_LEGACY_AMINO_JSON"
-              }
-           },
-           "sequence":"0"
-        }
-     ],
-     "fee":{
-        "amount":[
-           
-        ],
-        "gas_limit":"210000",
-        "payer":"",
-        "granter":""
-     },
-     "tip":null
+  "auth_info": {
+    "signer_infos": [
+      {
+        "public_key": {
+          "@type": "/cosmos.crypto.secp256k1.PubKey",
+          "key": "AoA05phFtVWokIR6LUODUAqMhlzoiVPvM/iDRMBJl8x+"
+        },
+        "mode_info": {
+          "single": {
+            "mode": "SIGN_MODE_LEGACY_AMINO_JSON"
+          }
+        },
+        "sequence": "0"
+      }
+    ],
+    "fee": {
+      "amount": [],
+      "gas_limit": "210000",
+      "payer": "",
+      "granter": ""
+    },
+    "tip": null
   },
-  "signatures":[
-     "P3VRA7m/9hjqoABPTywmGGofe0xoX4dBCAeIC0YgzOs8CEeWTVK5Y6n6YHIo0ybx/21TdRGdTkRl1gMEnqd9+w=="
+  "signatures": [
+    "P3VRA7m/9hjqoABPTywmGGofe0xoX4dBCAeIC0YgzOs8CEeWTVK5Y6n6YHIo0ybx/21TdRGdTkRl1gMEnqd9+w=="
   ]
 }
