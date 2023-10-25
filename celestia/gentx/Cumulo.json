@@ -1,0 +1,62 @@
+{
+  "body": {
+    "messages": [
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+        "description": {
+          "moniker": "Cumulo",
+          "identity": "77158D6796D16CD0",
+          "website": "https://cumulo.pro",
+          "security_contact": "cumulo.pro@gmail.com",
+          "details": "Cumulo is a leading trusted validator and a valuable asset to the blockchain ecosystem bringing security, quality and growth to the network. Boost your token staking earnings with Cumulo. Grow with us."
+        },
+        "commission": {
+          "rate": "0.050000000000000000",
+          "max_rate": "0.200000000000000000",
+          "max_change_rate": "0.050000000000000000"
+        },
+        "min_self_delegation": "1",
+        "delegator_address": "celestia1cs37tvmahavw8xcnzcgyz342sh0al37mc2qetd",
+        "validator_address": "celestiavaloper1cs37tvmahavw8xcnzcgyz342sh0al37ma4zqat",
+        "pubkey": {
+          "@type": "/cosmos.crypto.ed25519.PubKey",
+          "key": "bKM4TE/YxPphrFOLqil/CDkHkeGiiXLHkLtnc6aZ/M4="
+        },
+        "value": {
+          "denom": "utia",
+          "amount": "63500000000"
+        }
+      }
+    ],
+    "memo": "e92c1f9c189018d4b94899f99ee24d0b90f6b9b5@217.160.39.214:26656",
+    "timeout_height": "0",
+    "extension_options": [],
+    "non_critical_extension_options": []
+  },
+  "auth_info": {
+    "signer_infos": [
+      {
+        "public_key": {
+          "@type": "/cosmos.crypto.secp256k1.PubKey",
+          "key": "AoW2Rvd4MKnjI3iQOyYFgnJrn3EleuTUPCSdwcew59E8"
+        },
+        "mode_info": {
+          "single": {
+            "mode": "SIGN_MODE_DIRECT"
+          }
+        },
+        "sequence": "0"
+      }
+    ],
+    "fee": {
+      "amount": [],
+      "gas_limit": "210000",
+      "payer": "",
+      "granter": ""
+    },
+    "tip": null
+  },
+  "signatures": [
+    "wJSfQDr1OQWUrV/DJXpdZ0py58+IaselqQRqRmShWrJTlJ6753Zx/Pjmw5DCAtHBSwo/ezrqOP+TLft5EK4oqA=="
+  ]
+}

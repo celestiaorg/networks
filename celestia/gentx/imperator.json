@@ -1,0 +1,62 @@
+{
+  "body": {
+    "messages": [
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+        "description": {
+          "moniker": "Imperator.co",
+          "identity": "0878BA6BE556C132",
+          "website": "https://imperator.co/",
+          "security_contact": "contact@imperator.co",
+          "details": "100% refund on downtime slashing -- Leading Proof-of-Stake Network Validator & Relayer"
+        },
+        "commission": {
+          "rate": "0.050000000000000000",
+          "max_rate": "0.500000000000000000",
+          "max_change_rate": "0.100000000000000000"
+        },
+        "min_self_delegation": "1",
+        "delegator_address": "celestia1r5xt7twqmh39ky72f4txxjrhlt2z0qww7jlx37",
+        "validator_address": "celestiavaloper1r5xt7twqmh39ky72f4txxjrhlt2z0qwwmdal8c",
+        "pubkey": {
+          "@type": "/cosmos.crypto.ed25519.PubKey",
+          "key": "P0Fju/UVVtGbxQ5CiwkQ5FssuintfgKz2ZIxcFYWMlk="
+        },
+        "value": {
+          "denom": "utia",
+          "amount": "8000000"
+        }
+      }
+    ],
+    "memo": "88ccf3f3292189a0cc74e8a064844f2b21c8642d@192.168.1.25:26656",
+    "timeout_height": "0",
+    "extension_options": [],
+    "non_critical_extension_options": []
+  },
+  "auth_info": {
+    "signer_infos": [
+      {
+        "public_key": {
+          "@type": "/cosmos.crypto.secp256k1.PubKey",
+          "key": "AraslphdObs8l/mSzfs8ainRl53RmIHZ1CL/NqE/oDWU"
+        },
+        "mode_info": {
+          "single": {
+            "mode": "SIGN_MODE_DIRECT"
+          }
+        },
+        "sequence": "0"
+      }
+    ],
+    "fee": {
+      "amount": [],
+      "gas_limit": "210000",
+      "payer": "",
+      "granter": ""
+    },
+    "tip": null
+  },
+  "signatures": [
+    "0cKEgGKczIb6IRlGnV+rPJux1BMg2735Ayq+JsR9g9UzgvaOHFUBDbMHkSeFLqmJEl9JqVsjvvPJE4h/VkPyrQ=="
+  ]
+}
