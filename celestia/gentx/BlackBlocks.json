@@ -1,0 +1,62 @@
+{
+  "body": {
+    "messages": [
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+        "description": {
+          "moniker": "BlackBlocks",
+          "identity": "2E0040A44894A00D",
+          "website": "https://blackblocks.io",
+          "security_contact": "security@blackblocks.io",
+          "details": "Collaborative validator featuring WayneWayner, a top-10 participant in the Blockspace Race (incentivized testnet), and winner of the light node challenge, along with BlackBlocks GmbH, a professional node infrastructure company. Our validator is housed at firstcolo FRA4, Germany."
+        },
+        "commission": {
+          "rate": "0.050000000000000000",
+          "max_rate": "0.200000000000000000",
+          "max_change_rate": "0.070000000000000000"
+        },
+        "min_self_delegation": "1",
+        "delegator_address": "celestia1knn88yl08ctsdrtxvfp39jywt7rph9ptfpkguz",
+        "validator_address": "celestiavaloper1knn88yl08ctsdrtxvfp39jywt7rph9ptv7532y",
+        "pubkey": {
+          "@type": "/cosmos.crypto.ed25519.PubKey",
+          "key": "zPYTB+0OM56gFu6V03k1DIvyHP6IIEu2yNsTGRvkfu0="
+        },
+        "value": {
+          "denom": "utia",
+          "amount": "8000000"
+        }
+      }
+    ],
+    "memo": "c89507c926f41901784f54b26e1ccc49ac9ecfda@31.214.144.83:26656",
+    "timeout_height": "0",
+    "extension_options": [],
+    "non_critical_extension_options": []
+  },
+  "auth_info": {
+    "signer_infos": [
+      {
+        "public_key": {
+          "@type": "/cosmos.crypto.secp256k1.PubKey",
+          "key": "A5Fp4EO5JreMTHmPii1doys4T3fBGqUtSgaW3hVGvf+X"
+        },
+        "mode_info": {
+          "single": {
+            "mode": "SIGN_MODE_DIRECT"
+          }
+        },
+        "sequence": "0"
+      }
+    ],
+    "fee": {
+      "amount": [],
+      "gas_limit": "210000",
+      "payer": "",
+      "granter": ""
+    },
+    "tip": null
+  },
+  "signatures": [
+    "YFNUBuV50Emy5+67IzeSqOzed4MumhoIlpY1s8XZUPZkutgEFio+HDgPvNTk7h0aufhGwwTjxunhmwptTBFRKQ=="
+  ]
+}
