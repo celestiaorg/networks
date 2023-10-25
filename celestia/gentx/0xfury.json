@@ -1,0 +1,62 @@
+{
+  "body": {
+    "messages": [
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+        "description": {
+          "moniker": "0xFury",
+          "identity": "CD3DA1D23BBA4D59",
+          "website": "https://0xfury.com",
+          "security_contact": "security@0xfury.com",
+          "details": "0xFury - Enterprise-grade blockchain infrastructure solutions."
+        },
+        "commission": {
+          "rate": "0.080000000000000000",
+          "max_rate": "0.200000000000000000",
+          "max_change_rate": "0.010000000000000000"
+        },
+        "min_self_delegation": "1",
+        "delegator_address": "celestia1kl5nxl54xt3g6k5k4zlk48udfcx8gkz2kkvm7e",
+        "validator_address": "celestiavaloper1kl5nxl54xt3g6k5k4zlk48udfcx8gkz2nfwzgl",
+        "pubkey": {
+          "@type": "/cosmos.crypto.ed25519.PubKey",
+          "key": "ZbIukxRVlvD2EugqyWY5oq8VPvxLDBs61qzHVK0bqAo="
+        },
+        "value": {
+          "denom": "utia",
+          "amount": "72140000000"
+        }
+      }
+    ],
+    "memo": "4b19506a0432de219ee2db883c53756c1b3cbdfb@88.217.142.187:26656",
+    "timeout_height": "0",
+    "extension_options": [],
+    "non_critical_extension_options": []
+  },
+  "auth_info": {
+    "signer_infos": [
+      {
+        "public_key": {
+          "@type": "/cosmos.crypto.secp256k1.PubKey",
+          "key": "A4na4/X64wk9FHVDp6MfS2s/p7a44diN7hIFaQwGiYPq"
+        },
+        "mode_info": {
+          "single": {
+            "mode": "SIGN_MODE_DIRECT"
+          }
+        },
+        "sequence": "0"
+      }
+    ],
+    "fee": {
+      "amount": [],
+      "gas_limit": "210000",
+      "payer": "",
+      "granter": ""
+    },
+    "tip": null
+  },
+  "signatures": [
+    "jRX337417YAEQgSxA9Y0EyYaMrq0O7Jq6vV+TKokGP4qao2b/Yvwcilc+7Zy/SAVSqqBtWx7Kbk9BerkCewmxA=="
+  ]
+}

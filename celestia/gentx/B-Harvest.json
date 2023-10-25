@@ -1,0 +1,62 @@
+{
+  "body": {
+    "messages": [
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+        "description": {
+          "moniker": "B-Harvest",
+          "identity": "8957C5091FBF4192",
+          "website": "https://bharvest.io",
+          "security_contact": "contact@bharvest.io",
+          "details": "B-Harvest focus on the value of high standard security & stability, active community participation on Cosmos Network, and real world practical use-case of blockchain technology."
+        },
+        "commission": {
+          "rate": "0.100000000000000000",
+          "max_rate": "0.200000000000000000",
+          "max_change_rate": "0.010000000000000000"
+        },
+        "min_self_delegation": "1",
+        "delegator_address": "celestia14ntfv0qkg8522xe0pvrfgqxcmnj5x466fcqgae",
+        "validator_address": "celestiavaloper14ntfv0qkg8522xe0pvrfgqxcmnj5x466v8z3tl",
+        "pubkey": {
+          "@type": "/cosmos.crypto.ed25519.PubKey",
+          "key": "LlPYsY3SJVZpj453ugU31a+Ue/++MSbgh0PgsI+iuhs="
+        },
+        "value": {
+          "denom": "utia",
+          "amount": "108800000000"
+        }
+      }
+    ],
+    "memo": "7d5767dfe229d6b82246165c1c353a56a6da1983@138.3.67.156:26656",
+    "timeout_height": "0",
+    "extension_options": [],
+    "non_critical_extension_options": []
+  },
+  "auth_info": {
+    "signer_infos": [
+      {
+        "public_key": {
+          "@type": "/cosmos.crypto.secp256k1.PubKey",
+          "key": "Anh1x2nyktoquD5/fhG/H8Q0T6KVL4qVvnQ6QiJvBwlI"
+        },
+        "mode_info": {
+          "single": {
+            "mode": "SIGN_MODE_DIRECT"
+          }
+        },
+        "sequence": "0"
+      }
+    ],
+    "fee": {
+      "amount": [],
+      "gas_limit": "210000",
+      "payer": "",
+      "granter": ""
+    },
+    "tip": null
+  },
+  "signatures": [
+    "MqzGS4nl7OPk6ihmu6Nx/nPgZQWD0qjISuL5pZmMxPJ+69WvouSwl4nUIH8ngfgx7Tp1uRAao473kIJSc8Yy5A=="
+  ]
+}
