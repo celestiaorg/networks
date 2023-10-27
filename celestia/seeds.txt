@@ -1,4 +1,1 @@
-# Celestia mainnet seed list
-# To be added inside config.toml, seeds = "" config variable.
-
-3d5661f41dbc64156fc0ba17b0def4106a887823@celestia-seed.easy2stake.com:26756
+edc6bc6ee3c37a698225e17bd4b8c687ee05f977@celestia-seed.easy2stake.com:26756
