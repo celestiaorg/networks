@@ -14,4 +14,4 @@ Please refer to the [Celestia Docs](https://docs.celestia.org) for guides on run
 
 ## Software versions
 
-The celestia-app and celestia-node versions in use on each testnet are visible on this [Grafana dashboard](https://celestia.grafana.net/public-dashboards/5d14d96e44f04664bb0c44267e5d645c).
+The celestia-app and celestia-node versions in use on each network are visible on this [Grafana dashboard](https://celestia.grafana.net/public-dashboards/5d14d96e44f04664bb0c44267e5d645c).
