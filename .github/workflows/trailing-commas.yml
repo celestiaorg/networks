@@ -1,6 +1,6 @@
 # trailing-commas verifies that *.txt files do not contain lines with trailing commas.
 name: trailing-commas
-on: [push, pull_request]
+on: pull_request
 jobs:
   check-trailing-commas:
     runs-on: ubuntu-latest
