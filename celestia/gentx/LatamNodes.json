@@ -1,0 +1,62 @@
+{
+  "body": {
+    "messages": [
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+        "description": {
+          "moniker": "latamnodes",
+          "identity": "725B663406CF4FF3",
+          "website": "https://daomazon.org",
+          "security_contact": "soporte@latamnodes.org",
+          "details": "Somos LatamNodes una comunidad latina. GVSDA, We are a Latin America based validator supporting the Latino community in Web3"
+        },
+        "commission": {
+          "rate": "0.050000000000000000",
+          "max_rate": "0.120000000000000000",
+          "max_change_rate": "0.010000000000000000"
+        },
+        "min_self_delegation": "1",
+        "delegator_address": "celestia14v4ush42xewyeuuldf6jtdz0a7pxg5fwxq7zc0",
+        "validator_address": "celestiavaloper14v4ush42xewyeuuldf6jtdz0a7pxg5fwrlumwf",
+        "pubkey": {
+          "@type": "/cosmos.crypto.ed25519.PubKey",
+          "key": "7QjWHj5OsJ2WhD9Kny13I0qubrdpHITzfR/34MhSzGk="
+        },
+        "value": {
+          "denom": "utia",
+          "amount": "8000000"
+        }
+      }
+    ],
+    "memo": "29c8a82a0be59a2c6a5d6fb2ad0a2e1b4d09de0f@181.188.232.25:26656",
+    "timeout_height": "0",
+    "extension_options": [],
+    "non_critical_extension_options": []
+  },
+  "auth_info": {
+    "signer_infos": [
+      {
+        "public_key": {
+          "@type": "/cosmos.crypto.secp256k1.PubKey",
+          "key": "A8vzTvVqa/sTHiegNzZguH904Q1GWFw5krfppGtx4E0F"
+        },
+        "mode_info": {
+          "single": {
+            "mode": "SIGN_MODE_DIRECT"
+          }
+        },
+        "sequence": "0"
+      }
+    ],
+    "fee": {
+      "amount": [],
+      "gas_limit": "210000",
+      "payer": "",
+      "granter": ""
+    },
+    "tip": null
+  },
+  "signatures": [
+    "Zlwq7/UImeRVU7n9Amr8S+LgkZea+6+RXTLkhkDFFe5T6YYiI5clKB7VZ4o9K5jOXtTEeF+GZMgV6MrGVYASiQ=="
+  ]
+}
