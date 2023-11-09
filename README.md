@@ -10,7 +10,7 @@ Please refer to the [Celestia Docs](https://docs.celestia.org) for guides on run
 |----------|---------|--------------|----------------------------|
 | Mocha    | Testnet | `mocha-4`    | [mocha-4](./mocha-4)       |
 | Arabica  | Testnet | `arabica-10` | [arabica-10](./arabica-10) |
-| Celestia | Mainnet | `celestia`   | [celestia](./celestia)     |
+| Celestia | Mainnet Beta | `celestia`   | [celestia](./celestia)     |
 
 ## Software versions
 
