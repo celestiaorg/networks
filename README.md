@@ -18,4 +18,4 @@ The celestia-app and celestia-node versions in use on each network are visible o
 
 ## Public Dashboards
 
-DA Full and Light nodes might have troubles connecting to the networks, so you can checkout this [Grafana dashboard](https://celestia.grafana.net/public-dashboards/a10eff0043bb4bf0839004e2746e2bc6) to see health/uptime status of DA Bootstrappers(now celestia network only).
+DA Full and Light nodes might have troubles connecting to the networks, so you can checkout this [Grafana dashboard](https://celestia.grafana.net/public-dashboards/a10eff0043bb4bf0839004e2746e2bc6) to see health/uptime status of DA Bootstrappers (now `celestia` network only).
