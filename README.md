@@ -9,7 +9,7 @@ Please refer to the [Celestia Docs](https://docs.celestia.org) for guides on run
 | Name     | Type    | Chain ID     | Configs                    |
 |----------|---------|--------------|----------------------------|
 | Mocha    | Testnet | `mocha-4`    | [mocha-4](./mocha-4)       |
-| Arabica  | Testnet | `arabica-10` | [arabica-10](./arabica-10) |
+| Arabica  | Testnet | `arabica-11` | [arabica-11](./arabica-11) |
 | Celestia | Mainnet Beta | `celestia`   | [celestia](./celestia)     |
 
 ## Software versions
