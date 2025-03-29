@@ -1,4 +1,16 @@
 19b3ef846732c465cc32da3eaddb9c0fb41f57d2@consensus-full-seed-1.celestia-bootstrap.net:26656
 cf7ac8b19ff56a9d47c75551bd4864883d1e24b5@consensus-full-seed-2.celestia-bootstrap.net:26656
 acca7837e4eb5f9dc7f5a94ed1d82edda6931ff8@seed.celestia.pops.one:26656
-
+c5a23c66db975038c4eb131f65717059f597fe59@celestia-mainnet.stakingcabin.com:21656
+9b1d22c3a78487d1a664a4b6a331fce527d14fb4@seed.celestia.mainnet.dteam.tech:27656
+12ad7c73c7e1f2460941326937a039139aa78884@celestia-mainnet-seed.itrocket.net:40656
+706c8fbaaf38d3a1bf3186ca4c4d55fc07891ea4@49.12.172.53:10256
+f9f6aa4a23f8ff2bc3137fa603bfa4014b8d05cb@celestia-mainnet-seed.stakeme.pro:40656
+24a607a217cf12be29bae5b2e8151391bde2d8c8@seed-celestia-01.stakeflow.io:15007
+48b55ac8d12b2f2cd28841891c0a68e1dffa912c@84.32.186.37:26856
+59df4b3832446cd0f9c369da01f2aa5fe9647248@95.217.84.182:11756
+ec39096b831861bcda43896d098771fa9587ebce@seed.f5nodes.com:61456
+6f6a3a908634b79b6fe7c4988efec2553f188234@celestia.seed.nodeshub.online:11656
+86bd5cb6e762f673f1706e5889e039d5406b4b90@seed.celestia.node75.org:20356
+d6d8536233c8529f8a436a31065ecb365a96f71e@148.251.53.24:11656
+e27a5da20a00afbfe2b9ca81cf8bc2e23de831c4@65.109.54.91:11059
