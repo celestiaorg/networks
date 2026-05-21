@@ -13,7 +13,7 @@ jobs:
           fetch-depth: 0
       - name: Get changed gentx files
         id: changed-files
-        uses: tj-actions/changed-files@v39
+        uses: tj-actions/changed-files@v46
         with:
           files: "./celestia/*gentx*/*.json"
       - name: Set outputs
