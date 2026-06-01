@@ -78,7 +78,7 @@ func main() {
 	flag.Parse()
 
 	if *in == "" || *out == "" {
-		fmt.Fprintln(os.Stderr, "usage: verifypeer -in candidates.txt -out peers.txt [-report report.json] [-min N]")
+		fmt.Fprintln(os.Stderr, "usage: verifypeer -in candidates.txt -out peers.txt [-report report.json] [-min N] [-concurrency N] [-timeout SECONDS]")
 		os.Exit(2)
 	}
 
@@ -92,14 +92,20 @@ func main() {
 	verified := verifiedLines(results)
 	sort.Strings(verified) // deterministic output independent of dial timing
 
-	if err := os.WriteFile(*out, []byte(strings.Join(verified, "\n")+"\n"), 0o644); err != nil {
+	content := []byte{}
+	if len(verified) > 0 {
+		content = []byte(strings.Join(verified, "\n") + "\n")
+	}
+	if err := os.WriteFile(*out, content, 0o644); err != nil {
 		fmt.Fprintf(os.Stderr, "write out: %v\n", err)
 		os.Exit(1)
 	}
 
 	if *report != "" {
 		b, _ := json.MarshalIndent(results, "", "  ")
-		_ = os.WriteFile(*report, b, 0o644)
+		if err := os.WriteFile(*report, b, 0o644); err != nil {
+			fmt.Fprintf(os.Stderr, "write report: %v\n", err)
+		}
 	}
 
 	mm := mismatches(results)
