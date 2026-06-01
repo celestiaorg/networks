@@ -34,8 +34,8 @@ jobs:
         with:
           go-version-file: scripts/peers/verifypeer/go.mod
 
-      - name: Install jq
-        run: sudo apt-get update && sudo apt-get install -y jq
+      - name: Ensure jq is available
+        run: command -v jq >/dev/null || { sudo apt-get update && sudo apt-get install -y jq; }
 
       - name: Fetch + filter candidates
         run: |
@@ -80,9 +80,11 @@ jobs:
           if [ -n "$base" ]; then
             added=$(comm -13 <(echo "$base" | sort) <(sort "${{ matrix.dir }}/peers.txt") | grep -c . || true)
             removed=$(comm -23 <(echo "$base" | sort) <(sort "${{ matrix.dir }}/peers.txt") | grep -c . || true)
-            total=$(echo "$base" | grep -c . || echo 1)
-            churn=$(( (added + removed) * 100 / (total>0 ? total : 1) ))
+            total=$(echo "$base" | grep -c . || true)
+            (( total > 0 )) || total=1
+            churn=$(( (added + removed) * 100 / total ))
             echo "churn_pct=${churn}" >> "$GITHUB_OUTPUT"
+            echo "- Churn vs current: ${churn}%" >> /tmp/pr_body.md
             if [ "${churn}" -gt "${CHURN_WARN_PCT}" ]; then
               echo "labels=high-churn" >> "$GITHUB_OUTPUT"
             else
