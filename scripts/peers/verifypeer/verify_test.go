@@ -16,6 +16,9 @@ func TestParsePeer(t *testing.T) {
 		{"empty id", "@1.2.3.4:26656", "", "", true},
 		{"empty addr", "13612522d3ce71a181881370b8f40103d4def9f1@", "", "", true},
 		{"short id", "abc@1.2.3.4:26656", "", "", true},
+		{"leading/trailing whitespace trimmed", "  13612522d3ce71a181881370b8f40103d4def9f1@1.2.3.4:26656\n", "13612522d3ce71a181881370b8f40103d4def9f1", "1.2.3.4:26656", false},
+		{"long id (41 hex chars)", "13612522d3ce71a181881370b8f40103d4def9f1a@1.2.3.4:26656", "", "", true},
+		{"non-hex id (40 chars with z)", "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz@1.2.3.4:26656", "", "", true},
 	}
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
