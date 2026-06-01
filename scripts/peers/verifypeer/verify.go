@@ -69,8 +69,10 @@ func VerifyPeer(line string, timeout time.Duration) Result {
 		return res
 	}
 	defer c.Close()
+	// Deadline covers the handshake; total time may be up to ~2×timeout.
 	_ = c.SetDeadline(time.Now().Add(timeout))
 
+	// Use a one-time key; we only need to authenticate the remote peer, not ourselves.
 	sc, err := conn.MakeSecretConnection(c, ed25519.GenPrivKey())
 	if err != nil {
 		res.Status = StatusUnreachable

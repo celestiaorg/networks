@@ -91,8 +91,12 @@ func TestVerifyPeer_Mismatch(t *testing.T) {
 }
 
 func TestVerifyPeer_Unreachable(t *testing.T) {
-	// Reserve a port then close it so the dial is refused/times out.
-	ln, _ := net.Listen("tcp", "127.0.0.1:0")
+	// Reserve a loopback port then close it so the dial is refused. The brief
+	// reuse window is acceptable for this hermetic test.
+	ln, err := net.Listen("tcp", "127.0.0.1:0")
+	if err != nil {
+		t.Fatal(err)
+	}
 	addr := ln.Addr().String()
 	_ = ln.Close()
 	id := "1111111111111111111111111111111111111111"
