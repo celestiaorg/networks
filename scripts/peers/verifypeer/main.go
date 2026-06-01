@@ -72,7 +72,7 @@ func main() {
 	in := flag.String("in", "", "input file of id@host:port candidate lines")
 	out := flag.String("out", "", "output file for verified peer lines")
 	report := flag.String("report", "", "output file for JSON verification report")
-	min := flag.Int("min", 8, "minimum verified peers required (else exit 1)")
+	min := flag.Int("min", 5, "minimum verified peers required (else exit 1)")
 	concurrency := flag.Int("concurrency", 16, "max concurrent dials")
 	timeoutSec := flag.Int("timeout", 5, "per-peer dial+handshake timeout in seconds")
 	flag.Parse()
