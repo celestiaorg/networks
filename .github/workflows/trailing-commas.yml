@@ -1,0 +1,25 @@
+# trailing-commas verifies that *.txt files do not contain lines with trailing commas.
+name: trailing-commas
+on: pull_request
+jobs:
+  check-trailing-commas:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Ensure no trailing commas in *.txt files
+      run: |
+        # Get list of .txt files
+        FILES=$(git ls-files | grep "\.txt$")
+
+        # Check each file for trailing commas and fail if any are found
+        for FILE in $FILES; do
+          if grep -qE ",$" "$FILE"; then
+            echo "Trailing comma found in $FILE"
+            exit 1
+          fi
+        done
+
+        echo "No trailing commas found in .txt files."
