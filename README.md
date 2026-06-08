@@ -9,9 +9,9 @@ Please refer to the [Celestia Docs](https://docs.celestia.org) for guides on run
 | Name     | Type    | Chain ID     | Configs                    |
 |----------|---------|--------------|----------------------------|
 | Mocha    | Testnet | `mocha-4`    | [mocha-4](./mocha-4)       |
-| Arabica  | Testnet | `arabica-10` | [arabica-10](./arabica-10) |
-| Celestia | Mainnet | `celestia`   | [celestia](./celestia)     |
+| Arabica  | Testnet | `arabica-11` | [arabica-11](./arabica-11) |
+| Celestia | Mainnet Beta | `celestia`   | [celestia](./celestia)     |
 
 ## Software versions
 
-The celestia-app and celestia-node versions in use on each network are visible on this [Grafana dashboard](https://celestia.grafana.net/public-dashboards/5d14d96e44f04664bb0c44267e5d645c).
+The celestia-app and celestia-node versions in use on each network are visible [in the Celestia Docs](https://docs.celestia.org/how-to-guides/participate).
