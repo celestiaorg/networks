@@ -1,1 +1,2 @@
 ee9f90974f85c59d3861fc7f7edb10894f6ac3c8@84.32.215.148:26656
+daf2cecee2bd7f1b3bf94839f993f807c6b15fbf@celestia-testnet-peer.itrocket.net:11656
