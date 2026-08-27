@@ -22,10 +22,11 @@ Multiple entries are comma-separated when placed in config or flags. See the [Ce
 
 ## Networks
 
-| Name     | Type    | Chain ID     | Configs                    |
-|----------|---------|--------------|----------------------------|
-| Mocha    | Testnet | `mocha-4`    | [mocha-4](./mocha-4)       |
-| Arabica  | Testnet | `arabica-11` | [arabica-11](./arabica-11) |
+| Name     | Type         | Chain ID     | Configs                    |
+|----------|--------------|--------------|----------------------------|
+| Mocha    | Testnet      | `mocha-4`    | [mocha-4](./mocha-4)       |
+| Arabica  | Testnet      | `arabica-11` | [arabica-11](./arabica-11) |
+| Corto    | Testnet      | `corto-1`    | [corto-1](./corto-1)       |
 | Celestia | Mainnet Beta | `celestia`   | [celestia](./celestia)     |
 
 ## Software versions
