@@ -105,14 +105,18 @@ func loadCandidates(inPath, outPath string, merge bool) ([]string, error) {
 // writeVerified sorts, deduplicates and writes lines to path. Sorting keeps the
 // output stable regardless of dial timing, so a rerun that finds the same peers
 // produces no diff.
+//
+// Verifying nothing at all is a malfunction rather than a judgment call for a
+// reviewer, so it is refused: writing the empty result would open a PR that
+// deletes the entire peer list. Every other outcome is left to the human
+// reviewing the generated PR.
 func writeVerified(path string, lines []string) error {
 	lines = dedupe(lines)
 	sort.Strings(lines)
-	content := []byte{}
-	if len(lines) > 0 {
-		content = []byte(strings.Join(lines, "\n") + "\n")
+	if len(lines) == 0 {
+		return fmt.Errorf("no peers verified; leaving %s unchanged", path)
 	}
-	return os.WriteFile(path, content, 0o644)
+	return os.WriteFile(path, []byte(strings.Join(lines, "\n")+"\n"), 0o644)
 }
 
 // verifyAll runs VerifyPeer over candidates with bounded concurrency,
@@ -179,7 +183,7 @@ func main() {
 	}
 
 	if err := writeVerified(*out, verified); err != nil {
-		fmt.Fprintf(os.Stderr, "write out: %v\n", err)
+		fmt.Fprintf(os.Stderr, "FAIL: %v\n", err)
 		os.Exit(1)
 	}
 }

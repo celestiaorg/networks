@@ -171,3 +171,41 @@ func TestVerifyAll(t *testing.T) {
 		}
 	}
 }
+
+// Zero verified peers is a malfunction, not a judgment call. Writing the empty
+// result would open a weekly PR that deletes the whole peer list, so fail the
+// run and leave the file alone.
+func TestWriteVerified_RefusesToWriteAnEmptyList(t *testing.T) {
+	dir := t.TempDir()
+	out := filepath.Join(dir, "peers.txt")
+	original := "a@1:1\nb@2:2\n"
+	writeFile(t, out, original)
+
+	err := writeVerified(out, nil)
+	if err == nil {
+		t.Fatal("writeVerified succeeded on an empty list, want an error")
+	}
+	got, readErr := os.ReadFile(out)
+	if readErr != nil {
+		t.Fatal(readErr)
+	}
+	if string(got) != original {
+		t.Fatalf("peers.txt was modified by a run that verified nothing:\ngot  %q\nwant %q", got, original)
+	}
+}
+
+func TestWriteVerified_OneVerifiedPeerIsEnough(t *testing.T) {
+	dir := t.TempDir()
+	out := filepath.Join(dir, "peers.txt")
+
+	if err := writeVerified(out, []string{"a@1:1"}); err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	got, err := os.ReadFile(out)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if string(got) != "a@1:1\n" {
+		t.Fatalf("got %q, want %q", got, "a@1:1\n")
+	}
+}
