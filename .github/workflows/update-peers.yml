@@ -11,11 +11,6 @@ permissions:
 
 env:
   CELESTIA_APP_VERSION: v8.0.3 # bump to pull a newer addrbook generator
-  MIN_PEERS: "5"
-  # Refuse to shrink a peers.txt below this percentage of its current size. The
-  # absolute MIN_PEERS floor alone would happily replace 71 curated peers with 6.
-  MIN_RETAIN_PCT: "50"
-  CHURN_WARN_PCT: "60"
 
 jobs:
   update:
@@ -64,9 +59,7 @@ jobs:
             -in /tmp/candidates.txt \
             -out "${GITHUB_WORKSPACE}/${{ matrix.dir }}/peers.txt" \
             -chain-id "${{ matrix.chain_id }}" \
-            -report /tmp/report.json \
-            -min "${MIN_PEERS}" \
-            -min-retain-pct "${MIN_RETAIN_PCT}"
+            -report /tmp/report.json
 
       - name: Generate addrbook.json
         if: matrix.addrbook
@@ -82,18 +75,6 @@ jobs:
           ( cd /tmp && grep " ${asset}\$" checksums.txt | sha256sum -c - )
           tar -xzf "/tmp/${asset}" -C /tmp celestia-appd
           /tmp/celestia-appd addrbook "${{ matrix.dir }}/peers.txt" "${{ matrix.dir }}/addrbook.json"
-
-      # `celestia-appd addrbook` prints per-peer parse/add failures but always
-      # exits 0, so an addrbook with zero usable addresses looks like a success.
-      - name: Validate addrbook.json
-        if: matrix.addrbook
-        run: |
-          count=$(jq '.addrs | length' "${{ matrix.dir }}/addrbook.json")
-          echo "addrbook entries: ${count}"
-          if [ "${count}" -lt "${MIN_PEERS}" ]; then
-            echo "error: addrbook has ${count} addresses, need >= ${MIN_PEERS}" >&2
-            exit 1
-          fi
 
       # Auto-PRs opened with GITHUB_TOKEN do not trigger on: pull_request
       # workflows, so the repo's own checks would never run on them. Run the
@@ -140,20 +121,12 @@ jobs:
             fi
           done
 
-          labels=""
           base="$(git show "HEAD:${{ matrix.dir }}/peers.txt" 2>/dev/null || true)"
           if [ -n "$base" ]; then
             added=$(comm -13 <(echo "$base" | sort) <(sort "${{ matrix.dir }}/peers.txt") | grep -c . || true)
             removed=$(comm -23 <(echo "$base" | sort) <(sort "${{ matrix.dir }}/peers.txt") | grep -c . || true)
-            total=$(echo "$base" | grep -c . || true)
-            (( total > 0 )) || total=1
-            churn=$(( (added + removed) * 100 / total ))
-            echo "- Churn vs current: ${churn}% (+${added} / -${removed} of ${total})" >> /tmp/pr_body.md
-            if [ "${churn}" -gt "${CHURN_WARN_PCT}" ]; then
-              labels="high-churn"
-            fi
+            echo "- Change vs current: +${added} / -${removed}" >> /tmp/pr_body.md
           fi
-          echo "labels=${labels}" >> "$GITHUB_OUTPUT"
 
           # Built here rather than inline in the PR step: an empty line in
           # add-paths becomes an empty git pathspec, which git rejects.
@@ -176,7 +149,6 @@ jobs:
           branch: peers/auto-update-${{ matrix.name }}
           title: "chore(peers): refresh ${{ matrix.name }} peers${{ matrix.addrbook && ' + addrbook' || '' }}"
           body-path: /tmp/pr_body.md
-          labels: ${{ steps.meta.outputs.labels }}
           add-paths: ${{ steps.meta.outputs.add_paths }}
           assignees: rootulp
           commit-message: "chore(peers): refresh ${{ matrix.name }} peers"

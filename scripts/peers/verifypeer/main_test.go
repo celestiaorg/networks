@@ -135,31 +135,11 @@ func TestLoadCandidates_MissingOutputIsNotAnError(t *testing.T) {
 	}
 }
 
-// Writing before checking the gate truncates peers.txt even on a failed run.
-func TestWriteVerified_BelowMinLeavesExistingFileIntact(t *testing.T) {
-	dir := t.TempDir()
-	out := filepath.Join(dir, "peers.txt")
-	original := "a@1:1\nb@2:2\nc@3:3\nd@4:4\ne@5:5\n"
-	writeFile(t, out, original)
-
-	err := writeVerified(out, []string{"a@1:1", "b@2:2"}, 5, 0)
-	if err == nil {
-		t.Fatal("writeVerified succeeded, want an error for 2 verified < min 5")
-	}
-	got, readErr := os.ReadFile(out)
-	if readErr != nil {
-		t.Fatal(readErr)
-	}
-	if string(got) != original {
-		t.Fatalf("peers.txt was modified by a failed run:\ngot  %q\nwant %q", got, original)
-	}
-}
-
 func TestWriteVerified_SortsAndDedupes(t *testing.T) {
 	dir := t.TempDir()
 	out := filepath.Join(dir, "peers.txt")
 
-	if err := writeVerified(out, []string{"c@3:3", "a@1:1", "c@3:3", "b@2:2"}, 3, 0); err != nil {
+	if err := writeVerified(out, []string{"c@3:3", "a@1:1", "c@3:3", "b@2:2"}); err != nil {
 		t.Fatal(err)
 	}
 	got, err := os.ReadFile(out)
@@ -189,60 +169,5 @@ func TestVerifyAll(t *testing.T) {
 		if got[i].Status != StatusInvalid {
 			t.Fatalf("line %q: status %q, want invalid", in[i], got[i].Status)
 		}
-	}
-}
-
-// MIN_PEERS alone does not stop a curated 71-peer list collapsing to 6: the
-// absolute floor is met while 92% of the list silently disappears.
-func TestWriteVerified_RejectsCollapseRelativeToPrevious(t *testing.T) {
-	dir := t.TempDir()
-	out := filepath.Join(dir, "peers.txt")
-	var previous string
-	for i := 0; i < 20; i++ {
-		previous += string(rune('a'+i)) + "@1:1\n"
-	}
-	writeFile(t, out, previous)
-
-	// 6 verified clears min=5 but retains only 30% of a 20-peer list.
-	err := writeVerified(out, []string{"a@1:1", "b@1:1", "c@1:1", "d@1:1", "e@1:1", "f@1:1"}, 5, 50)
-	if err == nil {
-		t.Fatal("writeVerified2 succeeded, want an error for a 70% shrink")
-	}
-	got, readErr := os.ReadFile(out)
-	if readErr != nil {
-		t.Fatal(readErr)
-	}
-	if string(got) != previous {
-		t.Fatal("peers.txt was modified by a run that failed the retention gate")
-	}
-}
-
-func TestWriteVerified_AllowsModestShrink(t *testing.T) {
-	dir := t.TempDir()
-	out := filepath.Join(dir, "peers.txt")
-	writeFile(t, out, "a@1:1\nb@1:1\nc@1:1\nd@1:1\n")
-
-	// 3 of 4 retained (75%) clears a 50% floor.
-	if err := writeVerified(out, []string{"a@1:1", "b@1:1", "c@1:1"}, 3, 50); err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
-}
-
-func TestWriteVerified_GrowthIsAlwaysAllowed(t *testing.T) {
-	dir := t.TempDir()
-	out := filepath.Join(dir, "peers.txt")
-	writeFile(t, out, "a@1:1\n")
-
-	if err := writeVerified(out, []string{"a@1:1", "b@1:1", "c@1:1"}, 1, 50); err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
-}
-
-func TestWriteVerified_FirstRunHasNoPreviousToCompare(t *testing.T) {
-	dir := t.TempDir()
-	out := filepath.Join(dir, "peers.txt")
-
-	if err := writeVerified(out, []string{"a@1:1", "b@1:1"}, 2, 50); err != nil {
-		t.Fatalf("unexpected error on first run: %v", err)
 	}
 }

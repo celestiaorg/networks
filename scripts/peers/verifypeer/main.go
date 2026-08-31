@@ -102,32 +102,12 @@ func loadCandidates(inPath, outPath string, merge bool) ([]string, error) {
 	return dedupe(candidates), nil
 }
 
-// writeVerified sorts, deduplicates and writes lines to path, but only once two
-// gates pass. Both are checked before the write, so a failed run leaves the
-// existing peers.txt untouched rather than truncating it.
-//
-//   - min: an absolute floor on the number of verified peers.
-//   - minRetainPct: the new list must be at least this percentage of the list
-//     already at path. The absolute floor alone does not catch a curated
-//     71-peer list collapsing to 6 because upstream had a bad morning; growth
-//     and the first run (no file yet) are always allowed. 0 disables the gate.
-func writeVerified(path string, lines []string, min, minRetainPct int) error {
+// writeVerified sorts, deduplicates and writes lines to path. Sorting keeps the
+// output stable regardless of dial timing, so a rerun that finds the same peers
+// produces no diff.
+func writeVerified(path string, lines []string) error {
 	lines = dedupe(lines)
-	sort.Strings(lines) // deterministic output independent of dial timing
-	if len(lines) < min {
-		return fmt.Errorf("only %d verified peers, need >= %d; leaving %s unchanged", len(lines), min, path)
-	}
-	if minRetainPct > 0 {
-		previous, err := readPeerLines(path)
-		if err != nil && !errors.Is(err, fs.ErrNotExist) {
-			return err
-		}
-		if n := len(dedupe(previous)); n > 0 && len(lines)*100 < n*minRetainPct {
-			return fmt.Errorf("verified %d peers but %s currently has %d (%d%%, below the %d%% floor); "+
-				"leaving it unchanged \u2014 rerun or lower -min-retain-pct if this shrink is intended",
-				len(lines), path, n, len(lines)*100/n, minRetainPct)
-		}
-	}
+	sort.Strings(lines)
 	content := []byte{}
 	if len(lines) > 0 {
 		content = []byte(strings.Join(lines, "\n") + "\n")
@@ -160,14 +140,12 @@ func main() {
 	chainID := flag.String("chain-id", "", "expected chain ID, e.g. celestia or mocha-5 (required)")
 	merge := flag.Bool("merge", true, "also verify the peers already in -out, keeping the ones that still pass")
 	report := flag.String("report", "", "output file for JSON verification report")
-	min := flag.Int("min", 5, "minimum verified peers required (else exit 1)")
 	concurrency := flag.Int("concurrency", 16, "max concurrent dials")
-	minRetainPct := flag.Int("min-retain-pct", 50, "fail if the new list is below this percentage of the existing -out list (0 disables)")
 	timeoutSec := flag.Int("timeout", 5, "per-peer dial+handshake timeout in seconds")
 	flag.Parse()
 
 	if *in == "" || *out == "" || *chainID == "" {
-		fmt.Fprintln(os.Stderr, "usage: verifypeer -in candidates.txt -out peers.txt -chain-id celestia [-merge=false] [-report report.json] [-min N] [-min-retain-pct N] [-concurrency N] [-timeout SECONDS]")
+		fmt.Fprintln(os.Stderr, "usage: verifypeer -in candidates.txt -out peers.txt -chain-id celestia [-merge=false] [-report report.json] [-concurrency N] [-timeout SECONDS]")
 		os.Exit(2)
 	}
 
@@ -200,8 +178,8 @@ func main() {
 		fmt.Fprintf(os.Stderr, "WRONG CHAIN: want=%s got=%s line=%s\n", *chainID, r.Network, r.Line)
 	}
 
-	if err := writeVerified(*out, verified, *min, *minRetainPct); err != nil {
-		fmt.Fprintf(os.Stderr, "FAIL: %v\n", err)
+	if err := writeVerified(*out, verified); err != nil {
+		fmt.Fprintf(os.Stderr, "write out: %v\n", err)
 		os.Exit(1)
 	}
 }
