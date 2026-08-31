@@ -1,0 +1,154 @@
+name: Update peers
+
+on:
+  schedule:
+    - cron: "0 0 * * 1" # Mondays 00:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  CELESTIA_APP_VERSION: v8.0.3 # bump to pull a newer addrbook generator
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # chain_id is asserted twice: once against the feed's own chain_id,
+          # and again per-peer via the NodeInfo handshake. mocha-4 is deprecated
+          # in favour of mocha-5 and has no upstream feed, so it is not refreshed.
+          - name: mainnet
+            url: https://peers.cumulo.me/peers/celestia/mainnet/peers.json
+            dir: celestia
+            chain_id: celestia
+            addrbook: true
+          - name: mocha-5
+            url: https://peers.cumulo.me/peers/celestia/testnet/peers.json
+            dir: mocha-5
+            chain_id: mocha-5
+            addrbook: false
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: scripts/peers/verifypeer/go.mod
+
+      - name: Ensure jq is available
+        run: command -v jq >/dev/null || { sudo apt-get update && sudo apt-get install -y jq; }
+
+      - name: Fetch + filter candidates
+        run: |
+          ./scripts/peers/fetch-filter.sh \
+            "${{ matrix.url }}" /tmp/candidates.txt "${{ matrix.chain_id }}"
+          echo "Candidates from feed: $(wc -l < /tmp/candidates.txt)"
+
+      # Verifies the union of the feed's candidates and the peers already in the
+      # repo, keeping only those that complete the CometBFT handshake with a
+      # matching node ID *and* report the expected chain. Peers already committed
+      # that still pass are retained; the feed cannot silently replace the list.
+      - name: Verify peers (handshake + node ID + chain ID)
+        working-directory: scripts/peers/verifypeer
+        run: |
+          go run . \
+            -in /tmp/candidates.txt \
+            -out "${GITHUB_WORKSPACE}/${{ matrix.dir }}/peers.txt" \
+            -chain-id "${{ matrix.chain_id }}" \
+            -report /tmp/report.json
+
+      - name: Generate addrbook.json
+        if: matrix.addrbook
+        run: |
+          asset="celestia-app-standalone_Linux_x86_64.tar.gz"
+          base="https://github.com/celestiaorg/celestia-app/releases/download/${CELESTIA_APP_VERSION}"
+          # Save under the asset's own name: sha256sum -c resolves the filename
+          # listed in checksums.txt relative to the working directory.
+          curl -fsSL -o "/tmp/${asset}" "${base}/${asset}"
+          curl -fsSL -o /tmp/checksums.txt "${base}/checksums.txt"
+          # This job holds contents: write and commits whatever the binary emits,
+          # so verify the download against the release checksums before running it.
+          ( cd /tmp && grep " ${asset}\$" checksums.txt | sha256sum -c - )
+          tar -xzf "/tmp/${asset}" -C /tmp celestia-appd
+          /tmp/celestia-appd addrbook "${{ matrix.dir }}/peers.txt" "${{ matrix.dir }}/addrbook.json"
+
+      # Auto-PRs opened with GITHUB_TOKEN do not trigger on: pull_request
+      # workflows, so the repo's own checks would never run on them. Run the
+      # equivalent here, before the PR is opened.
+      - name: Check no trailing commas in *.txt
+        run: |
+          for f in $(git ls-files '*.txt'); do
+            if grep -qE ",$" "$f"; then
+              echo "Trailing comma found in $f" >&2
+              exit 1
+            fi
+          done
+          echo "No trailing commas found in .txt files."
+
+      - name: Build PR body
+        id: meta
+        run: |
+          summary=$(jq -r '
+            group_by(.status) | map("\(.[0].status): \(length)") | join(", ")
+          ' /tmp/report.json)
+          verified=$(grep -c . "${{ matrix.dir }}/peers.txt" || true)
+          {
+            echo "### ${{ matrix.name }} peer refresh"
+            echo ""
+            echo "- Chain ID: \`${{ matrix.chain_id }}\` (asserted on the feed and on every peer's NodeInfo)"
+            echo "- Peers in \`${{ matrix.dir }}/peers.txt\`: ${verified}"
+            echo "- Verification breakdown: ${summary}"
+            echo ""
+            echo "Candidates are the union of [the feed](${{ matrix.url }}) and the peers already committed here."
+            echo "Each is independently re-verified via the CometBFT handshake; only peers whose authenticated"
+            echo "node ID matches the claimed \`id@\` *and* whose reported chain is \`${{ matrix.chain_id }}\` are kept."
+          } > /tmp/pr_body.md
+
+          # Node ID mismatches are a possible-poisoning signal; wrong-chain peers
+          # mean the feed is drifting. Surface both in the PR body, not just logs.
+          for status in id_mismatch wrong_chain; do
+            n=$(jq --arg s "$status" '[.[] | select(.status==$s)] | length' /tmp/report.json)
+            if [ "$n" -gt 0 ]; then
+              echo "" >> /tmp/pr_body.md
+              echo "**${n} peer(s) dropped as \`${status}\`:**" >> /tmp/pr_body.md
+              jq -r --arg s "$status" \
+                '.[] | select(.status==$s) | "- `\(.line)` claimed=\(.claimed_id) remote=\(.remote_id // "-") network=\(.network // "-")"' \
+                /tmp/report.json >> /tmp/pr_body.md
+            fi
+          done
+
+          base="$(git show "HEAD:${{ matrix.dir }}/peers.txt" 2>/dev/null || true)"
+          if [ -n "$base" ]; then
+            added=$(comm -13 <(echo "$base" | sort) <(sort "${{ matrix.dir }}/peers.txt") | grep -c . || true)
+            removed=$(comm -23 <(echo "$base" | sort) <(sort "${{ matrix.dir }}/peers.txt") | grep -c . || true)
+            echo "- Change vs current: +${added} / -${removed}" >> /tmp/pr_body.md
+          fi
+
+          # Built here rather than inline in the PR step: an empty line in
+          # add-paths becomes an empty git pathspec, which git rejects.
+          {
+            echo "add_paths<<PATHS_EOF"
+            echo "${{ matrix.dir }}/peers.txt"
+            if [ "${{ matrix.addrbook }}" = "true" ]; then
+              echo "${{ matrix.dir }}/addrbook.json"
+            fi
+            echo "PATHS_EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Open PR
+        uses: peter-evans/create-pull-request@v7
+        with:
+          # Set PEERS_PR_TOKEN (a PAT or GitHub App token) to make the repo's
+          # pull_request workflows run on the generated PR. Without it the PR is
+          # still opened, just without those checks.
+          token: ${{ secrets.PEERS_PR_TOKEN || secrets.GITHUB_TOKEN }}
+          branch: peers/auto-update-${{ matrix.name }}
+          title: "chore(peers): refresh ${{ matrix.name }} peers${{ matrix.addrbook && ' + addrbook' || '' }}"
+          body-path: /tmp/pr_body.md
+          add-paths: ${{ steps.meta.outputs.add_paths }}
+          assignees: rootulp
+          commit-message: "chore(peers): refresh ${{ matrix.name }} peers"
