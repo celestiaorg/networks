@@ -1,4 +1,3 @@
-cf7ac8b19ff56a9d47c75551bd4864883d1e24b5@consensus-full-seed-2.celestia-bootstrap.net:26656
 acca7837e4eb5f9dc7f5a94ed1d82edda6931ff8@seed.celestia.pops.one:26656
 c5a23c66db975038c4eb131f65717059f597fe59@celestia-mainnet.stakingcabin.com:21656
 9b1d22c3a78487d1a664a4b6a331fce527d14fb4@seed.celestia.mainnet.dteam.tech:27656
