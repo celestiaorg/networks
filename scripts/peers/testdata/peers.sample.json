@@ -1,0 +1,10 @@
+{
+  "chain_id": "celestia",
+  "network": "mainnet",
+  "peer_count": 3,
+  "peers": [
+    { "connection_string": "13612522d3ce71a181881370b8f40103d4def9f1@84.32.32.148:16400", "score": 2.1, "tcp_verified": true },
+    { "connection_string": "213f44afb503be593a1c8eb27dae86a50363e500@65.109.93.17:11656", "score": 1.5, "tcp_verified": true },
+    { "connection_string": "deadbeef00000000000000000000000000000000@10.0.0.1:26656", "score": 9.9, "tcp_verified": false }
+  ]
+}
