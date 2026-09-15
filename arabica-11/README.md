@@ -1,6 +1,6 @@
-# arabica-11 (sunset)
+# arabica-11 (deprecated)
 
-The `arabica-11` testnet has been sunset and is no longer running. The files in this directory are kept for historical reference only and should not be used to start a new node.
+The `arabica-11` testnet has been deprecated and is no longer running. The files in this directory are kept for historical reference only and should not be used to start a new node.
 
 The final state of the chain is preserved in [final_state_export.json](./final_state_export.json).
 

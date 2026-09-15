@@ -28,9 +28,9 @@ Multiple entries are comma-separated when placed in config or flags. See the [Ce
 | Corto    | Testnet      | `corto-1`  | [corto-1](./corto-1)   |
 | Celestia | Mainnet Beta | `celestia` | [celestia](./celestia) |
 
-### Sunset networks
+### Deprecated networks
 
-The following networks have been sunset and are no longer running. Their directories are kept for historical reference only.
+The following networks have been deprecated and are no longer running. Their directories are kept for historical reference only.
 
 | Name    | Chain ID     | Configs                    | Replaced by          |
 |---------|--------------|----------------------------|----------------------|
