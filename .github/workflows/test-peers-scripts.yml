@@ -20,6 +20,9 @@ permissions:
 jobs:
   go:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v4
 
@@ -43,7 +46,15 @@ jobs:
 
       - name: go test
         working-directory: scripts/peers/verifypeer
-        run: go test -race ./...
+        run: go test -race -coverprofile=coverage.txt -covermode=atomic ./...
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@0b35c9ecc4f0529d0eb674914510c22f85b196b4 # v7.1.0
+        with:
+          disable_search: true
+          fail_ci_if_error: true
+          files: ./scripts/peers/verifypeer/coverage.txt
+          use_oidc: true
 
   shell:
     runs-on: ubuntu-latest
