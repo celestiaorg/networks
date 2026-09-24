@@ -362055,7 +362055,7 @@
         ]
       },
       "version": {
-        "app": "9"
+        "app": "10"
       },
       "abci": {
         "vote_extensions_enable_height": "0"
