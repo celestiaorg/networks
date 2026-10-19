@@ -99,6 +99,8 @@ jobs:
           {
             echo "### ${{ matrix.name }} peer refresh"
             echo ""
+            echo "Review level: [medium] — automated, handshake-verified peer refresh; check dropped peers and the diff size."
+            echo ""
             echo "- Chain ID: \`${{ matrix.chain_id }}\` (asserted on the feed and on every peer's NodeInfo)"
             echo "- Peers in \`${{ matrix.dir }}/peers.txt\`: ${verified}"
             echo "- Verification breakdown: ${summary}"
@@ -147,8 +149,10 @@ jobs:
           # still opened, just without those checks.
           token: ${{ secrets.PEERS_PR_TOKEN || secrets.GITHUB_TOKEN }}
           branch: peers/auto-update-${{ matrix.name }}
-          title: "chore(peers): refresh ${{ matrix.name }} peers${{ matrix.addrbook && ' + addrbook' || '' }}"
+          # [medium]: peers are re-verified above, but operators consume these
+          # files, so a reviewer should check the drop list and the diff size.
+          title: "chore(peers): [medium] refresh ${{ matrix.name }} peers${{ matrix.addrbook && ' + addrbook' || '' }}"
           body-path: /tmp/pr_body.md
           add-paths: ${{ steps.meta.outputs.add_paths }}
           assignees: rootulp
-          commit-message: "chore(peers): refresh ${{ matrix.name }} peers"
+          commit-message: "chore(peers): [medium] refresh ${{ matrix.name }} peers"

@@ -40,3 +40,15 @@ The following networks have been deprecated and are no longer running. Their dir
 ## Software versions
 
 The celestia-app and celestia-node versions in use on each network are visible [in the Celestia Docs](https://docs.celestia.org/operate/networks/overview/).
+
+## Contributing
+
+If you are a new contributor, please read [contributing to Celestia](https://github.com/celestiaorg/.github/blob/main/CONTRIBUTING.md).
+
+PR titles follow [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) (e.g. `fix:`, `chore:`, `ci:`, `docs:`) and must start the subject with `[high]`, `[medium]`, or `[low]` to indicate the review thoroughness needed. For example: `chore(peers): [medium] refresh mainnet peers` or `docs: [low] clarify setup instructions`. Include the same tag in the PR description and explain why you chose it.
+
+- `[high]`: Deep review for genesis files, chain IDs, new networks, hand-edited mainnet seeds or peers, security, or anything else a node operator consumes to join mainnet.
+- `[medium]`: Standard review for testnet config changes, automated peer refreshes, and script or workflow changes with limited impact and well-understood behavior.
+- `[low]`: Focused review for straightforward docs, tests, or tooling changes with low risk.
+
+Choose the higher level when unsure. A small diff can still need deep review. CI checks the title format; reviewers should confirm the chosen level.
