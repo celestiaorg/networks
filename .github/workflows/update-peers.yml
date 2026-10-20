@@ -144,9 +144,11 @@ jobs:
       - name: Open PR
         uses: peter-evans/create-pull-request@22a9089034f40e5a961c8808d113e2c98fb63676 # v7.0.11
         with:
-          # Set PEERS_PR_TOKEN (a PAT or GitHub App token) to make the repo's
+          # Set PEERS_PR_TOKEN (a GitHub App token) to make the repo's
           # pull_request workflows run on the generated PR. Without it the PR is
-          # still opened, just without those checks.
+          # still opened, just without those checks. Use an App token rather
+          # than a PAT: sign-commits only yields verified commits for
+          # GITHUB_TOKEN and GitHub App tokens.
           token: ${{ secrets.PEERS_PR_TOKEN || secrets.GITHUB_TOKEN }}
           branch: peers/auto-update-${{ matrix.name }}
           # [medium]: peers are re-verified above, but operators consume these
@@ -156,3 +158,6 @@ jobs:
           add-paths: ${{ steps.meta.outputs.add_paths }}
           assignees: rootulp
           commit-message: "chore(peers): [medium] refresh ${{ matrix.name }} peers"
+          # main requires verified commits. Create the commit through the GitHub
+          # API so GitHub signs it, instead of an unsigned local git commit.
+          sign-commits: true
