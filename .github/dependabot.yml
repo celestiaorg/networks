@@ -1,0 +1,11 @@
+version: 2
+updates:
+  # Version updates are disabled (limit 0); this entry only sets the title
+  # prefix for Dependabot security updates so they pass the PR title check.
+  - package-ecosystem: gomod
+    directory: /scripts/peers/verifypeer
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0
+    commit-message:
+      prefix: "chore(deps): [medium] "
