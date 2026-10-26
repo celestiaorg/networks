@@ -34,6 +34,16 @@ func mismatches(results []Result) []Result {
 	return out
 }
 
+func unverified(results []Result) []Result {
+	var out []Result
+	for _, r := range results {
+		if r.Status != StatusVerified {
+			out = append(out, r)
+		}
+	}
+	return out
+}
+
 func wrongChain(results []Result) []Result {
 	var out []Result
 	for _, r := range results {
@@ -146,11 +156,15 @@ func main() {
 	report := flag.String("report", "", "output file for JSON verification report")
 	concurrency := flag.Int("concurrency", 16, "max concurrent dials")
 	timeoutSec := flag.Int("timeout", 5, "per-peer dial+handshake timeout in seconds")
+	requireAll := flag.Bool("require-all", false, "check mode: exit non-zero unless every -in entry verifies; -out and -merge are ignored")
 	flag.Parse()
 
-	if *in == "" || *out == "" || *chainID == "" {
-		fmt.Fprintln(os.Stderr, "usage: verifypeer -in candidates.txt -out peers.txt -chain-id celestia [-merge=false] [-report report.json] [-concurrency N] [-timeout SECONDS]")
+	if *in == "" || *chainID == "" || (*out == "" && !*requireAll) {
+		fmt.Fprintln(os.Stderr, "usage: verifypeer -in candidates.txt (-out peers.txt | -require-all) -chain-id celestia [-merge=false] [-report report.json] [-concurrency N] [-timeout SECONDS]")
 		os.Exit(2)
+	}
+	if *requireAll {
+		*merge = false
 	}
 
 	candidates, err := loadCandidates(*in, *out, *merge)
@@ -180,6 +194,19 @@ func main() {
 	}
 	for _, r := range wc {
 		fmt.Fprintf(os.Stderr, "WRONG CHAIN: want=%s got=%s line=%s\n", *chainID, r.Network, r.Line)
+	}
+
+	// Check mode backs the pull_request workflow: a PR that adds an entry
+	// operators cannot reach should not merge, so every entry must pass.
+	if *requireAll {
+		bad := unverified(results)
+		for _, r := range bad {
+			fmt.Fprintf(os.Stderr, "NOT VERIFIED (%s): %s %s\n", r.Status, r.Line, r.Err)
+		}
+		if len(bad) > 0 {
+			os.Exit(1)
+		}
+		return
 	}
 
 	if err := writeVerified(*out, verified); err != nil {
