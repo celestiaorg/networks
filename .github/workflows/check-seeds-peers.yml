@@ -38,11 +38,18 @@ jobs:
           # The directory name is the chain ID the entries must report.
           for file in celestia/seeds.txt celestia/peers.txt mocha-5/seeds.txt mocha-5/peers.txt; do
             added=$(git diff --no-color -U0 "$BASE_SHA" HEAD -- "$file" \
-              | grep '^+[^+]' | cut -c2- | sed 's/[[:space:]]//g' | grep . || true)
+              | grep '^+[^+]' | cut -c2- | sed 's/\r$//' | grep . || true)
             if [ -z "$added" ]; then
               continue
             fi
             echo "::group::$file"
+            # Check the committed text as is: operators copy it verbatim, so
+            # a line with whitespace must fail rather than be cleaned up.
+            spaced=$(grep '[[:space:]]' <<< "$added" || true)
+            if [ -n "$spaced" ]; then
+              sed "s|^|::error file=$file::whitespace in entry: |" <<< "$spaced"
+              status=1
+            fi
             echo "$added" > /tmp/added.txt
             ( cd scripts/peers/verifypeer && go run . -require-all -in /tmp/added.txt -chain-id "${file%%/*}" ) || status=1
             echo "::endgroup::"
