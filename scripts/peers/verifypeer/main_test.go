@@ -209,3 +209,26 @@ func TestWriteVerified_OneVerifiedPeerIsEnough(t *testing.T) {
 		t.Fatalf("got %q, want %q", got, "a@1:1\n")
 	}
 }
+
+// -require-all fails CI on any entry that did not verify, whatever the reason.
+func TestUnverified(t *testing.T) {
+	results := []Result{
+		{Line: "a@1:1", Status: StatusVerified},
+		{Line: "b@2:2", Status: StatusUnreachable},
+		{Line: "c@3:3", Status: StatusHandshakeFailed},
+		{Line: "d@4:4", Status: StatusVerified},
+		{Line: "e@5:5", Status: StatusIDMismatch},
+		{Line: "f@6:6", Status: StatusWrongChain},
+		{Line: "g", Status: StatusInvalid},
+	}
+	got := unverified(results)
+	want := []string{"b@2:2", "c@3:3", "e@5:5", "f@6:6", "g"}
+	if len(got) != len(want) {
+		t.Fatalf("got %v, want %v", got, want)
+	}
+	for i := range want {
+		if got[i].Line != want[i] {
+			t.Fatalf("got %v, want %v", got, want)
+		}
+	}
+}
