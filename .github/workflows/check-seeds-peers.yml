@@ -1,0 +1,57 @@
+# Operators copy seeds.txt and peers.txt into their node config, so a PR must
+# not add an entry they cannot use. Every id@host:port line a PR adds to the
+# mainnet or Mocha lists must pass the CometBFT handshake with a matching node
+# ID and chain ID. Lines already on the base branch are not checked: one of them
+# being down must not block unrelated PRs.
+name: check-seeds-peers
+
+on:
+  pull_request:
+    paths:
+      - "celestia/seeds.txt"
+      - "celestia/peers.txt"
+      - "mocha-5/seeds.txt"
+      - "mocha-5/peers.txt"
+      - "scripts/peers/verifypeer/**"
+      - ".github/workflows/check-seeds-peers.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify-added-entries:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: scripts/peers/verifypeer/go.mod
+
+      - name: Verify added entries (handshake + node ID + chain ID)
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          status=0
+          # The directory name is the chain ID the entries must report.
+          for file in celestia/seeds.txt celestia/peers.txt mocha-5/seeds.txt mocha-5/peers.txt; do
+            added=$(git diff --no-color -U0 "$BASE_SHA" HEAD -- "$file" \
+              | grep '^+[^+]' | cut -c2- | sed 's/\r$//' | grep . || true)
+            if [ -z "$added" ]; then
+              continue
+            fi
+            echo "::group::$file"
+            # Check the committed text as is: operators copy it verbatim, so
+            # a line with whitespace must fail rather than be cleaned up.
+            spaced=$(grep '[[:space:]]' <<< "$added" || true)
+            if [ -n "$spaced" ]; then
+              sed "s|^|::error file=$file::whitespace in entry: |" <<< "$spaced"
+              status=1
+            fi
+            echo "$added" > /tmp/added.txt
+            ( cd scripts/peers/verifypeer && go run . -require-all -in /tmp/added.txt -chain-id "${file%%/*}" ) || status=1
+            echo "::endgroup::"
+          done
+          exit "$status"
