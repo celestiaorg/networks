@@ -8,7 +8,7 @@ Configuration files (genesis, seeds, peers, addrbook) for Celestia networks, plu
 - `[high]`: genesis files, chain IDs, new networks, hand-edited mainnet seeds or peers, security, or anything else a node operator consumes to join mainnet.
 - `[medium]`: testnet config, automated peer refreshes, and script or workflow changes with limited impact.
 - `[low]`: docs, tests, or tooling changes with low risk.
-- Use the higher level when unsure. Include the title's tag in the description with a brief reason, e.g. `Review level: [low] — documentation only.`
+- Use the higher level when unsure. Don't repeat the review tag in the PR description; the title already carries it.
 
 ## Security PRs
 
