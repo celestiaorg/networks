@@ -99,7 +99,7 @@ jobs:
           {
             echo "### ${{ matrix.name }} peer refresh"
             echo ""
-            echo "Review level: [medium] — automated, handshake-verified peer refresh; check dropped peers and the diff size."
+            echo "Automated, handshake-verified peer refresh; check dropped peers and the diff size."
             echo ""
             echo "- Chain ID: \`${{ matrix.chain_id }}\` (asserted on the feed and on every peer's NodeInfo)"
             echo "- Peers in \`${{ matrix.dir }}/peers.txt\`: ${verified}"
