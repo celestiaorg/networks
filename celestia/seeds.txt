@@ -1,3 +1,3 @@
 acca7837e4eb5f9dc7f5a94ed1d82edda6931ff8@seed.celestia.pops.one:26656
 12ad7c73c7e1f2460941326937a039139aa78884@celestia-mainnet-seed.itrocket.net:40656
-19b3ef846732c465cc32da3eaddb9c0fb41f57d2@consensus-full-seed-1.celestia-bootstrap.net:26656
+975237ec35350f0643bce6618654cd1c76bf1dc0@consensus-full-seed-1.celestia-bootstrap.net:26656
